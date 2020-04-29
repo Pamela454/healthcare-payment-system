@@ -5,13 +5,9 @@ one:
   balance: 1
   copay: 1
   insurance: MyString
-  service: MyString
-  charge: 1
 
 two:
   name: MyString
   balance: 1
   copay: 1
   insurance: MyString
-  service: MyString
-  charge: 1

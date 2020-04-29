@@ -5,8 +5,6 @@ class CreateAccounts < ActiveRecord::Migration[6.0]
       t.integer :balance
       t.integer :copay
       t.string :insurance
-      t.string :service
-      t.integer :charge
 
       t.timestamps
     end
