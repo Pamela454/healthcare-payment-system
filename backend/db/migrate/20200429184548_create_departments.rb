@@ -3,6 +3,7 @@ class CreateDepartments < ActiveRecord::Migration[6.0]
     create_table :departments do |t|
       t.string :service
       t.integer :charge
+      t.integer :account_id
 
       t.timestamps
     end

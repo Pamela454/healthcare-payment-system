@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2020_04_29_184548) do
   create_table "departments", force: :cascade do |t|
     t.string "service"
     t.integer "charge"
+    t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
