@@ -20,9 +20,8 @@ class Api::V1::AccountsController < ApplicationController
 
   def update
   	@account = Account.find_by(params[:id])
-  	@account.update()
+  	@account.update(account_params)
   	render json: @account 
-    
   end
 
   def destroy
