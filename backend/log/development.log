@@ -602,3 +602,15 @@ Processing by Api::V1::AccountsController#show as */*
 Completed 200 OK in 7ms (Views: 4.0ms | ActiveRecord: 0.4ms | Allocations: 2416)
 
 
+Started GET "/api/v1/accounts/1" for ::1 at 2020-05-12 07:48:02 -0400
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::AccountsController#show as */*
+  Parameters: {"id"=>"1"}
+  [1m[36mAccount Load (0.7ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE (1) LIMIT ?[0m  [["LIMIT", 1]]
+  ↳ app/controllers/api/v1/accounts_controller.rb:17:in `show'
+[active_model_serializers]   [1m[36mDepartment Load (0.6ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:18:in `show'
+[active_model_serializers] Rendered AccountSerializer with ActiveModelSerializers::Adapter::Attributes (9.61ms)
+Completed 200 OK in 23ms (Views: 12.4ms | ActiveRecord: 1.3ms | Allocations: 2417)
+
+
