@@ -1,11 +1,12 @@
 import React from 'react';
 import {connect} from 'react-redux'
 import {fetchAccounts} from './actions/fetchAccounts'
+import AccountsContainer from './containers/AccountsContainer'
 
 class App extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAccounts({type: 'FETCH_ACCOUNTS', payload: {name: 'Checking'}})
+
   }
 
 
@@ -13,7 +14,7 @@ class App extends React.Component {
   render() {
   return (
     <div className="App">
-      App
+      <AccountsContainer/>
     </div>
   );
  }
@@ -25,4 +26,4 @@ const mapStateToProps = (state) => {  //access to see what is already in store
   }
 }
 
-export default connect(null, {fetchAccounts})(App);  //connects to redux store. returns store.dispatch(type: 'FETCH_ACCOUNTS', payload: {name: 'Checking'}}) 
+export default connect()(App);  //connects to redux store. returns store.dispatch(type: 'FETCH_ACCOUNTS', payload: {name: 'Checking'}}) 

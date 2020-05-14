@@ -13,10 +13,10 @@ let store = createStore(accountReducer, composeEnhancers(applyMiddleware(thunk))
 //containers act more like parent components
 //store - data stored globally. could create in separate file and import. 
 //reducer - what to do with store based on certain actions. returns a new version of the store. 
-
+//below grants app access to the store 
 ReactDOM.render(
     <Provider store={store}>
-	<App />
+	<App /> 
 	</Provider>
 	, document.getElementById('root'));
 
