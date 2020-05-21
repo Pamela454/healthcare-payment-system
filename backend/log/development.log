@@ -614,3 +614,17 @@ Processing by Api::V1::AccountsController#show as */*
 Completed 200 OK in 23ms (Views: 12.4ms | ActiveRecord: 1.3ms | Allocations: 2417)
 
 
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddFieldsToAccounts (20200521133440)
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "accounts" ADD "cardfirstname" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "cardlastname" varchar[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "creditcardnumber" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "expiration" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "accounts" ADD "cvv" integer[0m
+  [1m[36mprimary::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "20200521133440"]]
+  [1m[35m (0.5ms)[0m  [1m[36mcommit transaction[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ? LIMIT ?[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m

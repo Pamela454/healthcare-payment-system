@@ -11,11 +11,15 @@ class PaymentInput extends React.Component {
 
 	}
 
+	handleSubmit = (event) => {
+       event.preventDefault()
+	}
+
 
 	render() {
 		return {
 			<div>
-			   <form>
+			   <form onSubmit={this.handleSubmit}>
 			     <label>Payment Amount</label>
 			     <input type='text' placeholder='Amount' onChange={this.handleChange()}/>
 			     <label>Credit Card Number</label>
