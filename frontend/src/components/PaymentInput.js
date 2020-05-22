@@ -1,5 +1,6 @@
 import React from 'react'
-
+//form data available in local state or store? 
+//class component, local state holding 
 class PaymentInput extends React.Component {
 
 	state = {}
@@ -30,3 +31,5 @@ class PaymentInput extends React.Component {
 		}
 	}
 }
+
+export default AccountInput 

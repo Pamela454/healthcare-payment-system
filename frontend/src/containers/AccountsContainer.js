@@ -7,7 +7,7 @@ import {fetchAccounts} from './actions/fetchAccounts'
 
 
 class AccountsContainer extends React.Component {
-
+    //getting accounts from the backend
 	componentDidMount() {
         this.props.fetchAccounts()
 	}
@@ -21,10 +21,10 @@ class AccountsContainer extends React.Component {
 			)
 	}
 }
-
+//is this needed if not displaying list of accounts?
 const mapStateToProps = state => {
 	return {
-		accounts: state.accounts 
+		accounts: state.accounts //accounts located inside the state
 	}
 }
 
