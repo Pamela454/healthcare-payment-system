@@ -1,7 +1,7 @@
 // render other components, can have other functions inside them. Typically class components. 
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchAccounts} from './actions/fetchAccounts'
+import {fetchAccounts} from '../actions/fetchAccounts'
 
 
 
@@ -16,7 +16,7 @@ class AccountsContainer extends React.Component {
 	render () {
 		return (
 			<div>
-				AccountsContainer 
+				Accounts Container 
 			</div>
 			)
 	}

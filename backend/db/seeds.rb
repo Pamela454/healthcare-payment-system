@@ -9,3 +9,5 @@
 account = Account.create(name: 'Frieze', balance: 110, copay: 20, insurance: 'Aetna')
 
 department = Department.create(account_id: 1, service: 'visit', charge: 20)
+
+payment = Payment.create(department_id: 1, amount: 50)

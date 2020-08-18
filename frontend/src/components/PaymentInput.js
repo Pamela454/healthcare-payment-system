@@ -16,15 +16,15 @@ class PaymentInput extends React.Component {
        event.preventDefault()
 	}
 
-
+//needs place in schema for amount 
 	render() {
 		return {
-			<div>
+			<div> 
 			   <form onSubmit={this.handleSubmit}>
-			     <label>Payment Amount</label>
+			     <label>Payment Amount</label> 
 			     <input type='text' placeholder='Amount' onChange={this.handleChange()}/>
 			     <label>Credit Card Number</label>
-			     <input type='text' placeholder='Credit Card Number' />
+			     <input type='text' placeholder='Credit Card Number' value= this.state.creditcardnumber />
 			     <input type="submit"/>
 			   </form>
 			</div>

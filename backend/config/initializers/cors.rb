@@ -7,7 +7,7 @@
 
 Rails.application.config.middleware.insert_before 0, Rack::Cors do
    allow do
-     origins '*' #dont have to worry about server frontend running on 
+     origins '*' #dont have to worry about server frontend running on, will allow any origin
 
      resource '*',
        headers: :any,
