@@ -7,8 +7,9 @@ class PaymentsController < ApplicationController
   end
 
   def create
-  	@payment = Payment.new(payment_params)
-  	if @payment.save 
+  	@payment = @department.payments.new(payment_params)
+  	if @department.new_balance(@payment) != 'Payment cannot be processed'
+  		@payment.save
   		render json: @payment
   	else 
   		render json: (error: 'Error submitting payment')
