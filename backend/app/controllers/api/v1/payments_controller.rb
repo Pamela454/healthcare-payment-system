@@ -1,11 +1,18 @@
 class PaymentsController < ApplicationController
+	before_action :set_department
 
   def index
-  	@payments = @department.payment
+  	@payments = @department.payment 
   	render json: @payments
   end
 
   def create
+  	@payment = Payment.new(payment_params)
+  	if @payment.save 
+  		render json: @payment
+  	else 
+  		render json: (error: 'Error submitting payment')
+  	end
   end
 
   def show
