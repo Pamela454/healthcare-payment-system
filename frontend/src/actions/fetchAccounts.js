@@ -10,3 +10,4 @@ export function fetchAccounts(action) {
   }
 }
 
+//what is dispatched to reducer is an action object. then returns new verion of state. 
