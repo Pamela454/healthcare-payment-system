@@ -4,7 +4,7 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def index
   	@departments = @account.department
-  	render json: @departments
+  	render json: @departments, include: '**'
   end
 
   def create
@@ -18,7 +18,7 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def show
   	@department = Department.find(params[:id])
-  	render json: @department
+  	render json: @department, include: '**'
   end
 
   def update

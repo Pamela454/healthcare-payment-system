@@ -1,7 +1,8 @@
 class Api::V1::AccountsController < ApplicationController
+
   def index
   	@accounts = Account.all
-  	render json: @accounts
+  	render json: @accounts, include: '**'
   end
 
   def create
@@ -15,7 +16,7 @@ class Api::V1::AccountsController < ApplicationController
 
   def show
   	@account = Account.find_by(params[:id])
-  	render json: @account 
+  	render json: @account, include: '**'
   end
 
   def update

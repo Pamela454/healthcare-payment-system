@@ -10,4 +10,4 @@ account = Account.create(name: 'Frieze', balance: 110, copay: 20, insurance: 'Ae
 
 department = Department.create(account_id: 1, service: 'visit', charge: 20)
 
-payment = Payment.create(department_id: 1, amount: 50)
+payment = Payment.create(account_id: 1, amount: 50)

@@ -3,7 +3,7 @@ class PaymentsController < ApplicationController
 
   def index
   	@payments = @department.payment 
-  	render json: @payments
+  	render json: @payments, include: '**'
   end
 
   def create
@@ -18,7 +18,7 @@ class PaymentsController < ApplicationController
 
   def show
   	@payment = Payment.find(params[:id])
-  	render json: @payment
+  	render json: @payment, include: '**'
   end
 
   private
