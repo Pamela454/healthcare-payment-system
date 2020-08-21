@@ -2682,3 +2682,162 @@ Processing by Api::V1::AccountsController#index as HTML
 Completed 200 OK in 49ms (Views: 42.0ms | ActiveRecord: 2.0ms | Allocations: 29929)
 
 
+Started GET "/api/v1/accounts/" for ::1 at 2020-08-21 15:01:12 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AccountsController#index as HTML
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (33.33ms)
+Completed 200 OK in 53ms (Views: 46.3ms | ActiveRecord: 2.4ms | Allocations: 29929)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-08-21 15:01:13 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (6.0.3.2) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.2) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.2) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.2) lib/rails/rack/logger.rb:26:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.2) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.2) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (6.0.3.2) lib/rails/engine.rb:527:in `call'
+puma (4.3.5) lib/puma/configuration.rb:228:in `call'
+puma (4.3.5) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.5) lib/puma/server.rb:472:in `process_client'
+puma (4.3.5) lib/puma/server.rb:328:in `block in run'
+puma (4.3.5) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/api/v1/accounts/" for ::1 at 2020-08-21 15:01:54 -0400
+Processing by Api::V1::AccountsController#index as HTML
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.2ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.98ms)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.5ms | Allocations: 3818)
+
+
+Started GET "/api/v1/accounts/" for ::1 at 2020-08-21 15:02:52 -0400
+Processing by Api::V1::AccountsController#index as HTML
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.44ms)
+Completed 200 OK in 8ms (Views: 7.3ms | ActiveRecord: 0.4ms | Allocations: 3819)
+
+
+Started GET "/api/v1/accounts/" for ::1 at 2020-08-21 15:06:01 -0400
+Processing by Api::V1::AccountsController#index as HTML
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (4.64ms)
+Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.4ms | Allocations: 3800)
+
+
+Started GET "/api/v1/accounts/" for ::1 at 2020-08-21 15:06:13 -0400
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::AccountsController#index as HTML
+  [1m[36mAccount Load (0.1ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (32.05ms)
+Completed 200 OK in 51ms (Views: 45.3ms | ActiveRecord: 2.0ms | Allocations: 29929)
+
+
+Started GET "/api/v1/accounts/" for ::1 at 2020-08-21 15:08:39 -0400
+Processing by Api::V1::AccountsController#index as HTML
+  [1m[36mAccount Load (0.4ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.1ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.03ms)
+Completed 200 OK in 9ms (Views: 8.2ms | ActiveRecord: 0.6ms | Allocations: 3819)
+
+
+Started GET "/" for ::1 at 2020-08-21 15:11:47 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 10.1ms | Allocations: 478)
+Completed 200 OK in 17ms (Views: 13.9ms | ActiveRecord: 0.0ms | Allocations: 2673)
+
+
+Started GET "/" for ::1 at 2020-08-21 15:11:50 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 12.4ms | Allocations: 189)
+Completed 200 OK in 17ms (Views: 14.7ms | ActiveRecord: 0.0ms | Allocations: 809)
+
+
+Started GET "/" for ::1 at 2020-08-21 15:12:03 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.5ms | Allocations: 8)
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.0ms | Allocations: 317)
+
+
+Started GET "/" for ::1 at 2020-08-21 15:12:09 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 0.4ms | Allocations: 8)
+Completed 200 OK in 1ms (Views: 0.8ms | ActiveRecord: 0.0ms | Allocations: 318)
+
+
+Started GET "/" for ::1 at 2020-08-21 15:12:23 -0400
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 7.8ms | Allocations: 478)
+Completed 200 OK in 13ms (Views: 10.4ms | ActiveRecord: 0.0ms | Allocations: 2676)
+
+
+Started GET "/" for ::1 at 2020-08-21 15:17:04 -0400
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/pamela/.rbenv/versions/2.5.6/lib/ruby/gems/2.5.0/gems/railties-6.0.3.2/lib/rails/templates/rails/welcome/index.html.erb (Duration: 9.9ms | Allocations: 189)
+Completed 200 OK in 12ms (Views: 11.4ms | ActiveRecord: 0.0ms | Allocations: 809)
+
+
+Started GET "/api/v1/accounts" for ::1 at 2020-08-21 15:17:53 -0400
+Processing by Api::V1::AccountsController#index as */*
+  [1m[36mAccount Load (0.5ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts"[0m
+  ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mDepartment Load (0.2ms)[0m  [1m[34mSELECT "departments".* FROM "departments" WHERE "departments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers]   [1m[36mPayment Load (0.1ms)[0m  [1m[34mSELECT "payments".* FROM "payments" WHERE "payments"."account_id" = ?[0m  [["account_id", 1]]
+[active_model_serializers]   ↳ app/controllers/api/v1/accounts_controller.rb:5:in `index'
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (45.82ms)
+Completed 200 OK in 83ms (Views: 69.4ms | ActiveRecord: 3.9ms | Allocations: 29923)
+
+

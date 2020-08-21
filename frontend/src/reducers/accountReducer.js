@@ -6,6 +6,7 @@ export default function accountReducer(state = {accounts: []}, action) {
           return state
 	}
 
+//reducer is a function 
 //state as object vs array
 
 }
