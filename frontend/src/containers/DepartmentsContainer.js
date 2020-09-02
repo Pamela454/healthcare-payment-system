@@ -1,12 +1,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
-
+import {fetchDepartments} from '../actions/fetchDepartments'
+import DepartmentNew from '../components/DepartmentNew'
+import Departments from '../components/Departments'
 
 
 class DepartmentsContainer extends React.Component {
     //getting departments from the backend
 	componentDidMount() {
-        this.props.fetchDepartments()
+        this.props.fetchDepartments() //dispatching to redux store 
 	}
 
 

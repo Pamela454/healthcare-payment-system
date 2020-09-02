@@ -4,6 +4,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' 
+import {BrowserRouter as Router} from 'react-router-dom'
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import accountReducer from './reducers/accountReducer'
 
@@ -16,7 +17,9 @@ let store = createStore(accountReducer, composeEnhancers(applyMiddleware(thunk))
 //below grants app access to the store 
 ReactDOM.render(
     <Provider store={store}>
+    <Router>
 	<App /> 
+	</Router>
 	</Provider>
 	, document.getElementById('root'));
 //reducer tells what to do with store based on certain actions 
