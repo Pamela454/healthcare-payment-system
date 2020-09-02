@@ -5,17 +5,15 @@ import React from 'react'
 
 const Account = (props) => {
 
-  console.log(props)
+ // console.log(props)
   // let account = props.accounts[props.match.params.id - 1]
-  let account = props.accounts.filter(account => account.id === props.match.params.id)[0]
+  //let account = props.accounts.filter(account => account.id === props.match.params.id)[0]
 
-  console.log(account)
+  //console.log(account)
   return (
 
     <div>
-      <h2>
-        {account ? account.name : null} - {account ? account.balance : null}
-      </h2>
+      {props.accounts.map(account => <li key={account.name} - {account.balance}</li> )}
     </div>
   )
 

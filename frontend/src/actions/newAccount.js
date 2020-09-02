@@ -1,5 +1,5 @@
 export const newAccount = (data) => {
-	
+
 	return (dispatch) => {
 		fetch('http://localhost:3000/api/v1/accounts', {
 			headers: {
@@ -9,6 +9,8 @@ export const newAccount = (data) => {
 			method: 'POST',
 			body: JSON.stringify(data)
 		})
+		.then(response => response.json())
+		.then(account => dispatch({type: 'ADD_ACCOUNT', payload: account}))
 	}
 
 }

@@ -6,7 +6,6 @@ class Api::V1::AccountsController < ApplicationController
   end
 
   def create
-    binding.pry 
   	@account = Account.new(account_params)
   	if @account.save
   		render json: @account
@@ -34,6 +33,6 @@ class Api::V1::AccountsController < ApplicationController
   private
 
   def account_params
-  	params.require(:account).permit(:name, :balance, :insurance)
+  	params.require(:account).permit(:name, :balance)
   end
 end

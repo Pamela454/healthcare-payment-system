@@ -4,7 +4,7 @@ import {newAccount} from '../actions/newAccount'
 
 class AccountNew extends React.Component {
 
-	 state = {name: '', balance: '', copay: '', insurance: ''}
+	 state = {name: '', balance: ''}
 
 	 onChange = (event) => {
 	 	this.setState({
@@ -12,9 +12,9 @@ class AccountNew extends React.Component {
        })
 	 }
 
-	 onSubmit = (event) => {
+	 handleSubmit = (event) => {
 	 	event.preventDefault()
-	 	this.props.addAccount(this.state)
+	 	this.props.newAccount(this.state)
 
 	 }
    
