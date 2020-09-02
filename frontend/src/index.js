@@ -19,11 +19,12 @@ let store = createStore(accountReducer, composeEnhancers(applyMiddleware(thunk))
 //below grants app access to the store 
 ReactDOM.render(
     <Provider store={store}>
-    <Router>
+    <Router> 
 		<App /> 
 	</Router>
 	</Provider>, 
 	document.getElementById('root'));
+//router gives any child access to setting up routes and using links. children all wrapped in router
 //reducer tells what to do with store based on certain actions 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

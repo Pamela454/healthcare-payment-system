@@ -1,10 +1,11 @@
 // render other components, can have other functions inside them. Typically class components. 
 import React from 'react'
 import {connect} from 'react-redux'
-//import {Route, Switch} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 
 import {fetchAccounts} from '../actions/fetchAccounts'
 import Accounts from '../components/Accounts'
+import AccountShow from '../components/AccountShow'
 import AccountNew from '../components/AccountNew'
 //import NavBar from '../components/NavBar'
 
@@ -14,12 +15,13 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
         this.props.fetchAccounts()
 	}
 
-
+//render stated component 
 	render () {
 		return (
 			<div>
-				<AccountNew/>
-				<Accounts accounts={this.props.accounts}/>
+			    <Route path='/accounts/new' component={AccountNew} />
+			    <Route exact path='/accounts' render={() => <Accounts accounts={this.props.accounts}/> } /> 
+			    <Route path='/accounts/:id' render={() => <Accounts accounts={this.props.accounts}/> } />
 			</div>
 			)
 	}

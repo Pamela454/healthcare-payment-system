@@ -15,7 +15,10 @@ class AccountNew extends React.Component {
 	 handleSubmit = (event) => {
 	 	event.preventDefault()
 	 	this.props.newAccount(this.state)
-
+    this.setState({
+      name: '', 
+      balance: ''
+    })
 	 }
    
    render() {
