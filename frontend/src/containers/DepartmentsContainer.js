@@ -1,30 +1,31 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {fetchDepartments} from '../actions/fetchDepartments'
+//import {connect} from 'react-redux'
+//import {fetchDepartments} from '../actions/fetchDepartments'
 import DepartmentNew from '../components/DepartmentNew'
 import Departments from '../components/Departments'
 
 
 class DepartmentsContainer extends React.Component {
     //getting departments from the backend
-	componentDidMount() {
-        this.props.fetchDepartments() //dispatching to redux store 
-	}
+	//componentDidMount() {
+      //  this.props.fetchDepartments() //dispatching to redux store 
+	//}
 
 
 	render () {
 		return (
 			<div>
-				DepartmentsContainer 
+				<DepartmentNew/>
+				<Departments departments={this.props.account && this.props.account.departments}/>
 			</div>
 			)
 	}
 }
 //is this needed if not displaying list of accounts?
-const mapStateToProps = state => {
-	return {
-		departments: state.departments //accounts located inside the state
-	}
-}
+//const mapStateToProps = state => {
+//	return {
+//		departments: state.departments //accounts located inside the state
+//	}
+//}
 
-export default connect(mapStateToProps, {fetchDepartments})(DepartmentsContainer)
+export default DepartmentsContainer
