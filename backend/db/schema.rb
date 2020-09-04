@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_134309) do
   end
 
   create_table "departments", force: :cascade do |t|
+    t.string "name"
     t.string "service"
     t.integer "charge"
     t.integer "account_id"

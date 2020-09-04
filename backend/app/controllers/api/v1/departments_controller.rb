@@ -10,7 +10,7 @@ class Api::V1::DepartmentsController < ApplicationController
   def create
   	@department = @account.departments.new(department_params)
   	if @department.save
-  		render json: @department
+  		render json: @account
   	else
   		render json: {error: 'Error creating new department'}
   	end
@@ -42,7 +42,7 @@ class Api::V1::DepartmentsController < ApplicationController
   end
 
   def department_params
-  	params.require(:department).permit(:service, :charge, :account_id)
+  	params.require(:department).permit(:name, :service, :charge, :account_id)
   end
 
 end

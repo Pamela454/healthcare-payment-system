@@ -4,13 +4,20 @@ export default function accountReducer(state = {accounts: []}, action) {
           return {accounts: action.payload}
          case 'ADD_ACCOUNT':
           return {...state, accounts: [...state.accounts, action.payload]}
-        default:
-          return state //at least returns some version of state
-          
-	}
+         case 'ADD_DEPARTMENT': //at least returns some version of state
+          let accounts = state.accounts.map(account => {
+          	if (account.id === action.payload.id) {
+          	  return action.payload 
+          	} else {
+          	  return account 
+          	}
+          })
+          return {...state, accounts: accounts}
+         default:
+          return state
+    }       
+}
 
 //reducer is a function 
 //state as object vs array
 //updates the state based on the action 
-
-}

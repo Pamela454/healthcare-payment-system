@@ -1,5 +1,5 @@
 class Department < ApplicationRecord
 	belongs_to :account 
-	validates :service, :charge, :account_id, presence: true
+	validates :name, :service, :charge, :account_id, presence: true
 	
 end

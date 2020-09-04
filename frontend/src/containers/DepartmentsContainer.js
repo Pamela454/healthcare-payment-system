@@ -15,10 +15,11 @@ class DepartmentsContainer extends React.Component {
 	render () {
 		return (
 			<div>
-				<DepartmentNew/>
+				<DepartmentNew account={this.props.account}/>
 				<Departments departments={this.props.account && this.props.account.departments}/>
 			</div>
-			)
+
+		)
 	}
 }
 //is this needed if not displaying list of accounts?

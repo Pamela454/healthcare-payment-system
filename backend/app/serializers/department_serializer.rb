@@ -1,5 +1,5 @@
 class DepartmentSerializer < ActiveModel::Serializer
-  attributes :id, :service, :charge, :account_id
+  attributes :id, :name, :service, :charge, :account_id
 
   #has_many :payments
   #belongs_to :account
