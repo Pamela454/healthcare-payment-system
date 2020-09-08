@@ -30,8 +30,8 @@ class Api::V1::DepartmentsController < ApplicationController
 
   def destroy
   	@department = Department.find_by(params[:id])
-  	@account = Account.find(@transaction.account_id)
-  	@transaction.destroy
+  	@account = Account.find(@department.account_id)
+  	@department.destroy
   	render json: @account
   end
 
