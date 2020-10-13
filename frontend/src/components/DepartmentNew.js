@@ -31,7 +31,7 @@ class DepartmentNew extends React.Component {
 		return (
            <div>
              <form onSubmit={this.handleSubmit}>
-                <label>DepartmentNew</label>
+                <label>Department New</label>
                 <label>Name:</label>
                 <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
                 <label>Service:</label>

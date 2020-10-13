@@ -14,6 +14,7 @@ ActiveRecord::Schema.define(version: 2020_08_18_134309) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
+    t.string "password_digest"
     t.integer "balance"
     t.integer "copay"
     t.string "insurance"

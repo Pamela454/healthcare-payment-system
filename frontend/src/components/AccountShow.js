@@ -9,7 +9,7 @@ const Account = (props) => {
 return (
 	<div>
      <h2>
-     	{account ? account.name : null} - {account ? account.balance : null}
+     	<label> Account Name </label>{account ? account.name : null} - <label> Account Balance </label>{account ? account.balance : null}
      </h2>
        <DepartmentsContainer account={account}/>
      </div>
