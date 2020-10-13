@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-account = Account.create(name: 'Frieze', balance: 110, copay: 20, insurance: 'Aetna')
+account = Account.create(name: 'Frieze', password: 'patient12' balance: 110, copay: 20, insurance: 'Aetna')
 
 department = Department.create(account_id: 1, service: 'visit', charge: 20)
 
