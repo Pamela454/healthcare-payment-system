@@ -1,9 +1,10 @@
-import React from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' 
-import {BrowserRouter as Router} from 'react-router-dom'
+import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import accountReducer from './reducers/accountReducer'
 
@@ -17,6 +18,7 @@ let store = createStore(accountReducer, composeEnhancers(applyMiddleware(thunk))
 //store - data stored globally. could create in separate file and import. 
 //reducer - what to do with store based on certain actions. returns a new version of the store. 
 //below grants app access to the store 
+
 ReactDOM.render(
     <Provider store={store}>
     <Router> 
