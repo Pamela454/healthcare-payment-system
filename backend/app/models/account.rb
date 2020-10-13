@@ -3,7 +3,7 @@ class Account < ApplicationRecord
 	has_secure_password 
 	has_many :departments
 	has_many :payments 
-	validates :name, :password, :balance, presence: true
+	validates :name, :password, presence: true
 
 	#need method to update the account balance
 	
