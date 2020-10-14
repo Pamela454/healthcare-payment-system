@@ -8,5 +8,11 @@ class Account < ApplicationRecord
 	validates :name, :password, presence: true
 
 	#need method to update the account balance
+
+ after_initialize do
+   if self.new_record?
+     self.status ||= :patient 
+   end
+ end
 	
 end
