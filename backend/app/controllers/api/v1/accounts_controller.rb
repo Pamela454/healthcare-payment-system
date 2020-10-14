@@ -8,7 +8,7 @@ class Api::V1::AccountsController < ApplicationController
   def create
     @account = Account.new(account_params)
     if @account.save
-
+      login!  #separate method that needs to be created 
       render json: @account
     else
       render json: {error: 'Error creating new account'}
@@ -34,6 +34,6 @@ class Api::V1::AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:name, :password, :password_confirmation, :balance)
+    params.require(:account).permit(:name, :password, :password_confirmation)
   end
 end

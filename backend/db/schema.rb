@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_015241) do
     t.string "insurance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.string "status"
+    t.integer "status"
   end
 
   create_table "departments", force: :cascade do |t|

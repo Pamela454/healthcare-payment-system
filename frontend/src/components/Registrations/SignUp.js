@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-class Signup extends Component {
-  constructor(props) {
+class Signup extends Component {  
+  
+constructor(props) {
     super(props);
     this.state = { 
       name: '',
@@ -10,24 +11,24 @@ class Signup extends Component {
       password_confirmation: '',
       errors: ''
      };
-  }
+}
 
-  handleChange = (event) => {
+handleChange = (event) => {
     const {name, value} = event.target
     this.setState({
       [name]: value
     })
   };
 
-  handleSubmit = (event) => {
+handleSubmit = (event) => {
     event.preventDefault()
     const {name, password, password_confirmation} = this.state
-    let account = {
+    let user = {
       name: name,
       password: password,
       password_confirmation: password_confirmation
     }
-    axios.post('http://localhost:3001/accounts', {account}, {withCredentials: true})
+axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
@@ -39,27 +40,28 @@ class Signup extends Component {
       }
     })
     .catch(error => console.log('api errors:', error))
-  };redirect = () => {
+  };
+redirect = () => {
     this.props.history.push('/')
   }
 
-  handleErrors = () => {
+handleErrors = () => {
     return (
       <div>
         <ul>{this.state.errors.map((error) => {
-          return <li key={error}>{error}</li>
-        })}</ul> 
+          return <li>key={error}>{error}</li>
+        })}
+        </ul> 
       </div>
     )
-  }
+  };
 
-  render() {
-
+render() {
     const {name, password, password_confirmation} = this.state
-    return (
+return (
       <div>
         <h1>Sign Up</h1>        
-        <form onSubmit={this.handleSubmit}>
+<form onSubmit={this.handleSubmit}>
           <input
             placeholder="name"
             type="text"
@@ -87,14 +89,8 @@ class Signup extends Component {
           </button>
       
         </form>
-        <div>
-          {
-            this.state.errors ? this.handleErrors() : null
-          }
-        </div>
       </div>
     );
   }
 }
-
 export default Signup;

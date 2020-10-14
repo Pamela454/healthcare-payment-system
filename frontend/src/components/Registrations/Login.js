@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 
+//could be combined with signup
+
 class Login extends Component {
   constructor(props) {
     super(props);
@@ -13,9 +15,9 @@ class Login extends Component {
   }
 
 
-  componentWillMount() {
-    return this.props.loggedInStatus ? this.redirect() : null
-  }
+  //componentWillMount() {
+    //return this.props.loggedInStatus ? this.redirect() : null
+  //}
 
   handleChange = (event) => {
     const {name, value} = event.target
@@ -27,11 +29,12 @@ class Login extends Component {
   handleSubmit = (event) => {
     event.preventDefault()
     const {name, password} = this.state
-    let user = {
+    let account = {
       name: name,
       password: password
     }
-    axios.post('http://localhost:3001/login', {user}, {withCredentials: true})
+    
+  axios.post('http://localhost:3001/login', {account}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
@@ -43,22 +46,22 @@ class Login extends Component {
       }
     })
     .catch(error => console.log('api errors:', error))
-  };redirect = () => {
+  };
+redirect = () => {
     this.props.history.push('/')
   }
-
-  handleErrors = () => {
+  
+handleErrors = () => {
     return (
       <div>
         <ul>
         {this.state.errors.map(error => {
         return <li key={error}>{error}</li>
-          })
-        }
+          })}
         </ul>
       </div>
     )
-  }
+  };
 
   render() { 
     const { name, password} = this.state
@@ -84,7 +87,7 @@ class Login extends Component {
             Log In
           </button>          
           <div>
-            or <Link to='/signup'>sign up</Link>
+            or <Link to='/signup'>Sign Up</Link>
           </div>
           
           </form>

@@ -1,20 +1,32 @@
 class SessionsController < ApplicationController
+
   def create
-    @account = Account.find_by(name: params[:name])
-    return head(:forbidden) unless @account.authenticate(params[:password])
-    session[:account_id] = @account.id
+    @account = Account.find_by(name: session_params[:name])
+
+    if @account && @account.authenticate(session_params[:password])
+      login!
+      render json: {
+        logged_in: true,
+        account: @account
+      }
+    else
+      render json: { 
+        status: 401,
+        errors: ['no such account, please try again']
+      }
+    end
   end
 
   def is_logged_in?
     if logged_in? && account
       render json: {
         logged_in: true,
-        user: account
+        account: account
       }
     else
       render json: {
         logged_in: false,
-        message: 'no such user'
+        message: 'no such account'
       }
     end
   end
