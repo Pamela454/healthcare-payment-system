@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 
-
 class Signup extends Component {
   constructor(props) {
     super(props);
@@ -22,10 +21,42 @@ class Signup extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault()
-  };
+    const {name, password, password_confirmation} = this.state
+    let account = {
+      name: name,
+      password: password,
+      password_confirmation: password_confirmation
+    }
+    axios.post('http://localhost:3001/accounts', {account}, {withCredentials: true})
+    .then(response => {
+      if (response.data.status === 'created') {
+        this.props.handleLogin(response.data)
+        this.redirect()
+      } else {
+        this.setState({
+          errors: response.data.errors
+        })
+      }
+    })
+    .catch(error => console.log('api errors:', error))
+  };redirect = () => {
+    this.props.history.push('/')
+  }
+
+  handleErrors = () => {
+    return (
+      <div>
+        <ul>{this.state.errors.map((error) => {
+          return <li key={error}>{error}</li>
+        })}</ul> 
+      </div>
+    )
+  }
 
   render() {
-    const {name, password, password_confirmation} = this.statereturn (
+
+    const {name, password, password_confirmation} = this.state
+    return (
       <div>
         <h1>Sign Up</h1>        
         <form onSubmit={this.handleSubmit}>
@@ -56,6 +87,11 @@ class Signup extends Component {
           </button>
       
         </form>
+        <div>
+          {
+            this.state.errors ? this.handleErrors() : null
+          }
+        </div>
       </div>
     );
   }

@@ -1,63 +1,56 @@
 import React, { Component } from 'react';
 import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import Login from './components/registrations/Login'
-import Signup from './components/registrations/Signup'
+import {Route} from 'react-router-dom'
 import Home from './components/Home'
-import {connect} from 'react-redux'
-import {fetchAccounts} from './actions/fetchAccounts'
-import AccountsContainer from './containers/AccountsContainer'
+import Login from './components/registrations/Login'
+import Signup from './components/registrations/SignUp'
 
-class App extends React.Component {
 
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = { 
       isLoggedIn: false,
-      user: {}
+      account: {}
      };
-  }	
+  }
 
   componentDidMount() {
-  	this.loginStatus()
-}  loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in', 
-    {withCredentials: true})    
+    this.loginStatus()
+  }
+  loginStatus = () => {
+    axios.get('http://localhost:3001/logged_in', {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         this.handleLogin(response)
-        this.props.fetchAccounts({type: 'FETCH_ACCOUNTS', payload: {name: 'Checking'}})
       } else {
         this.handleLogout()
       }
     })
     .catch(error => console.log('api errors:', error))
   }
-    //this.props.fetchAccounts({type: 'FETCH_ACCOUNTS', payload: {name: 'Checking'}})
 
   handleLogin = (data) => {
     this.setState({
       isLoggedIn: true,
-      user: data.user
+      account: data.account
     })
   }
 
   handleLogout = () => {
     this.setState({
     isLoggedIn: false,
-    user: {}
+    account: {}
     })
   }
 
- 
   render() {
-  return (
-    <div className="App">
-      <AccountsContainer/>
-      <BrowserRouter>
-          <Switch>
-            <Route exact path='/' render={props => (
-              <Home {...props} loggedInStatus={this.state.isLoggedIn}/>
+    return (
+      <div>
+            <Route 
+              exact path='/' 
+              render={props => (
+              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
             <Route 
@@ -72,11 +65,9 @@ class App extends React.Component {
               <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}
             />
-          </Switch>
-        </BrowserRouter>
-    </div>
-  );
- }
+      </div>
+    );
+  }
 }
 
-export default connect(null, {fetchAccounts})(App);  //connects to redux store. returns store.dispatch(type: 'FETCH_ACCOUNTS', payload: {name: 'Checking'}}) 
+export default App;

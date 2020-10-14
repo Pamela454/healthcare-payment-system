@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios';
+import React from 'react';
+//import axios from 'axios';
 import ReactDOM from 'react-dom';
+//import { Router, Route } from 'react-router';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' 
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import accountReducer from './reducers/accountReducer'
 
@@ -21,9 +22,9 @@ let store = createStore(accountReducer, composeEnhancers(applyMiddleware(thunk))
 
 ReactDOM.render(
     <Provider store={store}>
-    <Router> 
+    <BrowserRouter> 
 		<App /> 
-	</Router>
+	</BrowserRouter>
 	</Provider>, 
 	document.getElementById('root'));
 //router gives any child access to setting up routes and using links. children all wrapped in router
