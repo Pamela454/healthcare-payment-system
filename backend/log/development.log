@@ -25044,3 +25044,190 @@ Completed 500 Internal Server Error in 171ms (ActiveRecord: 0.0ms | Allocations:
 NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007f8e818820b8>):
   
 app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 16:42:47 -0400
+  [1m[35m (1.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 0.0ms | Allocations: 73506)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5e4af10>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 16:43:32 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 165ms (ActiveRecord: 0.0ms | Allocations: 73460)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5ed5ea8>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 16:58:46 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 159ms (ActiveRecord: 0.0ms | Allocations: 73460)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb0a95870>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 16:58:48 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 0.0ms | Allocations: 73461)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb243c7d8>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 16:58:50 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 162ms (ActiveRecord: 0.0ms | Allocations: 73460)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5a28a40>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:01:12 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 151ms (ActiveRecord: 0.0ms | Allocations: 73459)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5b5e568>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:01:33 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 175ms (ActiveRecord: 0.0ms | Allocations: 73458)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb33fe220>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:01:45 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 171ms (ActiveRecord: 0.0ms | Allocations: 73459)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5bd3f98>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:01:53 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 162ms (ActiveRecord: 0.0ms | Allocations: 73459)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb33ec7f0>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:01:57 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 158ms (ActiveRecord: 0.0ms | Allocations: 73458)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb3313090>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:02:03 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 150ms (ActiveRecord: 0.0ms | Allocations: 73442)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb32ac818>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:07:20 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 159ms (ActiveRecord: 0.0ms | Allocations: 73458)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb32a8e20>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:07:43 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 184ms (ActiveRecord: 0.0ms | Allocations: 73459)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5c11348>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 17:07:58 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 208ms (ActiveRecord: 0.0ms | Allocations: 73459)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007feeb5b9ff90>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 18:11:48 -0400
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 154ms (ActiveRecord: 0.0ms | Allocations: 73506)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007fda21f3c840>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 18:17:30 -0400
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 157ms (ActiveRecord: 0.0ms | Allocations: 73460)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007fda21fc5460>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 18:28:53 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 155ms (ActiveRecord: 0.0ms | Allocations: 73460)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007fda1e269f80>):
+  
+app/controllers/api/v1/sessions_controller.rb:16:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 18:30:55 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+Completed 500 Internal Server Error in 68105ms (ActiveRecord: 0.0ms | Allocations: 169046)
+
+
+  
+NameError (undefined local variable or method `account' for #<Api::V1::SessionsController:0x00007fda23809030>):
+  
+app/controllers/api/v1/sessions_controller.rb:17:in `is_logged_in?'
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 18:32:10 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+  [1m[36mAccount Load (0.3ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.12ms)
+Completed 200 OK in 11727ms (Views: 23.0ms | ActiveRecord: 0.9ms | Allocations: 21551)
+
+
+Started GET "/api/v1/is_logged_in" for ::1 at 2020-10-22 18:32:26 -0400
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+Processing by Api::V1::SessionsController#is_logged_in? as HTML
+  [1m[36mAccount Load (0.2ms)[0m  [1m[34mSELECT "accounts".* FROM "accounts" WHERE "accounts"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:14:in `current_user'
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.9ms | Allocations: 10267)
+
+

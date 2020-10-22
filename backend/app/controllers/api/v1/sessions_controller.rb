@@ -13,7 +13,7 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def is_logged_in?
-    if logged_in? && account
+    if logged_in? && @account
       render json: {
         logged_in: true,
         account: account

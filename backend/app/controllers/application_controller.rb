@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base  #changed for complete func
   end
   
   def logged_in?
-      !!session[:account_id]
+      !!session[:account_id]  #boolean value 
   end
 
   def current_user
@@ -15,15 +15,15 @@ class ApplicationController < ActionController::Base  #changed for complete func
   end
 
   def authorized_user?
-       @account == current_user
+      @account == current_user
   end
 
   def logout!
-       session.clear
+      session.clear
   end
 
   def set_user
-    @account = Account.find_by(id: session[:account_id])
+      @account = Account.find_by(id: session[:account_id])
   end
 
 end
