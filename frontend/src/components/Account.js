@@ -2,6 +2,11 @@ import React from 'react'
 import {Redirect} from "react-router-dom"
 import DepartmentsContainer from '../containers/DepartmentsContainer'
 
+//does not go through lifecycle checks, functional component
+//cannot store state
+//returns JSX instead of using render method 
+//updates based on prop changes or if parent componenet rerenders 
+
 const Account = (props) => {
 
 	let account = props.accounts[props.match.params.id - 1]

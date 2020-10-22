@@ -1,7 +1,5 @@
 import React from 'react';
-//import axios from 'axios';
 import ReactDOM from 'react-dom';
-//import { Router, Route } from 'react-router';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' 

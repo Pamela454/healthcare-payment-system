@@ -9,6 +9,9 @@ import AccountShow from '../components/AccountShow'
 import AccountNew from '../components/AccountNew'
 //import NavBar from '../components/NavBar'
 
+//containers manage state and class methods 
+//provides data and behavior to children 
+
 class AccountsContainer extends React.Component { //can call lifecycle hooks
     //getting accounts from the backend
 	componentDidMount() {

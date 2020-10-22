@@ -1,4 +1,4 @@
-class PaymentsController < ApplicationController
+class Api::V1::PaymentsController < ApplicationController
 	before_action :set_department
 
   def index

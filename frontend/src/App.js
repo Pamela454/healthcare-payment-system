@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import Home from './components/Home'
 import Login from './components/registrations/Login'
-import Signup from './components/registrations/SignUp'
+import Signup from './components/registrations/Signup'
 
 
 class App extends Component {
@@ -19,8 +18,9 @@ class App extends Component {
     this.loginStatus()
   }
 
+//axios has feature to protect against cross site forgery 
   loginStatus = () => {
-    axios.get('http://localhost:3001/logged_in',  //converts response to JSON automatically 
+    axios.get('http://localhost:3001/api/v1/is_logged_in',  //converts response to JSON automatically 
       {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
@@ -51,13 +51,10 @@ class App extends Component {
       <div>
         <BrowserRouter>
           <Switch>
-            <Route exact path='/' render={props => (
-              <Home {...props} handleLogout={this.handleLogout} loggedInStatus={this.state.isLoggedIn}/>
-              )}/>
-            <Route exact path='/login' render={props => (
+            <Route exact path='/api/v1/login' render={props => (
               <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}/>
-            <Route exact path='/signup' render={props => (
+            <Route exact path='api/v1/signup' render={props => (
               <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}/>
           </Switch>

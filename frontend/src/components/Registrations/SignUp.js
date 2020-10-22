@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import axios from 'axios'
+//import {Link} from 'react-router-dom'
 
 class Signup extends Component {  
-  
+
 constructor(props) {
     super(props);
     this.state = { 
       name: '',
       password: '',
-      password_confirmation: '',
       errors: ''
      };
 }
@@ -22,13 +22,13 @@ handleChange = (event) => {
 
 handleSubmit = (event) => {
     event.preventDefault()
-    const {name, password, password_confirmation} = this.state
-    let user = {
+    const {name, password} = this.state
+    let account = {
       name: name,
       password: password,
-      password_confirmation: password_confirmation
     }
-axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
+
+axios.post('http://localhost:3001/api/v1/signup', {account}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
@@ -41,6 +41,7 @@ axios.post('http://localhost:3001/users', {user}, {withCredentials: true})
     })
     .catch(error => console.log('api errors:', error))
   };
+
 redirect = () => {
     this.props.history.push('/')
   }
@@ -57,7 +58,7 @@ handleErrors = () => {
   };
 
 render() {
-    const {name, password, password_confirmation} = this.state
+    const {name, password} = this.state
 return (
       <div>
         <h1>Sign Up</h1>        
@@ -75,15 +76,7 @@ return (
             name="password"
             value={password}
             onChange={this.handleChange}
-          />          
-          <input
-            placeholder="password confirmation"
-            type="password"
-            name="password_confirmation"
-            value={password_confirmation}
-            onChange={this.handleChange}
-          />
-        
+          />                  
           <button placeholder="submit" type="submit">
             Sign Up
           </button>

@@ -1,18 +1,13 @@
-class SessionsController < ApplicationController
+class Api::V1::SessionsController < ApplicationController
 
   def create
     @account = Account.find_by(name: session_params[:name])
 
     if @account && @account.authenticate(session_params[:password])
-      login!
-      render json: {
-        logged_in: true,
-        account: @account
-      }
+      session[:account_id] = @account.id
+      render json: @account
     else
-      render json: { 
-        status: 401,
-        errors: ['no such account, please try again']
+      render json: { status: 401, errors: ['no such account, please try again']
       }
     end
   end

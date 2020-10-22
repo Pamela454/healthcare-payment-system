@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
-post '/login',    to: 'sessions#create'
-post '/logout',   to: 'sessions#destroy'
-get '/logged_in', to: 'sessions#is_logged_in?'
+root 'api/v1/sessions#create'
+post 'api/v1/login',    to: 'api/v1/sessions#create'
+delete 'api/v1/logout',   to: 'api/v1/sessions#destroy'
+get 'api/v1/is_logged_in', to: 'api/v1/sessions#is_logged_in?'
+post 'api/v1/signup' => 'api/v1/accounts#create'
 
  namespace :api do
 	namespace :v1 do 

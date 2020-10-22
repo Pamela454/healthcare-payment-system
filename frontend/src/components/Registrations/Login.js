@@ -3,6 +3,7 @@ import axios from 'axios'
 import {Link} from 'react-router-dom'
 
 //could be combined with signup
+//convert to pure component? 
 
 class Login extends Component {
   constructor(props) {
@@ -13,28 +14,26 @@ class Login extends Component {
       errors: ''
      };
   }
-
-
   //componentWillMount() {
     //return this.props.loggedInStatus ? this.redirect() : null
   //}
 
-  handleChange = (event) => {
+handleChange = (event) => {
     const {name, value} = event.target
     this.setState({
       [name]: value
     })
-  };
+ };
 
-  handleSubmit = (event) => {
+handleSubmit = (event) => {
     event.preventDefault()
     const {name, password} = this.state
     let account = {
       name: name,
       password: password
-    }
+ }
     
-  axios.post('http://localhost:3001/login', {account}, {withCredentials: true})
+  axios.post('http://localhost:3001/api/v1/login', {account}, {withCredentials: true})
     .then(response => {
       if (response.data.logged_in) {
         this.props.handleLogin(response.data)
@@ -47,10 +46,11 @@ class Login extends Component {
     })
     .catch(error => console.log('api errors:', error))
   };
-redirect = () => {
+
+ redirect = () => {
     this.props.history.push('/')
-  }
-  
+}
+
 handleErrors = () => {
     return (
       <div>
@@ -63,8 +63,8 @@ handleErrors = () => {
     )
   };
 
-  render() { 
-    const { name, password} = this.state
+render() { 
+  const { name, password} = this.state
     return (
       <div>
         <h1>Log In</h1>
@@ -87,7 +87,7 @@ handleErrors = () => {
             Log In
           </button>          
           <div>
-            or <Link to='/signup'>Sign Up</Link>
+            or <Link to="signup">Sign Up</Link>
           </div>
           
           </form>
