@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom'
 import axios from 'axios'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
 import Login from './components/registrations/Login'
@@ -49,11 +50,14 @@ class App extends Component {
   render() {
     return (
       <div>
-        <BrowserRouter>
+      <BrowserRouter>
           <Switch>
+            <Route exact path="/">
+                <Redirect to="/api/v1/login"/>
+            </Route>
             <Route exact path='/api/v1/login' render={props => (
-              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
-              )}/>
+              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
+              )} />
             <Route exact path='api/v1/signup' render={props => (
               <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
               )}/>
