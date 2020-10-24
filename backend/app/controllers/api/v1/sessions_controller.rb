@@ -2,7 +2,6 @@ class Api::V1::SessionsController < ApplicationController
 
   def create
     @account = Account.find_by(name: session_params[:name])
-
     if @account && @account.authenticate(session_params[:password])
       session[:account_id] = @account.id
       render json: @account

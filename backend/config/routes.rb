@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-root 'api/v1/sessions#create'
+#root 'api/v1/sessions#create'
 post 'api/v1/login',    to: 'api/v1/sessions#create'
 delete 'api/v1/logout',   to: 'api/v1/sessions#destroy'
 get 'api/v1/is_logged_in', to: 'api/v1/sessions#is_logged_in?'

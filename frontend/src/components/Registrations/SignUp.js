@@ -28,7 +28,7 @@ handleSubmit = (event) => {
       password: password,
     }
 
-axios.post('http://localhost:3001/api/v1/signup', {account}, {withCredentials: true})
+  axios.post('http://localhost:3001/api/v1/signup', {account}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
@@ -40,7 +40,7 @@ axios.post('http://localhost:3001/api/v1/signup', {account}, {withCredentials: t
       }
     })
     .catch(error => console.log('api errors:', error))
-  };
+};
 
 redirect = () => {
     this.props.history.push('/')

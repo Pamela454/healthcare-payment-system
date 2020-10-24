@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom'
 import axios from 'axios'
-import {BrowserRouter, Switch, Route} from 'react-router-dom'
+import {BrowserRouter, Switch, Route, useLocation /*, withRouter */} from 'react-router-dom'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
 
@@ -49,23 +49,36 @@ class App extends Component {
 
   render() {
     return (
-      <div>
-      <BrowserRouter>
+       <BrowserRouter>
           <Switch>
+            <Route exact path='/api/v1/signup' render={props => (
+              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
+              )}/>
+            <Route exact path='/api/v1/login' render={props => (
+              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}  />
+              )} />
             <Route exact path="/">
                 <Redirect to="/api/v1/login"/>
             </Route>
-            <Route exact path='/api/v1/login' render={props => (
-              <Login {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn} />
-              )} />
-            <Route exact path='api/v1/signup' render={props => (
-              <Signup {...props} handleLogin={this.handleLogin} loggedInStatus={this.state.isLoggedIn}/>
-              )}/>
+            <Route path="*">
+              <NoMatch />
+            </Route>
           </Switch>
         </BrowserRouter>
-      </div>
     );
   }
+}
+
+function NoMatch() {
+  let location = useLocation();
+
+  return (
+    <div>
+      <h3>
+        No match for <code>{location.pathname}</code>
+      </h3>
+    </div>
+  );
 }
 
 export default App;
