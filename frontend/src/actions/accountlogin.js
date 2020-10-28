@@ -4,3 +4,5 @@ export const updateLoginForm = formData => {
     formData
   };
 };
+
+//type and payload property 

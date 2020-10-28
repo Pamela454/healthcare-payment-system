@@ -1,18 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
-import {createStore, applyMiddleware, compose} from 'redux' //from imported redux library
+import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' 
 import {BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import accountReducer from './reducers/accountReducer'
-
+import loginForm from './reducers/loginForm'
 import App from './App';
+
+
+const reducers = combineReducers({
+  accountReducer,
+  loginForm
+});
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
 
-let store = createStore(accountReducer, composeEnhancers(applyMiddleware(thunk)))
+let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+//asynchronous use of dispatch
 //containers act more like parent components, contain other componenets
 //store - data stored globally. could create in separate file and import. 
 //reducer - what to do with store based on certain actions. returns a new version of the store. 

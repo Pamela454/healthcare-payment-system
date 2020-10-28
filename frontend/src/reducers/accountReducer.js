@@ -3,7 +3,7 @@ export default function accountReducer(state = {accounts: []}, action) {
 		case 'FETCH_ACCOUNTS':
           return {accounts: action.payload}
          case 'ADD_ACCOUNT':
-          return {...state, accounts: [...state.accounts, action.payload]}
+          return {...state, accounts: [...state.accounts, action.payload]} //only override specific property 
          case 'ADD_DEPARTMENT': //at least returns some version of state
           let accounts = state.accounts.map(account => {
           	if (account.id === action.payload.id) {
