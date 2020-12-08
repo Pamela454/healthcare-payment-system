@@ -1,28 +1,27 @@
 export default function accountReducer(state = {accounts: []}, action) {  
 	switch (action.type) {
-		case 'FETCH_ACCOUNTS':
-          return {accounts: action.payload}
+		case 'FETCH_ACCOUNT':
+          return {account: action.payload}
          case 'ADD_ACCOUNT':
-          return {...state, accounts: [...state.accounts, action.payload]} //only override specific property 
+          return {...state, account: [...state.account, action.payload]} //only override specific property 
          case 'ADD_DEPARTMENT': //at least returns some version of state
-          let accounts = state.accounts.map(account => {
+          let account = state.account
           	if (account.id === action.payload.id) {
           	  return action.payload 
           	} else {
           	  return account 
           	}
-          })
-          return {...state, accounts: accounts}
+          //return {...state, account: account}
         case 'DELETE_TRANSACTION': //at least returns some version of state
           debugger; 
-          let accountsNext = state.accounts.map(account => {
+          //let accountsNext = state.accounts.map(account => {
             if (account.id === action.payload.id) {
               return action.payload 
             } else {
               return account 
             }
-          })
-          return {...state, accounts: accountsNext}
+          //})
+          //return {...state, accounts: accountsNext}
          default:
           return state
     }       

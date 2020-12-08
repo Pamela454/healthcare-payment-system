@@ -6,11 +6,11 @@ import Departments from '../components/Departments'
 
 
 class DepartmentsContainer extends React.Component {
-    //getting departments from the backend
+    //getting departments from the backend, can't be passed in as a prop 
 	//componentDidMount() {
       //  this.props.fetchDepartments() //dispatching to redux store 
 	//}
-
+   
 
 	render () {
 		return (

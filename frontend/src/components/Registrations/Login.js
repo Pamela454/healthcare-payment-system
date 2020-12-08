@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios'
 import {Link} from 'react-router-dom'
+import { login } from "../../actions/accountlogin";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
 //could be combined with signup
 //convert to pure component? 
 
 class Login extends Component {
+  
   constructor(props) {
     super(props);
     this.state = { 
@@ -23,7 +27,14 @@ handleChange = (event) => {
     this.setState({
       [name]: value
     })
- };
+};
+
+handleLogin = (data) => {
+  this.setState({
+    account: data.account 
+  })
+  this.props.history.push(`/accounts/${this.props.account.id}`);
+};
 
 handleSubmit = (event) => {
     event.preventDefault()
@@ -32,23 +43,25 @@ handleSubmit = (event) => {
       name: name,
       password: password
  }
-    
+
   axios.post('http://localhost:3001/api/v1/login', {account}, {withCredentials: true})
     .then(response => {
+      console.log(response)
       if (response.data.logged_in) {
-        this.props.handleLogin(response.data)
-        this.redirect()
-      } else {
-        this.setState({
-          errors: response.data.errors
-        })
+        this.props.handleLogin(response.data);
+        //this.redirect()
+    //  } else {
+    //    this.setState({
+    //      errors: response.data.errors
       }
     })
-    .catch(error => console.log('api errors:', error))
-  };
+    .catch(error => 
+      console.log('api errors:', error));
 
- redirect = () => {
-    this.props.history.push('/')
+
+ //redirect = () => {
+ //   this.props.history.push('/')
+ // }
 }
 
 handleErrors = () => {
@@ -101,4 +114,18 @@ render() {
   }
 }
 
-export default Login;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    accountlogin: (account) => {
+      dispatch({
+        type: "SET_CURRENT_ACCOUNT",
+        account: account,
+      });
+    },
+
+    login: (credentials, history) => dispatch(login(credentials, history)),
+  };
+};
+
+
+export default withRouter(connect(null, mapDispatchToProps)(Login));

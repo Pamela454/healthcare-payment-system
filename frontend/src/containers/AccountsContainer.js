@@ -11,14 +11,17 @@ import AccountNew from '../components/AccountNew'
 
 //containers manage state and class methods 
 //provides data and behavior to children 
+//react creates instances of it 
+//more time consuming than calling a function 
 
 class AccountsContainer extends React.Component { //can call lifecycle hooks
-    //getting accounts from the backend
+    //getting accounts from the backend, data can't be passed as prop 
 	componentDidMount() {
         this.props.fetchAccounts()
 	}
 
 //render stated component 
+//return react element from render function 
 	render () {
 		return (
 			<div>

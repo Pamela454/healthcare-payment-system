@@ -1,7 +1,7 @@
-export const updateLoginForm = formData => {
+export const login = (account) => {
   return {
-    type: "UPDATE_LOGIN_FORM",
-    formData
+    type: "SET_CURRENT_ACCOUNT",
+    account: account
   };
 };
 
