@@ -23,9 +23,8 @@ class Login extends Component {
   //}
 
 handleChange = (event) => {
-    const {name, value} = event.target
     this.setState({
-      [name]: value
+      [event.target.name]: event.target.value
     })
 };
 
@@ -77,7 +76,7 @@ handleErrors = () => {
   };
 
 render() { 
-  const { name, password} = this.state
+  //const { name, password} = this.state
     return (
       <div>
         <h1>Log In</h1>
@@ -86,14 +85,14 @@ render() {
             placeholder="name"
             type="text"
             name="name"
-            value={name}
+            value={this.state.name}
             onChange={this.handleChange}
           />
         <input
             placeholder="password"
             type="password"
             name="password"
-            value={password}
+            value={this.state.password}
             onChange={this.handleChange}
           />          
         <button placeholder="submit" type="submit">
@@ -112,6 +111,18 @@ render() {
       </div>
     );
   }
+}
+
+function NoMatch() {
+  let location = useLocation();
+
+  return (
+    <div>
+      <h3>
+        No match for <code>{location.pathname}</code>
+      </h3>
+    </div>
+  );
 }
 
 const mapDispatchToProps = (dispatch) => {

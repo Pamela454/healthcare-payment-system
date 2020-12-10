@@ -1,24 +1,16 @@
 import React, { Component } from "react";
 import { NavLink } from "react-router-dom";
-import Login from "./registrations/Login";
-import Signup from "./registrations/Signup";
+//import Login from "./registrations/Login";
 
-const Navbar = () => {
-  //const [isOpen, setOpen] = useState(false);
-  return ( 
-  	<nav
-      className="navbar is-primary"
-      role="navigation"
-      aria-label="main navigation"
-    >
-      <div className="container">
-      	<div className="navbar-start">
-            <NavLink className="navbar-item" activeClassName="is-active" to="login">
-            </NavLink>
-      </div>
-     </div>
-    </nav>
-  );
- };
+
+function Navbar() {
+    return(
+        <nav class="navbar navbar-dark bg-primary">
+            <div className="row col-12 d-flex justify-content-center text-white">
+            <span className="h3">Register</span>
+            </div>
+        </nav>
+    )
+}
  
  export default Navbar;

@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import {render} from 'react-dom' //need this?
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' 

@@ -1,4 +1,5 @@
 Requirements: 
+Single Page Application
 The code should be written in ES6 as much as possible
 Use the create-react-app generator to start your project.
 Follow the instructions on this repo to setup the generator: create-react-app
