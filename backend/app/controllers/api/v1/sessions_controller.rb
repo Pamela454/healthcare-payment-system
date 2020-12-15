@@ -1,13 +1,16 @@
 class Api::V1::SessionsController < ApplicationController
 
   def create
-    @account = Account.find_by(name: session_params[:name])
-    if @account && @account.authenticate(session_params[:password])
-      session[:account_id] = @account.id
-      render json: @account
+    @account = Account.find_by(name: params[:user][:name])
+    
+    if @account && @account.authenticate(params[:user][:password])
+      binding.pry
+      render json: {account: @account}
     else
-      render json: { status: 401, errors: ['no such account, please try again']
+      resp = {
+        error: "Invalid credentials",
       }
+      render json: resp, status: :unauthorized 
     end
   end
 
@@ -35,7 +38,8 @@ class Api::V1::SessionsController < ApplicationController
 
   private
 
-  def session_params
-    params.require(:account).permit(:name, :password)
+  def session_params #should be session params? 
+    puts "session_controler:params"
+    params.permit(:data)
   end
 end

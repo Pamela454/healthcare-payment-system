@@ -7,6 +7,7 @@ class Api::V1::PaymentsController < ApplicationController
   end
 
   def create
+    puts "payments_controller:create"
   	@payment = @department.payments.new(payment_params)
   	if @department.new_balance(@payment) != 'Payment cannot be processed'
   		@payment.save

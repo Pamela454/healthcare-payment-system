@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import Navbar from 'react-bootstrap/Navbar'
+//import { Link } from "react-router-dom";
 //import Login from "./registrations/Login";
 
-
-function Navbar() {
+class Navbar extends Component {
+  render() {
     return(
         <nav class="navbar navbar-dark bg-primary">
             <div className="row col-12 d-flex justify-content-center text-white">
@@ -11,6 +12,7 @@ function Navbar() {
             </div>
         </nav>
     )
+  }
 }
  
- export default Navbar;
+export default Navbar;

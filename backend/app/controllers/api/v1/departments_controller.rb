@@ -8,6 +8,7 @@ class Api::V1::DepartmentsController < ApplicationController
   end
 
   def create
+    puts "departments_controller:create"
   	@department = @account.departments.new(department_params)
   	if @department.save
   		render json: @account
