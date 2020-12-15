@@ -2,10 +2,9 @@ class Api::V1::SessionsController < ApplicationController
 
   def create
     @account = Account.find_by(name: params[:user][:name])
-    
+
     if @account && @account.authenticate(params[:user][:password])
-      binding.pry
-      render json: {account: @account}
+      render json: @account 
     else
       resp = {
         error: "Invalid credentials",

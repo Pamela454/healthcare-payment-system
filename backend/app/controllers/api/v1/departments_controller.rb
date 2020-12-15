@@ -3,8 +3,15 @@ class Api::V1::DepartmentsController < ApplicationController
   before_action :set_account
 
   def index
-  	@departments = @account.department
-  	render json: @departments, include: '**'
+    if logged_in?
+      binding.pry
+  	   @departments = current_user.department
+  	   render json: @departments, status: ok
+    else
+        render json: {
+          error: "not logged in", status: :unauthorized
+        } 
+    end
   end
 
   def create
@@ -39,6 +46,7 @@ class Api::V1::DepartmentsController < ApplicationController
   private
 
   def set_account
+    binding.pry
   	@account = Account.find(params[:account_id])
   end
 

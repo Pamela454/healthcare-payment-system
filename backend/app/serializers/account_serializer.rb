@@ -1,5 +1,6 @@
 class AccountSerializer < ActiveModel::Serializer
-  attributes :id, :name, :balance, :copay, :insurance, :departments, :payments
+  attributes :id, :name
+  #:balance, :copay, :insurance, :departments, :payments
 
   has_many :departments
   has_many :payments

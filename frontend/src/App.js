@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 //import { Redirect } from 'react-router-dom'
 //import axios from 'axios'
 //import {BrowserRouter, Switch, Route, useLocation /*, withRouter */} from 'react-router-dom'
+import Departments from './components/Departments'
 import Navbar from 'react-bootstrap/Navbar'
 import Login from './components/registrations/Login'
 //import Signup from './components/registrations/Signup'
@@ -15,7 +16,7 @@ class App extends Component {
       loginForm: {
         name: "",
         password: ""
-      }
+      }, 
     }
   }
 
@@ -49,12 +50,20 @@ class App extends Component {
         alert("invalid credentials") 
       } else {
         this.setState({
-          currentUser: userJSON.account
+          currentUser: userJSON
         })
       }
       })
     .catch(console.log)
   }
+
+  //getDepartments = () => {
+    //fetch(`http://localhost:3001/api/v1/accounts/${this.state.currentUser.account_id}/departments`)
+    //.then(r => r.json())
+    //.then(console.log)
+    //.then(userJSON => { 
+      //if (userJSON.error) {
+  //}
 
   //handleErrors = () => {
     //return (
@@ -77,8 +86,13 @@ class App extends Component {
 
 
   render() {
+    const { currentUser } = this.state 
     return (
       <div className="App">
+       <h2>{ currentUser ?
+        `Logged in as ${currentUser.name}`  :
+        "Not logged in" 
+      }</h2>
         <Navbar/>
         <Login
           handleLoginFormChange={this.handleLoginFormChange}
@@ -86,6 +100,8 @@ class App extends Component {
           name={this.state.loginForm.name}
           password={this.state.loginForm.password}
           />
+          <button onClick={this.getDepartments}>Departments</button>
+          { currentUser ? <Departments departments={currentUser.departments} /> : null }
       </div>
     );
   }

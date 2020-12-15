@@ -5,9 +5,9 @@ import {deleteDepartment} from '../actions/deleteDepartment'
 const Departments = (props) => {
 
 
-const handleDelete = (department) => {
+	const handleDelete = (department) => {
       props.deleteDepartment(department.id, department.account_id)
-}
+	}
 
 
 	return (
