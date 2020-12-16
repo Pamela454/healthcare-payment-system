@@ -5,6 +5,8 @@ import React, { Component } from 'react';
 import Departments from './components/Departments'
 import Navbar from 'react-bootstrap/Navbar'
 import Login from './components/registrations/Login'
+import Logout from './components/registrations/Logout'
+
 //import Signup from './components/registrations/Signup'
 
 
@@ -18,6 +20,28 @@ class App extends Component {
         password: ""
       }, 
     }
+  }
+
+  componentDidMount() {
+    const token = localStorage.getItem("token")
+    if(token) {
+      fetch("http://localhost:3001/api/v1/is_logged_in", {
+        headers: {
+          "Authorization": token
+        }
+      })
+      .then(r => r.json())
+      .then(user => {
+        if (user.error) {
+          alert(user.error)
+        } else {
+          this.setState({
+            currentUser: resp.user 
+          })
+        }
+       })
+        .catch(console.log)
+      }
   }
 
 
@@ -51,10 +75,23 @@ class App extends Component {
       } else {
         this.setState({
           currentUser: userJSON
+          loginForm: {
+            name: "",
+            password: ""
+          }
         })
       }
       })
     .catch(console.log)
+  }
+
+  logout = event => {
+    event.preventDefault()
+    localStorage.removeItem("token")
+    this.setState({
+      currentUser: null,
+      secrets: []
+    })
   }
 
   //getDepartments = () => {
@@ -94,12 +131,15 @@ class App extends Component {
         "Not logged in" 
       }</h2>
         <Navbar/>
-        <Login
+        {
+          this.state.currentUser ? 
+          <Logout logout={this.logout}/> :
+          <Login
           handleLoginFormChange={this.handleLoginFormChange}
           handleLoginFormSubmit={this.handleLoginFormSubmit}
           name={this.state.loginForm.name}
           password={this.state.loginForm.password}
-          />
+          />}
           <button onClick={this.getDepartments}>Departments</button>
           { currentUser ? <Departments departments={currentUser.departments} /> : null }
       </div>

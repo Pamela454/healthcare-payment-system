@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base  #changed for complete func
       !!session[:account_id]  #boolean value 
   end
 
-  def current_user
-      @current_user ||= Account.find(session[:account_id]) if session[:account_id]
-  end
+  #def current_user   AWS will try to call 
+      #@current_user ||= Account.find(session[:account_id]) if session[:account_id]
+  #end
 
   def authorized_user?
       @account == current_user
