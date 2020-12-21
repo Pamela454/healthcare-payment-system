@@ -31,16 +31,15 @@ class App extends Component {
         }
       })
       .then(r => r.json())
-      .then(user => {
-        if (user.error) {
-          alert(user.error)
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
         } else {
           this.setState({
             currentUser: resp.user 
           })
         }
        })
-        .catch(console.log)
       }
   }
 
@@ -74,7 +73,7 @@ class App extends Component {
         alert("invalid credentials") 
       } else {
         this.setState({
-          currentUser: userJSON
+          currentUser: userJSON,
           loginForm: {
             name: "",
             password: ""

@@ -6,3 +6,4 @@ export const login = (account) => {
 };
 
 //type and payload property 
+//action creator, function that returns an action 

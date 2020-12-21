@@ -55,7 +55,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
 //}
 
 const mapDispatchToProps = (dispatch) => {
-  return {
+  return {  //calls action, reducer and then makes a change to state 
     accountlogin: (account) => {
       dispatch({
         type: "SET_CURRENT_ACCOUNT",

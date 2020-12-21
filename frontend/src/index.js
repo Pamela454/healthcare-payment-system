@@ -17,7 +17,7 @@ const reducers = combineReducers({
 });
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose; 
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;  //dev tools
 
 let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
 //asynchronous use of dispatch

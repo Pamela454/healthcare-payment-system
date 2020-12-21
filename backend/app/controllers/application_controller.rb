@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base  #changed for complete func
       session[:account_id] = @account.id
   end
   
-  def logged_in?
-      !!session[:account_id]  #boolean value 
+  def is_logged_in?
+    !!current_user
   end
 
-  #def current_user   AWS will try to call 
+  def current_user   #JWT will try to call 
       #@current_user ||= Account.find(session[:account_id]) if session[:account_id]
-  #end
+  end
 
   def authorized_user?
       @account == current_user
