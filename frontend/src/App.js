@@ -8,7 +8,7 @@ import Login from './components/registrations/Login'
 import Logout from './components/registrations/Logout'
 
 //import Signup from './components/registrations/Signup'
-
+//if constantly passing down props consider connecting to the store
 
 class App extends Component {
   constructor() {
@@ -25,7 +25,7 @@ class App extends Component {
   componentDidMount() {
     const token = localStorage.getItem("token")
     if(token) {
-      fetch("http://localhost:3001/api/v1/is_logged_in", {
+      fetch("http://localhost:3001/api/v1/get_current_user", {
         headers: {
           "Authorization": token
         }
@@ -93,13 +93,15 @@ class App extends Component {
     })
   }
 
-  //getDepartments = () => {
-    //fetch(`http://localhost:3001/api/v1/accounts/${this.state.currentUser.account_id}/departments`)
-    //.then(r => r.json())
-    //.then(console.log)
-    //.then(userJSON => { 
-      //if (userJSON.error) {
-  //}
+getDepartments = () => {
+    fetch(`http://localhost:3001/api/v1/accounts/${this.state.currentUser.account_id}/departments`)
+    .then(r => r.json())
+    .then(console.log)
+    .then(userJSON => { 
+      if (userJSON.error) {
+      }
+    })
+}
 
   //handleErrors = () => {
     //return (

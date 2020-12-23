@@ -13,6 +13,7 @@ import AccountNew from '../components/AccountNew'
 //provides data and behavior to children 
 //react creates instances of it 
 //more time consuming than calling a function 
+//only compnent connected to store?
 
 class AccountsContainer extends React.Component { //can call lifecycle hooks
     //getting accounts from the backend, data can't be passed as prop 

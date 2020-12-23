@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 #root 'api/v1/sessions#create'
 post 'api/v1/login',    to: 'api/v1/sessions#create'
 delete 'api/v1/logout',   to: 'api/v1/sessions#destroy'
-get 'api/v1/is_logged_in', to: 'api/v1/sessions#is_logged_in?'
+get 'api/v1/get_current_user', to: 'api/v1/sessions#get_current_user'
 post 'api/v1/signup' => 'api/v1/accounts#create'
 
  namespace :api do

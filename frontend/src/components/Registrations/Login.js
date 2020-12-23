@@ -1,14 +1,13 @@
 import React from 'react';
 //import axios from 'axios'
-import {Link} from 'react-router-dom'
 import { login } from "../../actions/accountlogin";
-import { withRouter } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 //could be combined with signup
 //convert to pure component? 
 //value of form input is determined by the state, state dictated by input field values
-const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, name, password }) => {
+const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, name, password, setCurrentAccount }) => {
   return (
       <div className="Login">
         <h1>Log In</h1>
@@ -31,7 +30,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
             Log In
           </button>          
           <div>
-            or <Link to="signup">Sign Up</Link>
+            or <Link to="api/v1/signup">Sign Up</Link>
           </div>
           
           </form>

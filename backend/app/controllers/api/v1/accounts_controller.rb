@@ -6,7 +6,7 @@ class Api::V1::AccountsController < ApplicationController
   end
 
   def create
-    puts "accounts_controler:create"
+    binding.pry
     @account = Account.new(account_params)
     if @account.save
       login!  #separate method that needs to be created 

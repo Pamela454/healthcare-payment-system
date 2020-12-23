@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-//import {render} from 'react-dom' //need this?
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //from imported redux library
-import thunk from 'redux-thunk' 
+import thunk from 'redux-thunk' //asynchrounos actions 
 import {BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import accountReducer from './reducers/accountReducer'
