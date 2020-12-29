@@ -1,5 +1,4 @@
 import React from 'react';
-//import axios from 'axios'
 import { login } from "../../actions/accountlogin";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
@@ -30,9 +29,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
             Log In
           </button>          
           <div>
-            or <Link to="api/v1/signup">Sign Up</Link>
           </div>
-          
           </form>
           <div>
         </div>
@@ -67,5 +64,4 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 
-
-export default withRouter(connect(null, mapDispatchToProps)(Login));
+export default connect(null, mapDispatchToProps)(Login);

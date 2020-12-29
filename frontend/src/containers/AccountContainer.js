@@ -5,7 +5,7 @@ import {Route, Switch} from 'react-router-dom'
 
 import {fetchAccounts} from '../actions/fetchAccounts'
 import Accounts from '../components/Accounts'
-import AccountShow from '../components/AccountShow'
+import Account from '../components/Account'
 import AccountNew from '../components/AccountNew'
 //import NavBar from '../components/NavBar'
 
@@ -28,7 +28,7 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 			<div>
 			 <Switch>
 			    <Route path='/accounts/new' component={AccountNew} />
-			    <Route exact path='/accounts/:id' render={(routerProps) => <AccountShow {...routerProps} accounts={this.props.accounts}/> } />
+			    <Route exact path='/accounts/:id' render={(routerProps) => <Account {...routerProps} accounts={this.props.accounts}/> } />
 			    <Route exact path='/accounts' render={(routerProps) => <Accounts {...routerProps} accounts={this.props.accounts}/> } /> 
 			 </Switch>
 			</div>

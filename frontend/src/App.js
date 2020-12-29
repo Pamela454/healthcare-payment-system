@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
-//import { Redirect } from 'react-router-dom'
-//import axios from 'axios'
-//import {BrowserRouter, Switch, Route, useLocation /*, withRouter */} from 'react-router-dom'
+import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from "react-router-dom";
 import Departments from './components/Departments'
-import Navbar from 'react-bootstrap/Navbar'
+import Payments from './components/Payments'
+import AccountContainer from './containers/AccountContainer'
+import Navbar from './components/Navbar'
 import Login from './components/registrations/Login'
 import Logout from './components/registrations/Logout'
+import { connect } from 'react-redux'
+//import { getCurrentUser } from "./actions/currentUser.js"
+import Signup from './components/registrations/Signup'
 
-//import Signup from './components/registrations/Signup'
 //if constantly passing down props consider connecting to the store
 
 class App extends Component {
@@ -18,7 +20,7 @@ class App extends Component {
       loginForm: {
         name: "",
         password: ""
-      }, 
+     }, 
     }
   }
 
@@ -124,26 +126,33 @@ getDepartments = () => {
 
 
   render() {
-    const { currentUser } = this.state 
+    const { currentUser } = this.state
+    //let { path, url } = useRouteMatch();
+
     return (
       <div className="App">
-       <h2>{ currentUser ?
+        <h2>{ currentUser ?
         `Logged in as ${currentUser.name}`  :
-        "Not logged in" 
-      }</h2>
+        "Not logged in" }
+         </h2> 
+       <Router>
         <Navbar/>
-        {
-          this.state.currentUser ? 
-          <Logout logout={this.logout}/> :
-          <Login
-          handleLoginFormChange={this.handleLoginFormChange}
-          handleLoginFormSubmit={this.handleLoginFormSubmit}
-          name={this.state.loginForm.name}
-          password={this.state.loginForm.password}
-          />}
+        <Switch> 
+          <Route exact path='/' render={() => (<Login 
+            handleLoginFormChange={this.handleLoginFormChange}
+            handleLoginFormSubmit={this.handleLoginFormSubmit}
+            name={this.state.loginForm.name}
+            password={this.state.loginForm.password}
+            />)}/>
+          <Route exact path='/signup' render={() => (<Signup/>)}/>
+          <Route exact path='/account' render={routerProps => <AccountContainer {...routerProps} accounts={this.state.currentUser}/>} />
+        </Switch>
+       </Router>
+         { currentUser ? 
+          <Logout logout={this.logout}/> : null }
           <button onClick={this.getDepartments}>Departments</button>
-          { currentUser ? <Departments departments={currentUser.departments} /> : null }
-      </div>
+         { currentUser ? <Departments departments={currentUser.departments} /> : null }
+    </div>
     );
   }
 }
