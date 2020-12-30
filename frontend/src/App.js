@@ -68,7 +68,7 @@ class App extends Component {
         user: userInfo
       })
     }
-    fetch("http://localhost:3001/api/v1/login", headers)
+    fetch("http://localhost:3001/login", headers)
     .then(r => r.json())
     .then(userJSON => { 
       if (userJSON.error) {

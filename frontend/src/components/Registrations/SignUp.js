@@ -69,14 +69,14 @@ return (
             name="name"
             value={name}
             onChange={this.handleChange}
-          />
+          /><br/>
           <input 
             placeholder="password"
             type="password"
             name="password"
             value={password}
             onChange={this.handleChange}
-          />                  
+          /><br/>                  
           <button placeholder="submit" type="submit">
             Sign Up
           </button>

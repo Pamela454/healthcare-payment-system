@@ -1,10 +1,10 @@
 class Api::V1::SessionsController < ApplicationController
 
   def create
-    @account = Account.find_by(name: params[:account][:name])
+    @account = Account.find_by(name: params[:user][:name])
     #if successful generate JWT token, include token back in response to client
     #include user in response back as well 
-    if @account && @account.authenticate(params[:account][:password])
+    if @account && @account.authenticate(params[:user][:password])
       render json: @account 
     else
       resp = {
