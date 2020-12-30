@@ -9,6 +9,7 @@ constructor(props) {
     this.state = { 
       name: '',
       password: '',
+      status: '',
       errors: ''
      };
 }
@@ -22,13 +23,14 @@ handleChange = (event) => {
 
 handleSubmit = (event) => {
     event.preventDefault()
-    const {name, password} = this.state
+    const {name, password, status} = this.state
     let account = {
       name: name,
       password: password,
+      status: status,
     }
 
-  axios.post('http://localhost:3001/api/v1/signup', {account}, {withCredentials: true})
+  axios.post('http://localhost:3001/signup', {account}, {withCredentials: true})
     .then(response => {
       if (response.data.status === 'created') {
         this.props.handleLogin(response.data)
@@ -58,7 +60,7 @@ handleErrors = () => {
   };
 
 render() {
-    const {name, password} = this.state
+    const {name, password, status} = this.state
 return (
       <div>
         <h1>Sign Up</h1>        
@@ -76,7 +78,14 @@ return (
             name="password"
             value={password}
             onChange={this.handleChange}
-          /><br/>                  
+          /><br/>  
+          <input 
+            placeholder="status"
+            type="text"
+            name="status"
+            value={status}
+            onChange={this.handleChange}
+          /><br/>                 
           <button placeholder="submit" type="submit">
             Sign Up
           </button>

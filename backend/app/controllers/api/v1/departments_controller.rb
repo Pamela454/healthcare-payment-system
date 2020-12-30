@@ -3,7 +3,7 @@ class Api::V1::DepartmentsController < ApplicationController
   #before_action :set_account
 
   def index
-    if logged_in?
+    if is_logged_in?
   	   @departments = current_user.department
   	   render json: @departments, status: ok
     else

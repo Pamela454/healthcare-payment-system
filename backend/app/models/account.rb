@@ -5,11 +5,11 @@ class Account < ApplicationRecord
     validates :name, uniqueness: true
 	has_many :departments
 	has_many :payments 
-	validates :name, :password, presence: true
+	validates :name, :password, :status, presence: true
 
 	#need method to update the account balance
 
- after_initialize do
+ after_initialize do #default value is patient 
    if self.new_record?
      self.status ||= :patient 
    end
