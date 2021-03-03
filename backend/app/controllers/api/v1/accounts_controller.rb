@@ -2,22 +2,22 @@ class Api::V1::AccountsController < ApplicationController
 
   def index
     @accounts = Account.all
-    render json: @accounts, include: '**'
+    render json: AccountSerializer.new(@accounts)
   end
 
   def create
     @account = Account.new(account_params)
     if @account.save
       login!  #separate method that needs to be created 
-      render json: @account #should this be accounts? 
+      render json: AccountSerializer.new(@account), status: :created #should this be accounts? 
     else
       render json: {error: 'Error creating new account'}
     end
   end
 
   def show
-    @account = Account.find_by(params[:id])
-    render json: @account, include: '**'
+    @account = Account.find_by(id: params[:id])
+    render json: AccountSerializer.new(@account)
   end
 
   def update
@@ -34,6 +34,6 @@ class Api::V1::AccountsController < ApplicationController
   private
 
   def account_params
-    params.require(:account).permit(:name, :password, :password_confirmation)
+    params.require(:account).permit(:name, :password)
   end
 end
