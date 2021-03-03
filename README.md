@@ -13,3 +13,6 @@ Your Rails API should handle the data persistence with a database. You should be
 Your client-side application should handle the display of data with minimal data manipulation
 Your application should have some minimal styling: feel free to stick to a framework (like react-bootstrap), but if you want to write (additional) CSS yourself, go for it!
 Once your app is complete, fill out this checklist.
+
+
+//use session cookie to store login info

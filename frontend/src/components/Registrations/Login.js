@@ -1,6 +1,6 @@
 import React from 'react';
 import { login } from "../../actions/accountlogin";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 //could be combined with signup
@@ -15,6 +15,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
             placeholder="name"
             type="text"
             name="name"
+            autoComplete="on"
             value={name}
             onChange={handleLoginFormChange}
           /><br/>
@@ -22,6 +23,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
             placeholder="password"
             type="password" //can't see type
             name="password"
+            autoComplete="on"
             value={password}
             onChange={handleLoginFormChange}
           /><br/>          
@@ -49,7 +51,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
     //</div>
   //);
 //}
-
+// persists changes in the state. 
 const mapDispatchToProps = (dispatch) => {
   return {  //calls action, reducer and then makes a change to state 
     accountlogin: (account) => {
