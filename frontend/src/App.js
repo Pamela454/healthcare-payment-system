@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useParams, useRouteMatch } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Departments from './components/Departments'
-import Payments from './components/Payments'
+//import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
 import Login from './components/registrations/Login'
 import Logout from './components/registrations/Logout'
-import { connect } from 'react-redux'
+//import { connect } from 'react-redux'
 //import { getCurrentUser } from "./actions/currentUser.js"
 import Signup from './components/registrations/Signup'
 
@@ -14,7 +14,7 @@ import Signup from './components/registrations/Signup'
 
 class App extends Component {
   constructor() {
-    super()
+    super() //inheriting from another class. access and call functions from parent.
     this.state = {
       currentUser: null,
       loginForm: {
@@ -24,7 +24,7 @@ class App extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount() { //can set state which then causes an update 
     const token = localStorage.getItem("token")
     if(token) {
       fetch("http://localhost:3001/api/v1/get_current_user", {
@@ -51,13 +51,13 @@ class App extends Component {
     this.setState({
       loginForm: {
         ...this.state.loginForm,
-        [name]: value 
+        [name]: value
       }
     })
   };
 
   handleLoginFormSubmit = event => {
-    event.preventDefault() //state contains most up to date form data
+    event.preventDefault() //state contains most up to date form data. prevent page refresh 
     const userInfo = this.state.loginForm
     const headers = {
       method: "POST",
@@ -156,5 +156,11 @@ class App extends Component {
     );
   }
 }
+//receives entire state as it's argument 
+const mapStateToProps = state => { //what portion of state to provide to props 
+  return { //executed with each change to the store. 
+    loginForm: state.loginForm
+  }
+}
 
-export default App; // only one thing to export can use default
+export default connect(mapStateToProps)(App); // specifies component to provide data to. 

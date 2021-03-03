@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //from imported redux library
 import thunk from 'redux-thunk' //asynchrounos actions 
-import {BrowserRouter} from 'react-router-dom'
+import { BrowserRouter} from 'react-router-dom'
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import accountReducer from './reducers/accountReducer'
 import loginForm from './reducers/loginForm'
@@ -18,18 +18,18 @@ const reducers = combineReducers({
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;  //dev tools
 
-let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk)))
+let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk))) //method provided by redux library 
 //asynchronous use of dispatch
 //containers act more like parent components, contain other componenets
 //store - data stored globally. could create in separate file and import. 
 //reducer - what to do with store based on certain actions. returns a new version of the store. 
 //below grants app access to the store 
-
+//able to dispatch actions throughout the component tree. alerts when change in state. 
 ReactDOM.render(
-    <Provider store={store}>
+    <Provider store={store}> 
     <BrowserRouter> 
 		<App />
-	</BrowserRouter>
+	</BrowserRouter>,
 	</Provider>, 
 	document.getElementById('root'));
 //router gives any child access to setting up routes and using links. children all wrapped in router

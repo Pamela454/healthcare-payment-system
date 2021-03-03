@@ -1,5 +1,5 @@
 class Account < ApplicationRecord
-	enum status: [:patient, :admin]
+	enum status: [:patient, :admin] #keep track of user role 
 	has_secure_password #already validates presence 
 	validates :name, presence: true
     validates :name, uniqueness: true

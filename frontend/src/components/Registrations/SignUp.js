@@ -58,7 +58,7 @@ handleErrors = () => {
       </div>
     )
   };
-
+//add password confirmation to form. 
 render() {
     const {name, password, status} = this.state
 return (
@@ -89,7 +89,7 @@ return (
           <button placeholder="submit" type="submit">
             Sign Up
           </button>
-      
+          
         </form>
       </div>
     );

@@ -1,9 +1,15 @@
-class ApplicationController < ActionController::Base  #changed for complete functionality 
-   skip_before_action :verify_authenticity_token # prevent CSRF attack 
-   helper_method :login!, :is_logged_in?, :current_user, :authorized_user?, :logout!, :set_account
+class ApplicationController < ActionController::API
+  include ActionController::Cookies
+  include ActionController::RequestForgeryProtection
+
+  protect_from_forgery with: :exception
+
+  before_action :set_csrf_cookie
+  helper_method :login!, :is_logged_in?, :current_user, :authorized_user?, :logout!, :set_account
     
   def login!
       session[:account_id] = @account.id
+      #localStorage.setItem("loggedIn", true);
   end
   
   def is_logged_in?
@@ -20,6 +26,12 @@ class ApplicationController < ActionController::Base  #changed for complete func
 
   def set_account #need this as well as login! ?
       @account = Account.find_by(id: session[:account_id])
+  end
+
+  private
+
+  def set_csrf_cookie
+    cookies["CSRF-TOKEN"] = form_authenticity_token
   end
 
 end

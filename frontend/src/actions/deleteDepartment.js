@@ -1,5 +1,4 @@
 export const deleteDepartment = (departmentId, accountId) => {
-
 	return (dispatch) => {
 		return fetch(`http://localhost:3000/api/v1/accounts/${accountId}/departments/${departmentId}`, {
 			method: 'DELETE'

@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 class Navbar extends Component {
   render() {
     return(
-        <nav class="navbar navbar-dark bg-primary">
+        <nav className="navbar navbar-dark bg-primary">
             <div className="row col-12 d-flex justify-content-center text-white">
             <Link to='/signup' className='App-Link'>Signup</Link> 
             </div>
