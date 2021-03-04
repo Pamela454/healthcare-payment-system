@@ -1,6 +1,6 @@
 import React from 'react';
-import { login } from "../../actions/accountlogin";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { login } from "../../actions/accountLogin";
+//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 //could be combined with signup

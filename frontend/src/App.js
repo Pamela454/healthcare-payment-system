@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Departments from './components/Departments'
-import { connect } from 'react-redux'
-import { accountLogin } from "./actions/accountLogin.js"
+//import { connect } from 'react-redux'
+//import { accountLogin } from "./actions/accountLogin.js"
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
@@ -157,10 +157,10 @@ class App extends Component {
   }
 }
 //receives entire state as it's argument 
-const mapStateToProps = state => { //what portion of state to provide to props 
-  return { //executed with each change to the store. 
-    loginForm: state.loginForm
-  }
-}
+//const mapStateToProps = state => { //what portion of state to provide to props 
+  //return { //executed with each change to the store. 
+    //loginForm: state.loginForm
+  //}
+//}
 
 export default App; // specifies component to provide data to. 

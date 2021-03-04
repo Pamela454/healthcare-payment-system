@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import { BrowserRouter} from 'react-router-dom'
