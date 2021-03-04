@@ -1,6 +1,5 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {newAccount} from '../actions/newAccount'
 
 class AccountNew extends React.Component {
 
@@ -38,4 +37,4 @@ class AccountNew extends React.Component {
 
 } 
 
-export default connect(null, {newAccount})(AccountNew)
+export default AccountNew;

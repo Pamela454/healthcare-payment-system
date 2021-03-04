@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Departments from './components/Departments'
 import { connect } from 'react-redux'
-import { getCurrentUser } from "./actions/currentUser.js"
+import { accountLogin } from "./actions/accountLogin.js"
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'

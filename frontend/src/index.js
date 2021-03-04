@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux' //wrapped in provider so has access to store
 import { BrowserRouter} from 'react-router-dom'
@@ -8,11 +8,13 @@ import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //f
 import thunk from 'redux-thunk' //asynchrounos actions 
 import accountReducer from './reducers/accountReducer'
 import loginForm from './reducers/loginForm'
+import signupForm from './reducers/signupForm'
 
-
+//manage independent parts of the state. Single reducing function to pass to create store. 
 const reducers = combineReducers({
   accountReducer,
-  loginForm
+  loginForm,
+  signupForm
 });
 
 

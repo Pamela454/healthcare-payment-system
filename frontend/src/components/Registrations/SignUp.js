@@ -1,98 +1,96 @@
 import React, { Component } from 'react';
-import axios from 'axios'
-//import {Link} from 'react-router-dom'
+import { connect } from "react-redux";
+import { updateSignupForm } from "../../actions/newAccount";
+import { signup } from "../../actions/newAccount";
 
-class Signup extends Component {  
 
-constructor(props) {
-    super(props);
-    this.state = { 
-      name: '',
-      password: '',
-      status: '',
-      errors: ''
-     };
-}
+const Signup = ({ signupFormData, updateSignupForm, signup, history }) => {
 
-handleChange = (event) => {
-    const {name, value} = event.target
-    this.setState({
-      [name]: value
-    })
+  const handleChange = (event) => {
+    const { name, status, value } = event.target;
+    const formData = {
+      ...signupFormData, 
+      [name]: value,
+      [status]: value
+    };
+    updateSignupForm(formData);
   };
 
-handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault()
-    const {name, password, status} = this.state
-    let account = {
-      name: name,
-      password: password,
-      status: status,
-    }
-
-  axios.post('http://localhost:3001/signup', {account}, {withCredentials: true})
-    .then(response => {
-      if (response.data.status === 'created') {
-        this.props.handleLogin(response.data)
-        this.redirect()
-      } else {
-        this.setState({
-          errors: response.data.errors
-        })
-      }
-    })
-    .catch(error => console.log('api errors:', error))
-};
-
-redirect = () => {
-    this.props.history.push('/')
-  }
-
-handleErrors = () => {
-    return (
-      <div>
-        <ul>{this.state.errors.map((error) => {
-          return <li>key={error}>{error}</li>
-        })}
-        </ul> 
-      </div>
-    )
+    signup(signupFormData, history);
   };
+
+  //axios.post('http://localhost:3001/signup', {account}, {withCredentials: true})
+    //.then(response => {
+      //if (response.data.status === 'created') {
+        //this.props.handleLogin(response.data)
+        //this.redirect()
+      //} else {
+       // this.setState({
+          //errors: response.data.errors
+        //})
+      //}
+    //})
+    //.catch(error => console.log('api errors:', error))
+//};
+
+//redirect = () => {
+    //this.props.history.push('/')
+  //}
+
+//handleErrors = () => {
+    //return (
+      //<div>
+        //<ul>{this.state.errors.map((error) => {
+          //return <li>key={error}>{error}</li>
+        //})}
+        //</ul> 
+      //</div>
+    //)
+//};
 //add password confirmation to form. 
-render() {
-    const {name, password, status} = this.state
-return (
-      <div>
-        <h1>Sign Up</h1>        
-<form onSubmit={this.handleSubmit}>
+
+//render() {
+    //const {name, password, status} = this.state
+  return (
+    <div>
+      <h1>Sign Up</h1>         
+        <form onSubmit={handleSubmit}>
           <input
             placeholder="name"
             type="text"
             name="name"
-            value={name}
-            onChange={this.handleChange}
+            value={signupFormData.name}
+            onChange={handleChange}
           /><br/>
           <input 
             placeholder="password"
             type="password"
             name="password"
-            value={password}
-            onChange={this.handleChange}
+            value={signupFormData.password}
+            onChange={handleChange}
           /><br/>  
           <input 
             placeholder="status"
             type="text"
             name="status"
-            value={status}
-            onChange={this.handleChange}
+            value={signupFormData.status}
+            onChange={handleChange}
           /><br/>                 
           <button placeholder="submit" type="submit">
             Sign Up
           </button>
-          
         </form>
       </div>
-    );
-  }
-}
-export default Signup;
+  );
+};
+
+const mapStateToProps = state => { //what portion of state to provide to props 
+  return {
+    signupFormData: state.signupForm 
+  };
+};
+
+
+export default connect(mapStateToProps, { updateSignupForm, signup })(Signup);

@@ -1,16 +1,35 @@
-export const newAccount = (data) => {
+export const updateSignupForm = (formData) => {
+	return {
+		type: "UPDATE_SIGNUP_FORM",
+		formData
+	};
+};
 
-	return (dispatch) => {
-		fetch('http://localhost:3000/api/v1/accounts', {
+export const signup = (credentials, history) => {
+	return dispatch => {
+		const accountInfo = {
+			account: credentials
+		};
+
+		return fetch("http://localhost:3000/api/v1/accounts", {
 			headers: {
 				'Content-Type': 'application/json',
 				'Accept': 'application/json'
 			},
-			method: 'POST',
-			body: JSON.stringify(data)
+			method: "POST",
+			credentials: "include",
+			body: JSON.stringify(accountInfo)
 		})
-		.then(response => response.json())
-		.then(account => dispatch({type: 'ADD_ACCOUNT', payload: account}))
-	}
+		  .then(response => response.json())
+		  .then(account => {
+			if (account.error) {
+				alert(account.error);
+			} else {
+				dispatch({type: 'ADD_ACCOUNT', payload: account});
+				history.push("/");
+			}
+		  })
+		.catch(console.log);
+	};
+};
 
-}
