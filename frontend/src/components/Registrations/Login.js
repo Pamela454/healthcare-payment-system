@@ -1,5 +1,5 @@
 import React from 'react';
-import { login } from "../../actions/accountLogin";
+import { login } from "../../actions/setCurrentAccount";
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 
@@ -40,6 +40,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
 
 }
 
+
 //function NoMatch() {
   //let location = useLocation();
 
@@ -54,14 +55,11 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
 // persists changes in the state. 
 const mapDispatchToProps = (dispatch) => {
   return {  //calls action, reducer and then makes a change to state 
-    accountlogin: (account) => {
-      dispatch({
-        type: "SET_CURRENT_ACCOUNT",
-        account: account,
-      });
+    setCurrentAccount: (account) => {
+        dispatch(setCurrentAccount(account))
     },
 
-    login: (credentials, history) => dispatch(login(credentials, history)),
+    //login: (credentials, history) => dispatch(login(credentials, history)),
   };
 };
 

@@ -1,10 +1,10 @@
-export default function accountReducer(state = {accounts: []}, action) {  //combines current state and action 
+export default function accountReducer(state = null, action) {  //combines current state and action 
 	switch (action.type) {
 		case 'SET_CURRENT_ACCOUNT':
           return {account: action.payload}
-         case 'ADD_ACCOUNT': //creates a new object 
+    case 'ADD_ACCOUNT': //creates a new object 
           return {...state, account: [...state.account, action.payload]} //only override specific property 
-         case 'ADD_DEPARTMENT': //at least returns some version of state
+    case 'ADD_DEPARTMENT': //at least returns some version of state
           let account = state.account
           	if (account.id === action.payload.id) {
           	  return action.payload 
@@ -12,7 +12,7 @@ export default function accountReducer(state = {accounts: []}, action) {  //comb
           	  return account 
           	}
           //return {...state, account: account}
-        case 'DELETE_TRANSACTION': //at least returns some version of state
+    case 'DELETE_TRANSACTION': //at least returns some version of state
           //let accountsNext = state.accounts.map(account => {
             if (account.id === action.payload.id) {
               return action.payload 
@@ -21,7 +21,7 @@ export default function accountReducer(state = {accounts: []}, action) {  //comb
             }
           //})
           //return {...state, accounts: accountsNext}
-         default:
+    default:
           return state //never return null 
     }       
 }

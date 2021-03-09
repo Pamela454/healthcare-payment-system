@@ -13,37 +13,10 @@ import Signup from './components/registrations/Signup'
 //if constantly passing down props consider connecting to the store
 
 class App extends Component {
-  constructor() {
-    super() //inheriting from another class. access and call functions from parent.
-    this.state = {
-      currentUser: null,
-      loginForm: {
-        name: "",
-        password: ""
-     }, 
-    }
-  }
 
-  componentDidMount() { //can set state which then causes an update 
-    const token = localStorage.getItem("token")
-    if(token) {
-      fetch("http://localhost:3001/api/v1/get_current_user", {
-        headers: {
-          "Authorization": token
-        }
-      })
-      .then(r => r.json())
-      .then(resp => {
-        if (resp.error) {
-          alert(resp.error)
-        } else {
-          this.setState({
-            currentUser: resp.user 
-          })
-        }
-       })
-      }
-  }
+  //componentDidMount() { //can set state which then causes an update 
+    //this.props.currentAccount(); //need to write method in action 
+  //}
 
 
   handleLoginFormChange = event => {
@@ -117,13 +90,6 @@ class App extends Component {
     //)
   //};
 
-//handleSubmit = (data) => {
-  //this.setState({
-    //account: data.account 
-  //})
-  //this.props.history.push(`/accounts/${this.props.account.id}`);
-//};
-
 
   render() {
     const { currentUser } = this.state
@@ -157,10 +123,10 @@ class App extends Component {
   }
 }
 //receives entire state as it's argument 
-//const mapStateToProps = state => { //what portion of state to provide to props 
-  //return { //executed with each change to the store. 
-    //loginForm: state.loginForm
-  //}
-//}
+const mapStateToProps = state => { //what portion of state to provide to props 
+  return { //executed with each change to the store. 
+    loginForm: state.loginForm
+  }
+}
 
 export default App; // specifies component to provide data to. 
