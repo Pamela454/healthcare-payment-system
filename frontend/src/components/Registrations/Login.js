@@ -1,12 +1,31 @@
 import React from 'react';
+import React, { useState } from "react";
 import { login } from "../../actions/setCurrentAccount";
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { setCurrentAccount } from "../../actions/setCurrentAccount";
 
-//could be combined with signup
-//convert to pure component? 
 //value of form input is determined by the state, state dictated by input field values
-const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, name, password, setCurrentAccount }) => {
+// only use hooks with function components 
+const Login = ({ login, name, password, setCurrentAccount }) => {
+  const [form, setState] = React.useState({
+    name: '',
+    password: ''
+  });
+
+  const handleLoginFormChange = event => {
+   setState({
+    ...form,
+    [e.target.name]: e.target.value 
+   });
+  }
+
+const handleLoginFormSubmit = event => {
+    event.preventDefault() //state contains most up to date form data. prevent page refresh 
+    login(form); 
+  }
+
+
   return (
       <div className="Login">
         <h1>Log In</h1>
@@ -16,7 +35,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
             type="text"
             name="name"
             autoComplete="on"
-            value={name}
+            value={form.name}
             onChange={handleLoginFormChange}
           /><br/>
         <input
@@ -24,7 +43,7 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
             type="password" //can't see type
             name="password"
             autoComplete="on"
-            value={password}
+            value={form.password}
             onChange={handleLoginFormChange}
           /><br/>          
         <button placeholder="submit" type="submit">
@@ -37,21 +56,9 @@ const Login = ({ handleLoginFormChange, handleChange, handleLoginFormSubmit, nam
         </div>
       </div>
   );
-
 }
 
 
-//function NoMatch() {
-  //let location = useLocation();
-
-  //return (
-    //<div>
-      //<h3>
-        //No match for <code>{location.pathname}</code>
-      //</h3>
-    //</div>
-  //);
-//}
 // persists changes in the state. 
 const mapDispatchToProps = (dispatch) => {
   return {  //calls action, reducer and then makes a change to state 

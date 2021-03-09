@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Departments from './components/Departments'
+import React, { useState } from 'react';
 //import { connect } from 'react-redux'
 //import { accountLogin } from "./actions/accountLogin.js"
 //import Payments from './components/Payments'
@@ -17,47 +18,6 @@ class App extends Component {
   //componentDidMount() { //can set state which then causes an update 
     //this.props.currentAccount(); //need to write method in action 
   //}
-
-
-  handleLoginFormChange = event => {
-   const {name, value } = event.target
-    this.setState({
-      loginForm: {
-        ...this.state.loginForm,
-        [name]: value
-      }
-    })
-  };
-
-  handleLoginFormSubmit = event => {
-    event.preventDefault() //state contains most up to date form data. prevent page refresh 
-    const userInfo = this.state.loginForm
-    const headers = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        user: userInfo
-      })
-    }
-    fetch("http://localhost:3001/login", headers)
-    .then(r => r.json())
-    .then(userJSON => { 
-      if (userJSON.error) {
-        alert("invalid credentials") 
-      } else {
-        this.setState({
-          currentUser: userJSON,
-          loginForm: {
-            name: "",
-            password: ""
-          }
-        })
-      }
-      })
-    .catch(console.log)
-  }
 
   logout = event => {
     event.preventDefault()
@@ -77,18 +37,6 @@ class App extends Component {
       //}
     //})
 //}
-
-  //handleErrors = () => {
-    //return (
-      //<div>
-        //<ul>
-        //{this.state.errors.map(error => {
-        //return <li key={error}>{error}</li>
-          //})}
-        //</ul>
-      //</div>
-    //)
-  //};
 
 
   render() {
@@ -129,4 +77,4 @@ const mapStateToProps = state => { //what portion of state to provide to props
   }
 }
 
-export default App; // specifies component to provide data to. 
+export default connect(null, {currentAccount} )(App) // specifies component to provide data to. 
