@@ -1,10 +1,11 @@
-import React from 'react';
-import React, { useState } from "react";
+//import React from 'react';
+import React, { useState, useRef } from "react";
 import { login } from "../../actions/setCurrentAccount";
 //import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { setCurrentAccount } from "../../actions/setCurrentAccount";
 
+//useForm hook? 
 //value of form input is determined by the state, state dictated by input field values
 // only use hooks with function components 
 const Login = ({ login, name, password, setCurrentAccount }) => {
@@ -16,7 +17,7 @@ const Login = ({ login, name, password, setCurrentAccount }) => {
   const handleLoginFormChange = event => {
    setState({
     ...form,
-    [e.target.name]: e.target.value 
+    [event.target.name]: event.target.value 
    });
   }
 
@@ -60,15 +61,11 @@ const handleLoginFormSubmit = event => {
 
 
 // persists changes in the state. 
-const mapDispatchToProps = (dispatch) => {
-  return {  //calls action, reducer and then makes a change to state 
-    setCurrentAccount: (account) => {
-        dispatch(setCurrentAccount(account))
-    },
-
-    //login: (credentials, history) => dispatch(login(credentials, history)),
+const mapStateToProps = state => {
+  return {
+    form: state.form 
   };
 };
 
 
-export default connect(null, mapDispatchToProps)(Login);
+export default connect(mapStateToProps, { login, setCurrentAccount })(Login);

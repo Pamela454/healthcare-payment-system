@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Departments from './components/Departments'
-import React, { useState } from 'react';
-//import { connect } from 'react-redux'
-//import { accountLogin } from "./actions/accountLogin.js"
+//import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { getCurrentAccount } from "./actions/setCurrentAccount.js"
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
@@ -15,66 +15,45 @@ import Signup from './components/registrations/Signup'
 
 class App extends Component {
 
-  //componentDidMount() { //can set state which then causes an update 
-    //this.props.currentAccount(); //need to write method in action 
-  //}
-
-  logout = event => {
-    event.preventDefault()
-    localStorage.removeItem("token")
-    this.setState({
-      currentUser: null,
-      secrets: []
-    })
+  componentDidMount() { //can set state which then causes an update 
+    this.props.getCurrentAccount(); //does this need to be a hook? 
   }
 
-//getDepartments = () => {
-    //fetch(`http://localhost:3001/api/v1/accounts/1/departments`)
-    //.then(r => r.json())
-    //.then(console.log)
-    //.then(userJSON => { 
-      //if (userJSON.error) {
-      //}
-    //})
-//}
 
 
   render() {
-    const { currentUser } = this.state
-    //let { path, url } = useRouteMatch();
+    const { currentAccount } = this.props  
 
     return (
       <div className="App">
-        <h2>{ currentUser ?
-        `Logged in as ${currentUser.name}`  :
-        "Not logged in" }
+          <h2>{ currentAccount ? 
+        `Logged in as ${currentAccount.name}`  :
+        "Not logged in" } 
          </h2> 
        <Router>
         <Navbar/>
         <Switch> 
           <Route exact path='/' render={() => (<Login 
-            handleLoginFormChange={this.handleLoginFormChange}
-            handleLoginFormSubmit={this.handleLoginFormSubmit}
-            name={this.state.loginForm.name}
-            password={this.state.loginForm.password}
+            name={this.props.name} 
+            password={this.props.password} 
             />)}/>
           <Route exact path='/signup' render={() => (<Signup/>)}/>
           <Route exact path='/account' render={routerProps => <AccountContainer {...routerProps} accounts={this.state.currentUser}/>} />
         </Switch>
        </Router>
-         { currentUser ? 
+         { currentAccount ? 
           <Logout logout={this.logout}/> : null }
           <button onClick={this.getDepartments}>Departments</button>
-         { currentUser ? <Departments departments={currentUser.departments} /> : null }
+         { currentAccount ? <Departments departments={currentAccount.departments} /> : null } 
     </div>
     );
   }
 }
 //receives entire state as it's argument 
-const mapStateToProps = state => { //what portion of state to provide to props 
+const mapStateToProps = ({ currentAccount }) => { //what portion of state to provide to props 
   return { //executed with each change to the store. 
-    loginForm: state.loginForm
-  }
+    currentAccount
+  };
 }
-
-export default connect(null, {currentAccount} )(App) // specifies component to provide data to. 
+//need to add in currentAccount action
+export default connect(mapStateToProps, { getCurrentAccount })(App); // specifies component to provide data to. 

@@ -13,3 +13,13 @@ export const newDepartment = (department, accountId) => {
 		.then(account => dispatch({type: 'ADD_DEPARTMENT', payload: account}))
 	}
 }
+
+//getDepartments = () => {
+    //fetch(`http://localhost:3001/api/v1/accounts/1/departments`)
+    //.then(r => r.json())
+    //.then(console.log)
+    //.then(userJSON => { 
+      //if (userJSON.error) {
+      //}
+    //})
+//}
