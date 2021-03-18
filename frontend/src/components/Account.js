@@ -13,7 +13,7 @@ import DepartmentsContainer from '../containers/DepartmentsContainer'
 const Account = (props) => {
 
 	let account = props.accounts[props.match.params.id - 1]
-
+//do you need a key?, only if iterating 
 return (
 	<div>
      <h2>

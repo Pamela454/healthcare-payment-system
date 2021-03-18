@@ -1,15 +1,16 @@
 //import React from 'react';
-import React, { useState, useRef } from "react";
+import React, { useState } from 'react';
+import { compose } from 'redux';
 import { login } from "../../actions/setCurrentAccount";
-//import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setCurrentAccount } from "../../actions/setCurrentAccount";
 
 //useForm hook? 
 //value of form input is determined by the state, state dictated by input field values
 // only use hooks with function components 
-const Login = ({ login, name, password, setCurrentAccount }) => {
-  const [form, setState] = React.useState({
+const Login = ({ login, name, password, setCurrentAccount, history }) => {
+  const [form, setState] = useState({
     name: '',
     password: ''
   });
@@ -17,13 +18,14 @@ const Login = ({ login, name, password, setCurrentAccount }) => {
   const handleLoginFormChange = event => {
    setState({
     ...form,
-    [event.target.name]: event.target.value 
+    [event.target.name]: event.target.value, 
+    [event.target.password]: event.target.value 
    });
   }
 
 const handleLoginFormSubmit = event => {
     event.preventDefault() //state contains most up to date form data. prevent page refresh 
-    login(form); 
+    login(form, history); 
   }
 
 
@@ -68,4 +70,8 @@ const mapStateToProps = state => {
 };
 
 
-export default connect(mapStateToProps, { login, setCurrentAccount })(Login);
+export default compose(withRouter, 
+  connect(mapStateToProps, { 
+    login, 
+    setCurrentAccount 
+  }))(Login)

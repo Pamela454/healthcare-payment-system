@@ -1,5 +1,5 @@
 class Api::V1::PaymentsController < ApplicationController
-	before_action :set_department
+	#before_action :set_department
 
   def index
   	@payments = @department.payment 

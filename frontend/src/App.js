@@ -15,9 +15,9 @@ import Signup from './components/registrations/Signup'
 
 class App extends Component {
 
-  componentDidMount() { //can set state which then causes an update 
-    this.props.getCurrentAccount(); //does this need to be a hook? 
-  }
+  //componentDidMount() { //can set state which then causes an update 
+    //this.props.getCurrentAccount(); //does this need to be a hook? 
+  //}
 
 
 
@@ -38,7 +38,7 @@ class App extends Component {
             password={this.props.password} 
             />)}/>
           <Route exact path='/signup' render={() => (<Signup/>)}/>
-          <Route exact path='/account' render={routerProps => <AccountContainer {...routerProps} accounts={this.state.currentUser}/>} />
+          <Route exact path='/account/:id' render={routerProps => <AccountContainer {...routerProps} accounts={this.state.currentUser}/>} />
         </Switch>
        </Router>
          { currentAccount ? 
@@ -49,6 +49,7 @@ class App extends Component {
     );
   }
 }
+//gives access to part of store 
 //receives entire state as it's argument 
 const mapStateToProps = ({ currentAccount }) => { //what portion of state to provide to props 
   return { //executed with each change to the store. 

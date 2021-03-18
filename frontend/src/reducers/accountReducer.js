@@ -1,7 +1,6 @@
+//accepts action object
 export default function accountReducer(state = null, action) {  //combines current state and action 
 	switch (action.type) {
-		case 'SET_CURRENT_ACCOUNT':
-          return {account: action.payload}
     case 'ADD_ACCOUNT': //creates a new object 
           return {...state, account: [...state.account, action.payload]} //only override specific property 
     case 'ADD_DEPARTMENT': //at least returns some version of state

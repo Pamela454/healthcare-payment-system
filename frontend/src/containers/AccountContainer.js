@@ -2,7 +2,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
-
 import {fetchAccounts} from '../actions/fetchAccounts'
 import Accounts from '../components/Accounts'
 import Account from '../components/Account'
@@ -16,11 +15,7 @@ import AccountNew from '../components/AccountNew'
 //only compnent connected to store?
 
 class AccountsContainer extends React.Component { //can call lifecycle hooks
-    //getting accounts from the backend, data can't be passed as prop 
-	componentDidMount() {
-        this.props.fetchAccounts()
-	}
-
+	
 //render stated component 
 //return react element from render function 
 	render () {
@@ -41,5 +36,5 @@ const mapStateToProps = state => { //this is the state from redux
 		accounts: state.accounts //accounts located inside the state
 	}
 }
-
+//dispatch happens automatically with connect 
 export default connect(mapStateToProps, {fetchAccounts})(AccountsContainer)

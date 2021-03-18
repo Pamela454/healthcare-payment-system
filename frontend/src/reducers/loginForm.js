@@ -1,15 +1,15 @@
-const initialState = {
-  name: '',
-  password: ''
-};
+//const initialState = {
+  //name: '',
+  //password: ''
+//};
 
 
-export default function loginFormReducer(state = initialState, action) {
+export default function loginFormReducer(state = null, action) {
   switch (action.type) {
     case "SET_CURRENT_ACCOUNT":
-      return action.formData
+      return action.account 
     case "CLEAR_CURRENT_ACCOUNT":
-      return initialState
+      return state
     default:
       return state 
     };

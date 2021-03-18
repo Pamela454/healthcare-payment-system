@@ -1,5 +1,5 @@
-class PaymentSerializer < ActiveModel::Serializer
-  attributes :id, :amount, :account_id 
-
-  #belongs_to :department
+class PaymentSerializer
+  include JSONAPI::Serializer
+  attributes :amount
+  belongs_to :account
 end

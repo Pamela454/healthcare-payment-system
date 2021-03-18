@@ -1,13 +1,6 @@
-class AccountSerializer < ActiveModel::Serializer
-  attributes :id, :name, :balance, :copay, :insurance, :departments, :payments, :status
-
+class AccountSerializer
+  include JSONAPI::Serializer
+  attributes :name, :password, :status, :balance, :copay, :insurance
   has_many :departments
-  has_many :payments
-
-  #def departments
-    #object.departments.collect do |department|
-     # { :id => department.id, :service => department.service, :charge => department.charge}
-    #end
-  #end
-  
+  has_many :payments 
 end
