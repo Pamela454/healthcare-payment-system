@@ -1,8 +1,9 @@
 // render other components, can have other functions inside them. Typically class components. 
 import React from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 import {Route, Switch} from 'react-router-dom'
-import {fetchAccounts} from '../actions/fetchAccounts'
+import { getCurrentAccount } from '../actions/currentAccount'
 import Accounts from '../components/Accounts'
 import Account from '../components/Account'
 import AccountNew from '../components/AccountNew'
@@ -37,4 +38,4 @@ const mapStateToProps = state => { //this is the state from redux
 	}
 }
 //dispatch happens automatically with connect 
-export default connect(mapStateToProps, {fetchAccounts})(AccountsContainer)
+export default connect(mapStateToProps, { getCurrentAccount })(AccountsContainer)

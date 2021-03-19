@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Switch, Route, withRouter } from "react-router-dom";
 import Departments from './components/Departments'
 //import React, { useState } from 'react';
 import { connect } from 'react-redux'
-import { getCurrentAccount } from "./actions/setCurrentAccount.js"
+import { getCurrentAccount } from "./actions/currentAccount.js"
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
@@ -30,20 +30,19 @@ class App extends Component {
         `Logged in as ${currentAccount.name}`  :
         "Not logged in" } 
          </h2> 
-       <Router>
         <Navbar/>
         <Switch> 
-          <Route exact path='/' render={() => (<Login 
-            name={this.props.name} 
-            password={this.props.password} 
-            />)}/>
-          <Route exact path='/signup' render={() => (<Signup/>)}/>
-          <Route exact path='/account/:id' render={routerProps => <AccountContainer {...routerProps} accounts={this.state.currentUser}/>} />
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
+          <Route exact path='/accounts/:id' render={props => {
+            return <AccountContainer {...props} account={currentAccount}/>
+          } 
+        }/>
         </Switch>
-       </Router>
          { currentAccount ? 
           <Logout logout={this.logout}/> : null }
-          <button onClick={this.getDepartments}>Departments</button>
+         { currentAccount ? 
+          <button onClick={this.getDepartments}>Departments</button> : null }
          { currentAccount ? <Departments departments={currentAccount.departments} /> : null } 
     </div>
     );
@@ -51,10 +50,10 @@ class App extends Component {
 }
 //gives access to part of store 
 //receives entire state as it's argument 
-const mapStateToProps = ({ currentAccount }) => { //what portion of state to provide to props 
-  return { //executed with each change to the store. 
-    currentAccount
-  };
+const mapStateToProps = state => { //what portion of state to provide to props 
+  return ({ //executed with each change to the store. 
+    currentAccount: state.account 
+  });
 }
 //need to add in currentAccount action
-export default connect(mapStateToProps, { getCurrentAccount })(App); // specifies component to provide data to. 
+export default withRouter(connect(mapStateToProps, { getCurrentAccount })(App)); // specifies component to provide data to. 

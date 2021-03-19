@@ -1,10 +1,10 @@
 //import React from 'react';
 import React, { useState } from 'react';
-import { compose } from 'redux';
-import { login } from "../../actions/setCurrentAccount";
+//import { compose } from 'redux';
+import { login } from "../../actions/currentAccount";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { setCurrentAccount } from "../../actions/setCurrentAccount";
+import { setCurrentAccount } from "../../actions/currentAccount";
 
 //useForm hook? 
 //value of form input is determined by the state, state dictated by input field values
@@ -70,8 +70,4 @@ const mapStateToProps = state => {
 };
 
 
-export default compose(withRouter, 
-  connect(mapStateToProps, { 
-    login, 
-    setCurrentAccount 
-  }))(Login)
+export default withRouter(connect(mapStateToProps, { login, setCurrentAccount } )(Login));

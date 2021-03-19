@@ -9,7 +9,7 @@ export default function loginFormReducer(state = null, action) {
     case "SET_CURRENT_ACCOUNT":
       return action.account 
     case "CLEAR_CURRENT_ACCOUNT":
-      return state
+      return null 
     default:
       return state 
     };

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from 'react-router-dom';
-//import { Link } from "react-router-dom";
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 //import Login from "./registrations/Login";
 
 class Navbar extends Component {

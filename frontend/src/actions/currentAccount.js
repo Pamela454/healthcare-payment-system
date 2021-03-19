@@ -1,9 +1,10 @@
+import { usehistory } from 'react-router-dom'
 //action creators 
 
 export const setCurrentAccount = (account) => {
   return {
     type: "SET_CURRENT_ACCOUNT",
-    account: account 
+    account
   };
 };
 
@@ -18,7 +19,7 @@ export const clearCurrentAccount = (account) => {
 //thunk allows return of function instead of object. Function receives dispatch function and can dispatch multiple actions. 
 
 //needs to be revised 
-export const getCurrentAccount = () => {
+export const getCurrentAccount = (history) => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/get_current_account", {
       method: "GET",
@@ -33,14 +34,14 @@ export const getCurrentAccount = () => {
           alert("error");
         } else {
           dispatch(setCurrentAccount(account.data))
+          history.push(`/accounts/${account.data.id}`)
+        }
       })
       .catch(console.log);
-  };
  };
 }
 
 export const login = (form, history) => {
-	//console.log(credentials)
 	return dispatch => {
 		return fetch("http://localhost:3001/api/v1/login", {
 			method: "POST",
@@ -55,8 +56,9 @@ export const login = (form, history) => {
 				if (account.error) {
 					console.log("no")
 				} else {
+          console.log("yes")
 					dispatch(setCurrentAccount(account.data))
-          history.push('/')
+          history.push(`/accounts/${account.data.id}`)
 				}
 			})
 			.catch(console.log);
@@ -79,7 +81,7 @@ export const signup = (form, history) => {
           console.log("no")
         } else {
           dispatch(setCurrentAccount(account.data))
-          history.push('/')
+          history.push(`/accounts/${account.data.id}`)
         }
       })
       .catch(console.log);
