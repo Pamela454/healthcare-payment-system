@@ -18,11 +18,11 @@ export const clearCurrentAccount = (account) => {
 //thunk allows return of function instead of object. Function receives dispatch function and can dispatch multiple actions. 
 
 //needs to be revised 
-export const getCurrentAccount = (history) => {
+export const loggedIn = (history) => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/v1/get_current_account", {
+    return fetch("http://localhost:3001/api/v1/is_logged_in", {
       method: "GET",
-      credentials: "include",
+      credentials: 'same-origin',
       headers: {
         "Content-Type": "application/json"
       }
@@ -33,6 +33,7 @@ export const getCurrentAccount = (history) => {
           alert("error");
         } else {
           console.log(account.data)
+          localStorage.setItem("", true);
           dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
         }
@@ -45,6 +46,7 @@ export const login = (form, history) => {
 	return dispatch => {
 		return fetch("http://localhost:3001/api/v1/login", {
 			method: "POST",
+      credentials: 'same-origin',
 			headers: {
 				"Content-Type": "application/json"
 			},
@@ -69,6 +71,7 @@ export const signup = (form, history) => {
   return dispatch => {
     return fetch("http://localhost:3001/api/v1/signup", {
       method: "POST",
+      credentials: 'same-origin',
       headers: {
         "Content-Type": "application/json"
       },
@@ -92,7 +95,7 @@ export const logout = () => {
     return dispatch => {
     	dispatch(clearCurrentAccount());
     	return fetch("http://localhost:3001/api/v1/logout", {
-    		credentials: "include",
+    		credentials: 'same-origin',
     		method: "DELETE"
     	});
     };

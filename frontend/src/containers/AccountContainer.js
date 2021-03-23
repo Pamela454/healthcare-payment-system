@@ -2,7 +2,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {Route, Switch} from 'react-router-dom'
-import { getCurrentAccount } from '../actions/currentAccount'
+import { loggedIn } from '../actions/currentAccount'
 import Accounts from '../components/Accounts'
 import Account from '../components/Account'
 import AccountNew from '../components/AccountNew'
@@ -27,7 +27,7 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 			    <Route exact path='/accounts' render={(routerProps) => <Accounts {...routerProps} accounts={this.props.account}/> } /> 
 			 </Switch>
 			</div>
-			)
+		)
 	}
 }
 //is this needed if not displaying list of accounts?
@@ -37,4 +37,4 @@ const mapStateToProps = state => { //this is the state from redux
 	}
 }
 //dispatch happens automatically with connect 
-export default connect(mapStateToProps, { getCurrentAccount })(AccountsContainer)
+export default connect(mapStateToProps, { loggedIn })(AccountsContainer)

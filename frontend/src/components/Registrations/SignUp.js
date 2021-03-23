@@ -70,7 +70,7 @@ const Signup = ({ signupFormData, signup, history }) => {
             value={signupFormData.password}
             onChange={handleChange}
           /><br/>  
-          <input 
+         <input 
             placeholder="status"
             type="text"
             name="status"

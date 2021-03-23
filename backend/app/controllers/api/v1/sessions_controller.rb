@@ -1,30 +1,38 @@
 class Api::V1::SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  #skip_before_action :verify_authenticity_token
 
   def create
+    binding.pry
     @account = Account.find_by(name: params[:name])
     #if successful generate JWT token, include token back in response to client
     #include user in response back as well 
     if @account && @account.authenticate(params[:password])
-      session[:account_id] = @account.id
+      login!
       render json: AccountSerializer.new(@account)
     else
       render json: {
-        error: "Invalid credentials",
+        status: 401,
+        errors: "Invalid credentials",
       }
     end
   end
 
-  def get_current_account
-    if is_logged_in?
-      render json: AccountSerializer.new(current_account)
+  def is_logged_in?
+    if logged_in? && current_account
+      render json: {
+        logged_in: true,
+        account: current_account
+      }
     else
-      render json: {error: "No current account"}
-    end 
+      render json: {
+        logged_in: false,
+        errors: "not logged in"
+      }
+    end
   end
 
   def destroy
-    session.clear
+    logout! 
     render json: {
       status: 200,
       logged_out: true

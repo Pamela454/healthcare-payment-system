@@ -3,9 +3,10 @@ import { Switch, Route, withRouter } from "react-router-dom";
 import Departments from './components/Departments'
 //import React, { useState } from 'react';
 import { connect } from 'react-redux'
-import { getCurrentAccount } from "./actions/currentAccount.js"
+import { loggedIn } from "./actions/currentAccount.js"
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
+import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Login from './components/registrations/Login'
 import Logout from './components/registrations/Logout'
@@ -19,7 +20,7 @@ class App extends Component {
     //this.props.getCurrentAccount(); //does this need to be a hook? 
   //}
   componentDidMount() {
-    this.props.getCurrentAccount();
+    this.props.loggedIn();
     console.log(this.props)
   }
 
@@ -34,8 +35,9 @@ class App extends Component {
          </h2> 
         <Navbar/>
         <Switch> 
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
+          <Route exact path='/' render={props => ( <Home {...props}/>)}/>
+          <Route exact path='/login' render={props => ( <Login {...props}/>)}/>
+          <Route exact path='/signup' render={props => ( <Signup {...props}/>)}/>
           <Route exact path='/accounts/:id' render={props => {
             return <AccountContainer {...props} account={currentAccount}/>
           } 
@@ -58,4 +60,4 @@ const mapStateToProps = state => { //what portion of state to provide to props
   });
 }
 //need to add in currentAccount action
-export default withRouter(connect(mapStateToProps, { getCurrentAccount })(App)); // specifies component to provide data to. 
+export default withRouter(connect(mapStateToProps, { loggedIn })(App)); // specifies component to provide data to. 
