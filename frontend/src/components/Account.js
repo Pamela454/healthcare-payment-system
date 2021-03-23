@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+//import {Link} from 'react-router-dom'
 //import {Redirect} from "react-router-dom"
 import DepartmentsContainer from '../containers/DepartmentsContainer'
 
@@ -12,7 +12,7 @@ import DepartmentsContainer from '../containers/DepartmentsContainer'
 //can't use this.state 
 
 const Account = (props) => {
-
+console.log(props)
 	//let account = props.accounts[props.match.params.id - 1]
 //do you need a key?, only if iterating 
 return (

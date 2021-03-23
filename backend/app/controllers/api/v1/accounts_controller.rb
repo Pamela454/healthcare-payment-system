@@ -16,7 +16,6 @@ class Api::V1::AccountsController < ApplicationController
   end
 
   def show
-    binding.pry
     @account = Account.find_by(account_id: params[:account_id])
     render json: AccountSerializer.new(@account)
   end

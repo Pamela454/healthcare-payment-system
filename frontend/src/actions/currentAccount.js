@@ -1,4 +1,3 @@
-import { usehistory } from 'react-router-dom'
 //action creators 
 
 export const setCurrentAccount = (account) => {
@@ -33,6 +32,7 @@ export const getCurrentAccount = (history) => {
         if (account.error) {
           alert("error");
         } else {
+          console.log(account.data)
           dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
         }

@@ -1,6 +1,5 @@
 class Api::V1::DepartmentsController < ApplicationController
-
-  #before_action :set_account
+  before_action :set_account
 
   def index
     if is_logged_in?
@@ -45,10 +44,9 @@ class Api::V1::DepartmentsController < ApplicationController
 
   private
 
-  #def set_account
-    #binding.pry
-  	#@account = Account.find(params[:account_id])
-  #end
+  def set_account
+  	@account = Account.find(params[:account_id])
+  end
 
   def department_params
   	params.require(:department).permit(:name, :service, :charge, :account_id)

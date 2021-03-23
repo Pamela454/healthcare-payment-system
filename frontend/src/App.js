@@ -18,12 +18,14 @@ class App extends Component {
   //componentDidMount() { //can set state which then causes an update 
     //this.props.getCurrentAccount(); //does this need to be a hook? 
   //}
-
+  componentDidMount() {
+    this.props.getCurrentAccount();
+    console.log(this.props)
+  }
 
 
   render() {
     const { currentAccount } = this.props  
-
     return (
       <div className="App">
           <h2>{ currentAccount ? 
