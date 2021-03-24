@@ -12,7 +12,6 @@ import DepartmentsContainer from '../containers/DepartmentsContainer'
 //can't use this.state 
 
 const Account = (props) => {
-console.log(props)
 	//let account = props.accounts[props.match.params.id - 1]
 //do you need a key?, only if iterating 
 return (

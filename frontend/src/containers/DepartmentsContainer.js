@@ -1,4 +1,5 @@
 import React from 'react'
+import {Route, Switch} from 'react-router-dom'
 //import {connect} from 'react-redux'
 //import {fetchDepartments} from '../actions/fetchDepartments'
 import DepartmentNew from '../components/DepartmentNew'
@@ -15,8 +16,14 @@ class DepartmentsContainer extends React.Component {
 	render () {
 		return (
 			<div>
-				<DepartmentNew account={this.props.account}/>
-				<Departments departments={this.props.account && this.props.account.departments}/>
+			 <Switch>
+				<Route exact path='/departments/new' render={props => {
+					return <DepartmentNew {...props} account={this.props.account}/> }
+				 }/>
+				<Route exact path='/departments' render={props => {
+					return <Departments {...props} departments={this.props.account && this.props.account.departments}/> }
+				}/>
+			 </Switch>
 			</div>
 
 		)

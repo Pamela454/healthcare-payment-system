@@ -1,9 +1,10 @@
 //action creators 
 
 export const setCurrentAccount = (account) => {
+      console.log(account)
   return {
     type: "SET_CURRENT_ACCOUNT",
-    account
+    payload: account
   };
 };
 
@@ -20,7 +21,7 @@ export const clearCurrentAccount = (account) => {
 //needs to be revised 
 export const loggedIn = (history) => {
   return dispatch => {
-    return fetch("http://localhost:3001/api/v1/is_logged_in", {
+    return fetch("http://localhost:3001/api/v1/logged_in", {
       method: "GET",
       credentials: 'same-origin',
       headers: {
@@ -33,7 +34,7 @@ export const loggedIn = (history) => {
           alert("error");
         } else {
           console.log(account.data)
-          localStorage.setItem("", true);
+          localStorage.setItem("loggedIn", true);
           dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
         }
@@ -55,10 +56,11 @@ export const login = (form, history) => {
 			.then(res => res.json())
 			.then(account => {
 				console.log(account)
-				if (account.error) {
+				if (account.error || account === null || account === undefined) {
 					console.log("no")
 				} else {
           console.log("yes")
+          console.log(account.data)
 					dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
 				}

@@ -15,17 +15,22 @@ import AccountNew from '../components/AccountNew'
 //only compnent connected to store?
 
 class AccountsContainer extends React.Component { //can call lifecycle hooks
-	
 //render stated component 
 //return react element from render function 
 	render () {
+			console.log(this.props.account)
 		return (
 			<div>
 			 <Switch>
-			    <Route path='/accounts/new' component={AccountNew} />
-			    <Route exact path='/accounts/:id' render={(routerProps) => <Account {...routerProps} accounts={this.props.account}/> } />
-			    <Route exact path='/accounts' render={(routerProps) => <Accounts {...routerProps} accounts={this.props.account}/> } /> 
-			 </Switch>
+			    <Route exact path='/accounts/new' component={AccountNew} />
+			    <Route exact path='/accounts/:id' render={props => { 
+			      return <Account {...props} account={this.props.account}/> } 
+			  }/>
+			    <Route exact path='/accounts' render={props => { 
+			      return <Accounts {...props} accounts={this.props.accounts}/> }
+			}/> 
+			 </Switch>                                   
+    
 			</div>
 		)
 	}
@@ -33,7 +38,7 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 //is this needed if not displaying list of accounts?
 const mapStateToProps = state => { //this is the state from redux 
 	return {
-		accounts: state.accounts //accounts located inside the state
+		account: state.account //accounts located inside the state
 	}
 }
 //dispatch happens automatically with connect 

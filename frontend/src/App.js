@@ -55,9 +55,9 @@ class App extends Component {
 //gives access to part of store 
 //receives entire state as it's argument 
 const mapStateToProps = state => { //what portion of state to provide to props 
-  return ({ //executed with each change to the store. 
-    currentAccount: state.account 
-  });
+  return { //executed with each change to the store. 
+    ...state
+  };
 }
 //need to add in currentAccount action
 export default withRouter(connect(mapStateToProps, { loggedIn })(App)); // specifies component to provide data to. 

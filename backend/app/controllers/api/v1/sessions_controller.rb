@@ -2,7 +2,6 @@ class Api::V1::SessionsController < ApplicationController
   #skip_before_action :verify_authenticity_token
 
   def create
-    binding.pry
     @account = Account.find_by(name: params[:name])
     #if successful generate JWT token, include token back in response to client
     #include user in response back as well 
