@@ -34,7 +34,7 @@ export const loggedIn = (history) => {
           alert("error");
         } else {
           console.log(account.data)
-          localStorage.setItem("loggedIn", true);
+          localStorage.setItem("loggedIn", true); //can only set string, JSON.stringify to convert 
           dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
         }

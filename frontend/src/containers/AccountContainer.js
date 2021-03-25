@@ -18,7 +18,7 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 //render stated component 
 //return react element from render function 
 	render () {
-			console.log(this.props.account)
+		console.log(this.props.type)
 		return (
 			<div>
 			 <Switch>
@@ -37,8 +37,9 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 }
 //is this needed if not displaying list of accounts?
 const mapStateToProps = state => { //this is the state from redux 
+	console.log(state)
 	return {
-		account: state.account //accounts located inside the state
+		account: state.loginFormReducer //accounts located inside the state
 	}
 }
 //dispatch happens automatically with connect 

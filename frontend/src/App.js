@@ -21,7 +21,6 @@ class App extends Component {
   //}
   componentDidMount() {
     this.props.loggedIn();
-    console.log(this.props)
   }
 
 
@@ -47,7 +46,7 @@ class App extends Component {
           <Logout logout={this.logout}/> : null }
          { currentAccount ? 
           <button onClick={this.getDepartments}>Departments</button> : null }
-         { currentAccount ? <Departments departments={currentAccount.departments} /> : null } 
+         { currentAccount ? <Departments departments={currentAccount} /> : null } 
     </div>
     );
   }

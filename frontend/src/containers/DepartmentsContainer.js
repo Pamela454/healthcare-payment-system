@@ -12,18 +12,19 @@ class DepartmentsContainer extends React.Component {
       //  this.props.fetchDepartments() //dispatching to redux store 
 	//}
    
-
 	render () {
+		console.log(this.props)
 		return (
 			<div>
 			 <Switch>
 				<Route exact path='/departments/new' render={props => {
-					return <DepartmentNew {...props} account={this.props.account}/> }
+					return <DepartmentNew {...props} account={this.props}/> }
 				 }/>
 				<Route exact path='/departments' render={props => {
-					return <Departments {...props} departments={this.props.account && this.props.account.departments}/> }
+					return <Departments {...props} departments={this.props && this.props.departments}/> }
 				}/>
 			 </Switch>
+			 <Departments account={this.props.account} departments={this.props.account.relationships.departments}/>
 			</div>
 
 		)

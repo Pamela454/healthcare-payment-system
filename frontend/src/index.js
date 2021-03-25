@@ -5,22 +5,22 @@ import { BrowserRouter} from 'react-router-dom'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //from imported redux library
-import thunk from 'redux-thunk' //asynchrounos actions 
+import ReduxThunk from 'redux-thunk' //asynchronous actions 
 import accountReducer from './reducers/accountReducer'
-import loginForm from './reducers/loginForm'
-import signupForm from './reducers/signupForm'
+import loginFormReducer from './reducers/loginFormReducer'
+import signupFormReducer from './reducers/signupFormReducer'
 
 //manage independent parts of the state. Single reducing function to pass to create store. 
 const reducers = combineReducers({
   accountReducer,
-  loginForm,
-  signupForm
+  loginFormReducer,
+  signupFormReducer
 });
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;  //dev tools
 
-let store = createStore(reducers, composeEnhancers(applyMiddleware(thunk))) //method provided by redux library 
+let store = createStore(reducers, composeEnhancers(applyMiddleware(ReduxThunk))) //method provided by redux library 
 //asynchronous use of dispatch
 //containers act more like parent components, contain other componenets
 //store - data stored globally. could create in separate file and import. 

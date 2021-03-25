@@ -10,20 +10,19 @@ import { setCurrentAccount } from "../../actions/currentAccount";
 //value of form input is determined by the state, state dictated by input field values
 // only use hooks with function components 
 const Login = ({ login, name, password, setCurrentAccount, history }) => {
-  const [form, setState] = useState({
+  const [form, setForm] = useState({
     name: '',
     password: ''
   });
 
-  const handleLoginFormChange = event => {
-   setState({
-    ...form,
-    [event.target.name]: event.target.value, 
-    [event.target.password]: event.target.value 
+  const handleLoginFormChange = (event, target) => {
+    setForm({
+      ...form,
+    [target]: event.target.value, 
    });
   }
 
-const handleLoginFormSubmit = event => {
+  const handleLoginFormSubmit = event => {
     event.preventDefault() //state contains most up to date form data. prevent page refresh 
     login(form, history); 
   }
@@ -39,7 +38,7 @@ const handleLoginFormSubmit = event => {
             name="name"
             autoComplete="on"
             value={form.name}
-            onChange={handleLoginFormChange}
+            onChange={(event)=> handleLoginFormChange(event, "name")}
           /><br/>
         <input
             placeholder="password"
@@ -47,7 +46,7 @@ const handleLoginFormSubmit = event => {
             name="password"
             autoComplete="on"
             value={form.password}
-            onChange={handleLoginFormChange}
+            onChange={(event)=> handleLoginFormChange(event, "password")}
           /><br/>          
         <button placeholder="submit" type="submit">
             Log In
@@ -62,7 +61,7 @@ const handleLoginFormSubmit = event => {
 }
 
 
-// persists changes in the state. 
+// persists changes in the state. state can be changed, not props. 
 const mapStateToProps = state => {
   return {
     form: state.form 
