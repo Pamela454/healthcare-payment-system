@@ -1,17 +1,18 @@
 import React from 'react';
+import { logout } from "../../actions/currentAccount.js";
+import { Button } from 'react-bootstrap'
+import { connect } from "react-redux";
+import {Link} from 'react-router-dom'
 
-const Logout = ({logout}) => {
+
+
+class Logout extends React.Component {
+  render() {
   return (
-      <div className="Logout">
-        <form onSubmit={logout}>
-          <input
-            type="submit"
-            value="Logout"
-          />
-        </form>
-      </div>
+        <Button onClick={this.props.logout}><Link to="/logout">Log Out</Link></Button>
   );
+ }
 
 }
 
-export default Logout 
+export default connect(null, {logout})(Logout) 

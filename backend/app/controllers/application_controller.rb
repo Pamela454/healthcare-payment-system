@@ -25,7 +25,8 @@ class ApplicationController < ActionController::API
   end
 
   def logout!
-      session.clear
+    #session.clear ??
+      localStorage.clear
   end
 
   #def set_account #need this as well as login! ?

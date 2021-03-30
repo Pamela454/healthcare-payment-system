@@ -4,12 +4,12 @@ import Departments from './components/Departments'
 //import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { loggedIn } from "./actions/currentAccount.js"
+import Logout from './components/registrations/Logout';
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
 import Login from './components/registrations/Login'
-import Logout from './components/registrations/Logout'
 import Signup from './components/registrations/Signup'
 
 //if constantly passing down props consider connecting to the store
@@ -26,9 +26,11 @@ class App extends Component {
 
   render() {
     const currentAccount = localStorage.getItem("loggedIn");
+
     return (
       <div className="App">
-          <h2>{ currentAccount ? 
+          <h2> 
+             { currentAccount ? 
         `Logged in as ${this.props.loginFormReducer.attributes.name}` :
         "Not logged in" } 
          </h2> 
@@ -43,7 +45,7 @@ class App extends Component {
         }/>
         </Switch>
          { currentAccount ? 
-          <Logout logout={this.logout}/> : null }
+          <Logout/> : null }
          { currentAccount ? 
           <button onClick={this.getDepartments}>Departments</button> : null }
          { currentAccount ? <Departments departments={currentAccount} /> : null } 

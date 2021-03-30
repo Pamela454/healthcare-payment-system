@@ -95,10 +95,10 @@ export const signup = (form, history) => {
 
 export const logout = () => {
     return dispatch => {
-    	dispatch(clearCurrentAccount());
+      dispatch(clearCurrentAccount());
     	return fetch("http://localhost:3001/api/v1/logout", {
     		credentials: 'same-origin',
     		method: "DELETE"
-    	});
+    	})
     };
   }

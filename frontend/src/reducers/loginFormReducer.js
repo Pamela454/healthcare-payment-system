@@ -10,6 +10,7 @@ export default function loginFormReducer(state = initialState, action) {
     console.log(action.payload.attributes)
       return action.payload
     case "CLEAR_CURRENT_ACCOUNT":
+    localStorage.removeItem("loggedIn")
       return initialState
     default:
       return state
