@@ -4,7 +4,7 @@ import Departments from './components/Departments'
 //import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { loggedIn } from "./actions/currentAccount.js"
-import Logout from './components/registrations/Logout';
+//import Logout from './components/registrations/Logout';
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Home from './components/Home'

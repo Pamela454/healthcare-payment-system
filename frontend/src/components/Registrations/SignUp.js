@@ -1,82 +1,55 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from "react-redux";
+//import { withRouter } from "react-router-dom";
 import { signup } from "../../actions/currentAccount";
 
 
-const Signup = ({ signupFormData, signup, history }) => {
+const Signup = ({ name, password, status, signup, history }) => {
+  const [signupFormData, setForm] = useState({
+    name: '',
+    password: '',
+    status: ''
+  });
 
-  const handleChange = (event) => {
-    const { name, status, value } = event.target;
-    const formData = {
-      ...signupFormData, 
-      [name]: value,
-      [status]: value
-    };
-    signup(formData);
+
+  const handleSignupFormChange = (event, target) => {
+    setForm({
+      ...signupFormData,
+      [target]: event.target.value,
+    });
   };
 
-  const handleSubmit = (event) => {
+
+  const handleSignupFormSubmit = (event) => {
     event.preventDefault()
     signup(signupFormData, history);
   };
 
-  //axios.post('http://localhost:3001/signup', {account}, {withCredentials: true})
-    //.then(response => {
-      //if (response.data.status === 'created') {
-        //this.props.handleLogin(response.data)
-        //this.redirect()
-      //} else {
-       // this.setState({
-          //errors: response.data.errors
-        //})
-      //}
-    //})
-    //.catch(error => console.log('api errors:', error))
-//};
-
-//redirect = () => {
-    //this.props.history.push('/')
-  //}
-
-//handleErrors = () => {
-    //return (
-      //<div>
-        //<ul>{this.state.errors.map((error) => {
-          //return <li>key={error}>{error}</li>
-        //})}
-        //</ul> 
-      //</div>
-    //)
-//};
-//add password confirmation to form. 
-
-//render() {
-    //const {name, password, status} = this.state
   return (
     <div>
       <h1>Sign Up</h1>         
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSignupFormSubmit}>
           <input
             placeholder="name"
             type="text"
             name="name"
             value={signupFormData.name}
-            onChange={handleChange}
+            onChange={(event)=> handleSignupFormChange(event, "name")}
           /><br/>
           <input 
             placeholder="password"
             type="password"
             name="password"
             value={signupFormData.password}
-            onChange={handleChange}
+            onChange={(event)=> handleSignupFormChange(event, "password")}
           /><br/>  
-         <input 
-            placeholder="status"
-            type="text"
-            name="status"
-            value={signupFormData.status}
-            onChange={handleChange}
-          /><br/>                 
+         <label>
+           <select value={signupFormData.status}
+           onChange={(event)=> handleSignupFormChange(event, "status")}>
+           <option value="patient">Patient</option>
+           <option value="administrator">Administrator</option>
+           </select>
+          </label>
           <button placeholder="submit" type="submit">
             Sign Up
           </button>
