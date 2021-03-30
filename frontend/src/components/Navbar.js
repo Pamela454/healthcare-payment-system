@@ -1,19 +1,24 @@
-import React, { Component } from "react";
-import { Link } from 'react-router-dom';
-//import { connect } from 'react-redux'
-//import { NavLink } from 'react-router-dom'
-//import Login from "./registrations/Login";
+import React from "react";
+//import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
+import { NavLink } from 'react-router-dom'
+//import { Button } from 'react-bootstrap'
+import Logout from "./registrations/Logout";
 
-class Navbar extends Component {
-  render() {
-    return(
-        <nav className="navbar navbar-dark bg-primary">
-            <div className="row col-12 d-flex justify-content-center text-white">
-            <Link to='/signup' className='App-Link'>Signup</Link> 
-            </div>
-        </nav>
+const Navbar = (props) => {
+    return (
+        <div className="Navbar">
+            { props.account ? null : <NavLink exact activeClassName="active" to="/signup" >Signup</NavLink> }
+            { props.account ? <Logout/> : null }
+        </div>
     )
-  }
 }
  
-export default Navbar;
+
+const mapStateToProps = ({ currentAccount}) => {
+  return {
+    //currentAccount: this.props
+  }
+}
+
+export default connect(mapStateToProps)(Navbar);

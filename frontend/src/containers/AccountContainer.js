@@ -18,7 +18,6 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 //render stated component 
 //return react element from render function 
 	render () {
-		console.log(this.props.type)
 		return (
 			<div>
 			 <Switch>

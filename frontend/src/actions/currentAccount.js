@@ -8,7 +8,7 @@ export const setCurrentAccount = (account) => {
   };
 };
 
-export const clearCurrentAccount = (account) => {
+export const logout = () => {
 	return {
 		type: "CLEAR_CURRENT_ACCOUNT"
 	};
@@ -61,6 +61,7 @@ export const login = (form, history) => {
 				} else {
           console.log("yes")
           console.log(account.data)
+          localStorage.setItem("loggedIn", true);
 					dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
 				}
@@ -93,12 +94,12 @@ export const signup = (form, history) => {
   }
 }
 
-export const logout = () => {
-    return dispatch => {
-      dispatch(clearCurrentAccount());
-    	return fetch("http://localhost:3001/api/v1/logout", {
-    		credentials: 'same-origin',
-    		method: "DELETE"
-    	})
-    };
-  }
+//export const logout = () => {
+    //return dispatch => {
+      //dispatch(clearCurrentAccount());
+    	//return fetch("http://localhost:3001/api/v1/logout", {
+    		//credentials: 'same-origin',
+    		//method: "DELETE"
+    	//})
+    //};
+  //}

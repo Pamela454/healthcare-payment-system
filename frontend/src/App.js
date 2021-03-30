@@ -9,6 +9,7 @@ import Logout from './components/registrations/Logout';
 import AccountContainer from './containers/AccountContainer'
 import Home from './components/Home'
 import Navbar from './components/Navbar'
+//import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
 
@@ -28,13 +29,13 @@ class App extends Component {
     const currentAccount = localStorage.getItem("loggedIn");
 
     return (
+      console.log(this.props),
       <div className="App">
           <h2> 
              { currentAccount ? 
         `Logged in as ${this.props.loginFormReducer.attributes.name}` :
         "Not logged in" } 
          </h2> 
-        <Navbar/>
         <Switch> 
           <Route exact path='/' render={props => ( <Home {...props}/>)}/>
           <Route exact path='/login' render={props => ( <Login {...props}/>)}/>
@@ -44,8 +45,7 @@ class App extends Component {
           } 
         }/>
         </Switch>
-         { currentAccount ? 
-          <Logout/> : null }
+        <Navbar account={currentAccount}/>
          { currentAccount ? 
           <button onClick={this.getDepartments}>Departments</button> : null }
          { currentAccount ? <Departments departments={currentAccount} /> : null } 
