@@ -20,16 +20,16 @@ class App extends Component {
     //this.props.getCurrentAccount(); //does this need to be a hook? 
   //}
   componentDidMount() {
-    this.props.loggedIn();
+    loggedIn(this.props.history);
   }
 
 
   render() {
-    const { currentAccount } = this.props  
+    const currentAccount = localStorage.getItem("loggedIn");
     return (
       <div className="App">
           <h2>{ currentAccount ? 
-        `Logged in as ${currentAccount.name}`  :
+        `Logged in as ${this.props.loginFormReducer.attributes.name}` :
         "Not logged in" } 
          </h2> 
         <Navbar/>
