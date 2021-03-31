@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
-//import { withRouter } from "react-router-dom";
 import { signup } from "../../actions/currentAccount";
 
 
 const Signup = ({ name, password, status, signup, history }) => {
+
   const [signupFormData, setForm] = useState({
     name: '',
     password: '',
@@ -47,7 +47,7 @@ const Signup = ({ name, password, status, signup, history }) => {
            <select value={signupFormData.status}
            onChange={(event)=> handleSignupFormChange(event, "status")}>
            <option value="patient">Patient</option>
-           <option value="administrator">Administrator</option>
+           <option value="admin">Administrator</option>
            </select>
           </label>
           <button placeholder="submit" type="submit">

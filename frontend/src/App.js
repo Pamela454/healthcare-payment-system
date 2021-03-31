@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import { Switch, Route, withRouter } from "react-router-dom";
-import Departments from './components/Departments'
+//import Departments from './components/Departments'
 //import React, { useState } from 'react';
 import { connect } from 'react-redux'
 import { loggedIn } from "./actions/currentAccount.js"
 //import Logout from './components/registrations/Logout';
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
-import Home from './components/Home'
 import Navbar from './components/Navbar'
-//import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from 'react-bootstrap'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
 
@@ -17,13 +15,11 @@ import Signup from './components/registrations/Signup'
 
 class App extends Component {
 
-  //componentDidMount() { //can set state which then causes an update 
-    //this.props.getCurrentAccount(); //does this need to be a hook? 
-  //}
   componentDidMount() {
-    loggedIn(this.props.history);
+    if (localStorage.getItem("loggedIn")) {
+      loggedIn(this.props.history);
+    }
   }
-
 
   render() {
     const currentAccount = localStorage.getItem("loggedIn");
@@ -31,24 +27,18 @@ class App extends Component {
     return (
       console.log(this.props),
       <div className="App">
-          <h2> 
-             { currentAccount ? 
+             <h2>{ currentAccount ? 
         `Logged in as ${this.props.loginFormReducer.attributes.name}` :
-        "Not logged in" } 
-         </h2> 
-        <Switch> 
-          <Route exact path='/' render={props => ( <Home {...props}/>)}/>
-          <Route exact path='/login' render={props => ( <Login {...props}/>)}/>
-          <Route exact path='/signup' render={props => ( <Signup {...props}/>)}/>
+        "Not logged in" }</h2>
+        <Switch>   
+          <Route exact path='/api/v1/login' render={props => ( <Login {...props}/>)}/>
+          <Route exact path='/api/v1/signup' render={props => ( <Signup {...props}/>)}/>
           <Route exact path='/accounts/:id' render={props => {
             return <AccountContainer {...props} account={currentAccount}/>
           } 
         }/>
         </Switch>
-        <Navbar account={currentAccount}/>
-         { currentAccount ? 
-          <button onClick={this.getDepartments}>Departments</button> : null }
-         { currentAccount ? <Departments departments={currentAccount} /> : null } 
+         { currentAccount ? <Navbar account={currentAccount}/> : null } 
     </div>
     );
   }

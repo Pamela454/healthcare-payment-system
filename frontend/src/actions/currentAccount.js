@@ -86,6 +86,7 @@ export const signup = (form, history) => {
         if (account.error) {
           console.log("no")
         } else {
+          localStorage.setItem("loggedIn", true);
           dispatch(setCurrentAccount(account.data))
           history.push(`/accounts/${account.data.id}`)
         }

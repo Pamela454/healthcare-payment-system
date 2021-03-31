@@ -32,7 +32,7 @@ ReactDOM.render(
     <Provider store={store}> 
     <BrowserRouter> 
 		<App />
-	</BrowserRouter>,
+	</BrowserRouter>
 	</Provider>, 
 	document.getElementById('root'));
 //router gives any child access to setting up routes and using links. children all wrapped in router
