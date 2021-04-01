@@ -1,48 +1,54 @@
 import React from 'react'
+import { useState } from 'react';
+//import { withRouter } from "react-router-dom";
 import {connect} from 'react-redux'
-import {newDepartment} from '../actions/newDepartment'
+import { newDepartment } from ".././actions/currentDepartments.js"
 
 
-class DepartmentNew extends React.Component {
+const DepartmentNew = ({ newDepartment, history }) => {
+ 
+	const [form, setForm] = useState({
+    name: '',
+    service: '',
+    charge: '',
+    account_id: this.props.account.id 
+  });
 
-	state = {
-		name: '',
-		service: '',
-		charge: ''
-	}
-
-    handleChange = (event) => {
-      this.setState({
-      	[event.target.name]: event.target.value 
-      })
+  const handleNewDepartmentFormChange = (event, target) => {
+      setForm({
+      ...form,
+    [target]: event.target.value, 
+   });
     }
 
-    handleSubmit = (event) => {
+   const handleNewDepartmentFormSubmit = (event) => {
 	 	event.preventDefault()
-	 	this.props.newDepartment(this.state, this.props.account.id)
-        this.setState({
-          name: '', 
-          service: '',
-          charge: ''
-        })
+	 	newDepartment(form, history);
 	 }
 
-	render() {
-		return (
+	return (
            <div>
-             <form onSubmit={this.handleSubmit}>
+             <form onSubmit={handleNewDepartmentFormSubmit}>
                 <label>Department New</label>
                 <label>Name:</label>
-                <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
+                <input type="text" 
+                        name="name" 
+                        value={form.name} 
+                        onChange={(event)=> handleNewDepartmentFormChange(event, "name")}/>
                 <label>Service:</label>
-                <input type="text" name="service" value={this.state.service} onChange={this.handleChange}/>
+                <input type="text" 
+                        name="service" 
+                        value={form.service} 
+                        onChange={(event)=> handleNewDepartmentFormChange(event, "service")}/>
                 <label>Charge:</label>
-                <input type="text" name="charge" value={this.state.charge} onChange={this.handleChange}/>
+                <input type="text" 
+                        name="charge" 
+                        value={form.charge} 
+                        onChange={(event)=> handleNewDepartmentFormChange(event, "charge")}/>
                 <input type="submit"/>
              </form> 
            </div>
 		)
-	}
 }
 
 export default connect(null, {newDepartment})(DepartmentNew)

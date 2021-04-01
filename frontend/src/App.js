@@ -50,5 +50,6 @@ const mapStateToProps = state => { //what portion of state to provide to props
     ...state
   };
 }
-//need to add in currentAccount action
+//could be changed to anonymous arrow function 
+//dispatch is injected as a prop
 export default withRouter(connect(mapStateToProps, { loggedIn })(App)); // specifies component to provide data to. 
