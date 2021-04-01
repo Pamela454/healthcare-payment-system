@@ -1,14 +1,13 @@
 export const setDepartments = (departments) => {
-      console.log(departments)
   return {
     type: "SET_DEPARTMENTS",
     payload: departments
   };
 };
 
-export const getDepartments = (history) => {
+export const getDepartments = (accountId, history) => {
 	return dispatch => {
-		return fetch("http://localhost:3001/api/v1/accounts/${accountId}/departments", {
+		return fetch(`http://localhost:3001/api/v1/accounts/${accountId}/departments`, {
 			method: "GET",
       credentials: 'same-origin',
 			headers: {
@@ -18,6 +17,7 @@ export const getDepartments = (history) => {
 		})
 			.then(res => res.json())
 			.then(response => {
+				console.log(response)
 				if (response.error || response === null || response === undefined) {
 					console.log("no")
 				} else {

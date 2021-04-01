@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
   end
 
   def current_account   #JWT will try to call?
-      @current_account ||= Account.find(session[:account_id]) if session[:account_id]
+      @current_account = Account.find(@account.id) 
   end
 
   def logout!

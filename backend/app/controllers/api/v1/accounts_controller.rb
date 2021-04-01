@@ -16,7 +16,7 @@ class Api::V1::AccountsController < ApplicationController
   end
 
   def get_current_account
-    if is_logged_in?
+    if logged_in?
       render json: AccountSerializer.new(current_account)
     else
       render json: {error: "No current account"}

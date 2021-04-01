@@ -2,8 +2,8 @@ class Api::V1::DepartmentsController < ApplicationController
   before_action :set_account
 
   def index
-    if is_logged_in?
-  	   @departments = current_account.department
+    if logged_in?
+  	   @departments = @current_account.departments
   	   render json: DepartmentSerializer.new(@departments)
     else
         render json: {
@@ -31,8 +31,6 @@ class Api::V1::DepartmentsController < ApplicationController
   	@department = Department.find(id: params[:id])
   	@department.update(department_params)
   	render json: DepartmentSerializer.new(@department)
-  end
-    
   end
 
   def destroy

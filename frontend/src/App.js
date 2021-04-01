@@ -8,6 +8,7 @@ import { loggedIn } from "./actions/currentAccount.js"
 //import Payments from './components/Payments'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
+//import DepartmentsContainer from './containers/DepartmentsContainer'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
 
@@ -35,8 +36,7 @@ class App extends Component {
           <Route exact path='/api/v1/signup' render={props => ( <Signup {...props}/>)}/>
           <Route exact path='/accounts/:id' render={props => {
             return <AccountContainer {...props} account={currentAccount}/>
-          } 
-        }/>
+          } }/>
         </Switch>
          { currentAccount ? <Navbar account={currentAccount}/> : null } 
     </div>
