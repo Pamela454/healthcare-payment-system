@@ -5,7 +5,7 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from 'react-redux'
 import { loggedIn } from "./actions/currentAccount.js"
 //import Logout from './components/registrations/Logout';
-//import Payments from './components/Payments'
+import PaymentNew from './components/PaymentNew'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
 import DepartmentsContainer from './containers/DepartmentsContainer'
@@ -28,9 +28,9 @@ class App extends Component {
 
     return (
       <div className="App">
-             <h2>{ currentAccount ? 
+            <h2>{ currentAccount ? 
         `Logged in as ${this.props.loginFormReducer.attributes.name}` :
-        "Not logged in" }</h2>
+        "Not logged in" }</h2> 
         <Switch>   
           <Route exact path='/api/v1/login' render={props => ( <Login {...props}/>)}/>
           <Route exact path='/api/v1/signup' render={props => ( <Signup {...props}/>)}/>
@@ -41,6 +41,7 @@ class App extends Component {
           <Route exact path='/accounts/:id/departments' render={props => {
             return <DepartmentsContainer/>
           } }/>
+          <Route exact path='/accounts/:id/payments/new' render={props => ( <PaymentNew {...props}/>)}/>
         </Switch>
          { currentAccount ? <Navbar account={currentAccount}/> : null } 
     </div>

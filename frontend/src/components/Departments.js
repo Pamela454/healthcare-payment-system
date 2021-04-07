@@ -1,6 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import { withRouter } from "react-router-dom";
+import { Button } from 'react-bootstrap';
 import { deleteDepartment } from ".././actions/currentDepartments.js"
 
 class Departments extends React.Component {
@@ -10,8 +11,8 @@ class Departments extends React.Component {
     //const handleDelete = () => {
       //this.props.deleteDepartment()
     //}
-
     //const departments = this.props.departments;
+    const navigateTo = (id) => () => this.props.history.push(`/accounts/${id}/payments/new`);
 
     return (
             <div>
@@ -23,6 +24,7 @@ class Departments extends React.Component {
                <div key={department.id}><label> Name - </label> {department.attributes.name}</div>
                <div key={department.id}><label> Service - </label> {department.attributes.service}</div>
                <div key={department.id}><label> Charge - </label> ${department.attributes.charge}</div>
+               <Button onClick={navigateTo(department.id)}>Make Payment</Button>
                </React.Fragment>
                );
               }) : null }
