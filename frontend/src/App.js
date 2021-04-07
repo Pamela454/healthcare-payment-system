@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, withRouter } from "react-router-dom";
+import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 //import Departments from './components/Departments'
 //import React, { useState } from 'react';
 import { connect } from 'react-redux'
@@ -22,6 +22,7 @@ class App extends Component {
     }
   }
 
+
   render() {
     const currentAccount = localStorage.getItem("loggedIn");
 
@@ -33,6 +34,7 @@ class App extends Component {
         <Switch>   
           <Route exact path='/api/v1/login' render={props => ( <Login {...props}/>)}/>
           <Route exact path='/api/v1/signup' render={props => ( <Signup {...props}/>)}/>
+          <Redirect from="/logout" to="api/v1/login" />
           <Route exact path='/accounts/:id' render={props => {
             return <AccountContainer {...props} account={currentAccount}/>
           } }/>

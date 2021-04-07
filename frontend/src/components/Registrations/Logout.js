@@ -7,6 +7,8 @@ import {Link} from 'react-router-dom'
 
 
 class Logout extends React.Component {
+
+
   render() {
   return (
         <Button onClick={this.props.logout}><Link to="/logout">Log Out</Link></Button>
