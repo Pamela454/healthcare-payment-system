@@ -8,12 +8,14 @@ import * as serviceWorker from './serviceWorker';
 import {createStore, applyMiddleware, compose, combineReducers} from 'redux' //from imported redux library
 import ReduxThunk from 'redux-thunk' //asynchronous actions 
 import accountReducer from './reducers/accountReducer'
+import departmentsReducer from './reducers/departmentsReducer'
 import loginFormReducer from './reducers/loginFormReducer'
 import signupFormReducer from './reducers/signupFormReducer'
 
 //manage independent parts of the state. Single reducing function to pass to create store. 
 const reducers = combineReducers({
   accountReducer,
+  departmentsReducer,
   loginFormReducer,
   signupFormReducer
 });

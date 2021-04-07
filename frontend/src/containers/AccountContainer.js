@@ -36,7 +36,6 @@ class AccountsContainer extends React.Component { //can call lifecycle hooks
 }
 //is this needed if not displaying list of accounts?
 const mapStateToProps = state => { //this is the state from redux 
-	console.log(state)
 	return {
 		account: state.loginFormReducer //accounts located inside the state
 	}

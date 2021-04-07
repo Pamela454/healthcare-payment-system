@@ -60,7 +60,6 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
 }
 
 
-// persists changes in the state. state can be changed, not props. 
 const mapStateToProps = state => {
   return {
     form: state.form 
