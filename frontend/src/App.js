@@ -28,9 +28,8 @@ class App extends Component {
     
     return (
       <div className="App">
-            <h2 class="text-center">{ currentAccount ? 
-        `Logged in as ${this.props.loginFormReducer.attributes.name}` :
-        "Not logged in" }</h2> 
+            
+        <Navbar />
         <Switch>   
           <Route exact path='/api/v1/login' render={props => ( <Login {...props}/>)}/>
           <Route exact path='/api/v1/signup' render={props => ( <Signup {...props}/>)}/>
