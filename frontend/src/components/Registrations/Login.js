@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-//import { compose } from 'redux';
+import { Button, Form } from 'react-bootstrap'
 import { login } from "../../actions/currentAccount";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -29,30 +29,41 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
 
   return (
       <div className="Login">
-        <h1>Log In</h1>
-        <form onSubmit={handleLoginFormSubmit}>
+        <h1 class="text-center">Log In</h1>
+        <body class="text-center">
+         <Form onSubmit={handleLoginFormSubmit} class="form-inline">
+          <div class="form-group align-items-center">
+          <label for="inputname" class="form-label" >Name: </label><br></br>
           <input
             placeholder="name"
             type="text"
+            class="form-control-sm"
+            id="Input1"
             name="name"
             autoComplete="on"
             value={form.name}
             onChange={(event)=> handleLoginFormChange(event, "name")}
-          /><br/>
-        <input
+          />
+          </div><br/>
+      <div class="form-group  align-items-center">
+          <label for="inputpassword" class="form-label" >Password: </label><br></br>
+          <input
             placeholder="password"
-            type="password" //can't see type
+            type="password" 
+            class="form-control-sm"
             name="password"
             autoComplete="on"
             value={form.password}
             onChange={(event)=> handleLoginFormChange(event, "password")}
-          /><br/>          
-        <button placeholder="submit" type="submit">
+          />
+          </div><br/>    
+        <Button type="submit" class="btn btn-lg ">
             Log In
-          </button>          
+          </Button>          
           <div>
           </div>
-          </form>
+          </Form>
+         </body>
           <div>
         </div>
       </div>

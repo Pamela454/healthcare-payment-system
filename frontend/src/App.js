@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { Switch, Route, Redirect, withRouter } from "react-router-dom";
-//import Departments from './components/Departments'
-//import React, { useState } from 'react';
+import { loadStripe } from "@stripe/stripe-js";
 import { connect } from 'react-redux'
 import { loggedIn } from "./actions/currentAccount.js"
-//import Logout from './components/registrations/Logout';
+import { Elements, StripeProvider } from "react-stripe-elements";
 import PaymentNew from './components/PaymentNew'
 import AccountContainer from './containers/AccountContainer'
 import Navbar from './components/Navbar'
 import DepartmentsContainer from './containers/DepartmentsContainer'
 import Login from './components/registrations/Login'
 import Signup from './components/registrations/Signup'
-
-//if constantly passing down props consider connecting to the store
+import './App.scss'
 
 class App extends Component {
 
@@ -22,13 +20,15 @@ class App extends Component {
     }
   }
 
-
   render() {
-    const currentAccount = localStorage.getItem("loggedIn");
 
+        const stripe = loadStripe('pk_test_tZpOKpVsO8ccsjSLbrnuwwEH');
+        const currentAccount = localStorage.getItem("loggedIn");
+        console.log('current account is: ' + JSON.stringify(this.props.loginFormReducer));
+    
     return (
       <div className="App">
-            <h2>{ currentAccount ? 
+            <h2 class="text-center">{ currentAccount ? 
         `Logged in as ${this.props.loginFormReducer.attributes.name}` :
         "Not logged in" }</h2> 
         <Switch>   
@@ -41,7 +41,13 @@ class App extends Component {
           <Route exact path='/accounts/:id/departments' render={props => {
             return <DepartmentsContainer/>
           } }/>
-          <Route exact path='/accounts/:id/payments/new' render={props => ( <PaymentNew {...props}/>)}/>
+          <Route path='/accounts/:id/payments/new' render={props => {
+            <StripeProvider apiKey="pk_test_tZpOKpVsO8ccsjSLbrnuwwEH">
+              <Elements>
+                <PaymentNew {...props}/>
+              </Elements>
+            </StripeProvider>
+          }} />
         </Switch>
          { currentAccount ? <Navbar account={currentAccount}/> : null } 
     </div>

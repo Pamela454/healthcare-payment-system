@@ -7,12 +7,7 @@ export default function departmentsReducer(state = initialState, action) {  //co
   switch (action.type) {
     case 'GET_DEPARTMENTS': 
     	console.log(action)
-    	return action.departments
-    case 'ADD_DEPARTMENT': 
-          
-          
-    case 'DELETE_DEPARTMENT': //at least returns some version of state
-          
+    	return action.departments        
     default:
           return state //never return null 
     }       

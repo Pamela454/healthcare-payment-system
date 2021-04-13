@@ -1,18 +1,21 @@
-import React from 'react'
-import {Link} from 'react-router-dom'
-//import AccountShow from './AccountShow'
+import React from "react";
+import { Link } from "react-router-dom";
+import { Button } from "react-bootstrap";
 
 const Accounts = (props) => {
+	return (
+		<div>
+			{props.accounts.map((account) => (
+				<li key={account.id}>
+					<Button>
+						<Link to={`/accounts/${account.id}`}>
+							{account.name}
+						</Link>
+					</Button>
+				</li>
+			))}
+		</div>
+	);
+};
 
-  return (
-    <div>
-         {props.accounts.map(account => 
-         	<li key={account.id}>
-         	   <Link to={`/accounts/${account.id}`}>{account.name}</Link>
-         	</li> )} 
-    </div>
-
-  )
-}
-
-export default Accounts
+export default Accounts;

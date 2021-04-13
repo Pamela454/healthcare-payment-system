@@ -1,7 +1,6 @@
 import React from "react";
 //import { connect } from 'react-redux'
 import { NavLink } from 'react-router-dom'
-//import { Button } from 'react-bootstrap'
 import Logout from "./registrations/Logout";
 
 const Navbar = (props, currentAccount) => {

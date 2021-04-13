@@ -1,13 +1,19 @@
 {
   "dependencies": {
+    "@stripe/react-stripe-js": "^1.4.0",
+    "@stripe/stripe-js": "^1.13.2",
     "axios": "^0.20.0",
     "bootstrap": "^4.6.0",
     "jsonapi-serializer": "^3.6.7",
     "node-sass": "^5.0.0",
+    "react-bootstrap": "^1.5.2",
     "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
     "react-router-dom": "^5.2.0",
-    "redux-thunk": "^2.3.0"
+    "react-stripe-checkout": "^2.6.3",
+    "react-stripe-elements": "^6.1.2",
+    "redux-thunk": "^2.3.0",
+    "stripe": "^8.142.0"
   },
   "scripts": {
     "lint": "eslint .",

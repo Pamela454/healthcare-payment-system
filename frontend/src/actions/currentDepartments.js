@@ -45,7 +45,7 @@ export const newDepartment = (department, accountId) => {
 		.then(response => response.json())
 		.then(account => dispatch({type: 'ADD_DEPARTMENT', payload: account}))
 	}
-}
+} 
 
 export const deleteDepartment = (departmentId, accountId) => {
 	return (dispatch) => {

@@ -1,21 +1,34 @@
-class Api::V1::PaymentsController < ApplicationController
-	before_action :set_department
+require 'stripe'
 
-  def index
+class Api::V1::PaymentsController < ApplicationController
+  before_action :set_department
+
+   def index
   	@payments = @department.payment 
   	render json: @payments, include: '**'
-  end
+   end
+   
+   def create
+    binding.pry 
+       Stripe.api_key = ENV['STRIPE_SECRET_KEY'] 
 
-  def create
-    puts "payments_controller:create"
-  	@payment = @department.payments.new(payment_params)
-  	if @department.new_balance(@payment) != 'Payment cannot be processed'
-  		@payment.save
-  		render json: @payment
-  	else 
-  		render json: (error: 'Error submitting payment')
-  	end
-  end
+   begin 
+     account = Stripe::Account.create(
+     	:name => account.name,
+     	:source => params[:payment][:token]
+     	)
+
+   	 payment = Stripe::Charge.create({
+   	 	:account => account.id
+   	 	:amount => params[:payment][:amount]
+   	    }, {
+   	     :idempotency_key => ip_key 
+   	 	})
+
+   	rescue Stripe::CardError => e
+   		render json: { message: 'oops'}, status: :not_acceptable 
+   	end
+   end
 
   def show
   	@payment = Payment.find(params[:id])
@@ -29,7 +42,7 @@ class Api::V1::PaymentsController < ApplicationController
   end
 
   def payment_params
-  	params.require(:payment).permit(:amount, :department_id)
+  	params.require(:payment).permit(:amount, :account_id, :source)
   end
 
 end

@@ -13,19 +13,19 @@ class Departments extends React.Component {
     //}
     //const departments = this.props.departments;
     const navigateTo = (id) => () => this.props.history.push(`/accounts/${id}/payments/new`);
-
+                                                            
     return (
             <div>
             <label> Department </label> 
             {this.props.departments ?
               this.props.departments.map(department => {
                 return(
-                <React.Fragment>
-               <div key={department.id}><label> Name - </label> {department.attributes.name}</div>
-               <div key={department.id}><label> Service - </label> {department.attributes.service}</div>
-               <div key={department.id}><label> Charge - </label> ${department.attributes.charge}</div>
+              <React.Fragment>
+               <div key={department.attributes[0]}><label> Name - </label> {department.attributes.name}<br></br></div>
+               <div key={department.attributes[1]}><label> Service - </label> {department.attributes.service}<br></br></div>
+               <div key={department.attributes[2]}><label> Charge - </label> ${department.attributes.charge}</div>
                <Button onClick={navigateTo(department.id)}>Make Payment</Button>
-               </React.Fragment>
+              </React.Fragment>
                );
               }) : null }
             </div>
