@@ -1,20 +1,34 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import Logout from "./registrations/Logout";
+import {Navbar, Nav} from 'react-bootstrap';
+import { Link } from 'react-router-dom'
+import Logout from './registrations/Logout'
 
-const Navbar = (props, currentAccount) => {
+
+const NavBar = (currentAccount) => {
 	return (
-		<div class="container">
-			<nav class="navbar fixed-bottom navbar-light bg-light">
-				{props.account ? null : (
-					<Link exact activeClassName="active" to="/api/v1/signup">
-						Signup
-					</Link>
-				)}
-				{props.account ? <Logout /> : null}
-			</nav>
-		</div>
-	);
-};
+		<Navbar bg="light" expand="sm" fixed="top">
+         <Navbar.Brand href="/">
+          </Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
 
-export default Navbar;
+              {!currentAccount ? (
+                <Nav className="ml-auto">
+                 <Logout to="/logout">Logout</Logout>
+                </Nav> 
+              ):(
+                <Nav className="ml-auto">
+                 <button class="btn btn-outline-primary">
+                   <Link to="/api/v1/signup">Signup</Link>
+                 </button>
+                 <br></br>
+                </Nav>
+             )}
+
+            </Navbar.Collapse>
+           </Navbar>
+    )
+}
+
+export default NavBar;
+
