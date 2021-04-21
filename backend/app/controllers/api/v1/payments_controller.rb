@@ -1,7 +1,6 @@
 require 'stripe'
 
 class Api::V1::PaymentsController < ApplicationController
-  before_action :set_department
 
    def index
   	@payments = @department.payment 
@@ -10,24 +9,30 @@ class Api::V1::PaymentsController < ApplicationController
    
    def create
     binding.pry 
-       Stripe.api_key = ENV['STRIPE_SECRET_KEY'] 
+    @payment = Payment.new(payment_params)
+    if @payment.save
+      render json: PaymentSerializer.new(@payment) 
+    else
+      render json: {error: 'Error processing payment'}
+    end
+      #Stripe.api_key = ENV['STRIPE_SECRET_KEY'] 
 
-   begin 
-     account = Stripe::Account.create(
-     	:name => account.name,
-     	:source => params[:payment][:token]
-     	)
+   #begin 
+     #account = Stripe::Account.create(
+     	#:name => account.name,
+     	#:source => params[:payment][:token]
+     	#)
 
-   	 payment = Stripe::Charge.create({
-   	 	:account => account.id
-   	 	:amount => params[:payment][:amount]
-   	    }, {
-   	     :idempotency_key => ip_key 
-   	 	})
+   	 #payment = Stripe::Charge.create({
+   	 	#:account => account.id
+   	 	#:amount => params[:payment][:amount]
+   	   # }, {
+   	   #  :idempotency_key => ip_key 
+   	 	#})
 
-   	rescue Stripe::CardError => e
-   		render json: { message: 'oops'}, status: :not_acceptable 
-   	end
+   	#rescue Stripe::CardError => e
+   		#render json: { message: 'oops'}, status: :not_acceptable 
+   	#end 
    end
 
   def show
@@ -42,7 +47,6 @@ class Api::V1::PaymentsController < ApplicationController
   end
 
   def payment_params
-  	params.require(:payment).permit(:amount, :account_id, :source)
+  	params.permit(:amount, :account_id, :cardnumber, :expiration, :cvc)
   end
-
 end

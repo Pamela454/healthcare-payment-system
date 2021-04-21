@@ -19,6 +19,7 @@ const Signup = ({ name, password, status, signup, history }) => {
 
   const handleSignupFormSubmit = (event) => {
     event.preventDefault();
+    console.log(signupFormData);
     signup(signupFormData, history);
   };
 

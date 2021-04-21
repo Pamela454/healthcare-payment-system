@@ -1,7 +1,23 @@
-import React from 'react'
-import {connect} from 'react-redux'
-import PaymentNew from '../components/PaymentNew'
-import Payments from '../components/Payments'
+import React from "react";
+import { Route, Switch, withRouter } from "react-router-dom";
+import PaymentNew from "../components/PaymentNew";
 
+class PaymentsContainer extends React.Component {
+	render() {
+		return (
+			<div>
+				<Switch>
+					<Route
+						exact
+						path="/accounts/:id/payments/new"
+						render={(props) => {
+							return <PaymentNew {...props} />;
+						}}
+					/>
+				</Switch>
+			</div>
+		);
+	}
+}
 
-//data can't be passed in as a prop 
+export default withRouter(PaymentsContainer);

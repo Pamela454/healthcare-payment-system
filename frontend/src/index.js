@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"; //wrapped in provider so has access to store
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
@@ -35,9 +35,9 @@ let store = createStore(
 //able to dispatch actions throughout the component tree. alerts when change in state.
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );

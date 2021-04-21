@@ -3,10 +3,9 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { deleteDepartment } from ".././actions/currentDepartments.js";
-
+//pure if output only depends on props
 class Departments extends React.Component {
   render(props) {
-    console.log(this.props.departments);
     //const handleDelete = () => {
     //this.props.deleteDepartment()
     //}
@@ -52,7 +51,7 @@ class Departments extends React.Component {
     );
   }
 }
-
+//what is this below??
 const mapStateToProps = (state) => {
   return {
     departments: state.departmentsReducer,

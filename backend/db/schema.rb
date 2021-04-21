@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_201029) do
+ActiveRecord::Schema.define(version: 2021_04_14_172516) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "name"
@@ -37,6 +37,9 @@ ActiveRecord::Schema.define(version: 2021_02_26_201029) do
     t.integer "account_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cardnumber"
+    t.integer "expiration"
+    t.integer "cvc"
   end
 
 end

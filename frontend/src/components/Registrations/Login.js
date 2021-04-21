@@ -4,7 +4,7 @@ import { login } from "../../actions/currentAccount";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { setCurrentAccount } from "../../actions/currentAccount";
-
+//data handled by component
 //useForm hook?
 //value of form input is determined by the state, state dictated by input field values
 // only use hooks with function components
@@ -27,7 +27,7 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
   };
 
   return (
-    <div className="Login">
+    <div class="Login">
       <h1 class="text-center">Log In</h1>
       <body class="text-center">
         <Form onSubmit={handleLoginFormSubmit} class="form-inline">
@@ -39,7 +39,7 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
             <input
               placeholder="name"
               type="text"
-              class="form-control-sm"
+              className="form-control-sm"
               id="Input1"
               name="name"
               autoComplete="on"
@@ -47,7 +47,8 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
               onChange={(event) => handleLoginFormChange(event, "name")}
             />
           </div>
-          <br />
+          <br></br>
+          <br></br>
           <div class="form-group  align-items-center">
             <label for="inputpassword" class="form-label">
               Password:{" "}
@@ -56,7 +57,7 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
             <input
               placeholder="password"
               type="password"
-              class="form-control-sm"
+              className="form-control-sm"
               name="password"
               autoComplete="on"
               value={form.password}
