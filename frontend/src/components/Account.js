@@ -26,7 +26,6 @@ const Account = (props) => {
         //const { accountId } = e.target;
         //const accountId = props.account.id
         e.persist();
-        console.log(props.history);
         e.preventDefault();
         props.getDepartments(props.account.id, props.history);
     };

@@ -14,15 +14,5 @@ class Account < ApplicationRecord
      self.status ||= :patient 
    end
  end
-
- def payments_attributes=(payments_attributes)
- 	binding.pry 
-		self.balance = self.balance - payments_attributes.amount  
-        if self.balance >= 1
-        	self.save
-        elsif self.balance < 1
-        	return 'Payment cannot be processed'
-        end
- end 
 	
 end

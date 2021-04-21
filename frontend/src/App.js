@@ -19,7 +19,6 @@ function App(props) {
   //const stripePromise = useMemo(() => loadStripe('', { stripeAccount }),[stripeAccount],)
   //const stripePromise = loadStripe('pk_test_tZpOKpVsO8ccsjSLbrnuwwEH');
   const currentAccount = localStorage.getItem("loggedIn");
-  console.log(currentAccount);
   return (
     <div className="Appclass text-center">
       <NavBar currentAccount={currentAccount} />
@@ -60,7 +59,6 @@ function App(props) {
         <Route
           path="/accounts/:id/payments"
           render={(props) => {
-            console.log("paymentscontainer" + JSON.stringify(props));
             return <PaymentsContainer {...props} />;
           }}
         />

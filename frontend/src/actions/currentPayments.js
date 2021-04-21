@@ -1,3 +1,11 @@
+export const addPayment = (payment) => {
+  console.log("addPayment", payment);
+  return {
+    type: "ADD_PAYMENT",
+    payload: payment,
+  };
+};
+
 export const newPayment = (paymentData, history) => {
   console.log("newPayment.paymentData is: ");
   console.log(paymentData);
@@ -25,7 +33,8 @@ export const newPayment = (paymentData, history) => {
         if (payment.error) {
           alert("error");
         } else {
-          dispatch({ type: "ADD_PAYMENT", payload: payment });
+          console.log(payment.data);
+          dispatch(addPayment(payment.data));
           history.push(`/accounts/${paymentData.account_id}`);
         }
       })

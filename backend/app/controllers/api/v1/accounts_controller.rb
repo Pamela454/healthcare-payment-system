@@ -42,6 +42,6 @@ class Api::V1::AccountsController < ApplicationController
   private
 
   def account_params
-    params.permit(:account, :status, :name, :password)
+    params.permit(:account, :status, :name, :balance, :password)
   end
 end

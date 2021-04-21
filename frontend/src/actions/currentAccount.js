@@ -3,7 +3,7 @@
 export const setCurrentAccount = (account) => {
   console.log(account);
   return {
-    type: "SET_CURRENT_ACCOUNT",
+    type: "SET_CURRENT_ACCOUNT", //should this be add account?
     payload: account,
   };
 };
