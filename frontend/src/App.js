@@ -60,6 +60,7 @@ function App(props) {
         <Route
           path="/accounts/:id/payments"
           render={(props) => {
+            console.log("paymentscontainer" + JSON.stringify(props));
             return <PaymentsContainer {...props} />;
           }}
         />

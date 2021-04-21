@@ -9,7 +9,7 @@ class Api::V1::PaymentsController < ApplicationController
    
    def create
     binding.pry 
-    @payment = Payment.new(payment_params)
+    @payment = Payment.new(payment_params: payment)
     if @payment.save
       render json: PaymentSerializer.new(@payment) 
     else

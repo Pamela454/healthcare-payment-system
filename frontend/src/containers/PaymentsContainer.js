@@ -11,6 +11,7 @@ class PaymentsContainer extends React.Component {
 						exact
 						path="/accounts/:id/payments/new"
 						render={(props) => {
+							console.log("paymentsnew" + JSON.stringify(props));
 							return <PaymentNew {...props} />;
 						}}
 					/>

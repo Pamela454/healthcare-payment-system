@@ -1,5 +1,12 @@
 export const newPayment = (paymentData, history) => {
+  console.log("newPayment.paymentData is: ");
+  console.log(paymentData);
+  console.log("newPayment.history is: ");
+  console.log(history);
+
   return (dispatch) => {
+    console.log("about to fetch!");
+
     return fetch(
       //${paymentData.account_id}
       "http://localhost:3001/api/v1/accounts/1/payments/new",
