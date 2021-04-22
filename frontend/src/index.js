@@ -12,7 +12,7 @@ import accountReducer from "./reducers/accountReducer";
 import departmentsReducer from "./reducers/departmentsReducer";
 import loginFormReducer from "./reducers/loginFormReducer";
 import signupFormReducer from "./reducers/signupFormReducer";
-import paymentsReducer from "./reducers/signupFormReducer";
+import paymentsReducer from "./reducers/paymentsReducer";
 
 //manage independent parts of the state. Single reducing function to pass to create store.
 const reducers = combineReducers({

@@ -9,16 +9,17 @@ import { connect } from "react-redux";
 import { newPayment } from "../actions/currentPayments";
 //form data available in local state or store?
 //class component, local state holding
-const PaymentNew = (props) => {
+const PaymentNew = ({ account_id, history, newPayment }) => {
   console.log("paymentnew is: ");
-  console.log(props);
+  console.log(newPayment);
+  console.log(account_id);
 
   const [newPaymentFormData, setForm] = useState({
     amount: "",
     cardnumber: "",
     expiration: "",
     cvc: "",
-    account_id: props.match.params.id,
+    account_id: account_id,
   });
 
   //const stripe = useStripe();
@@ -33,9 +34,9 @@ const PaymentNew = (props) => {
 
   const handlePaymentFormSubmit = (event) => {
     event.preventDefault();
-    console.log(props);
+    //console.log(props);
     console.log(newPaymentFormData);
-    props.newPayment(newPaymentFormData, props.history);
+    newPayment(newPaymentFormData, history);
   };
 
   /*const handlePaymentFormSubmit = async (event) => {

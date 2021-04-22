@@ -3,17 +3,14 @@ const initialState = {
   password: "",
 };
 
-
 export default function loginFormReducer(state = initialState, action) {
   switch (action.type) {
     case "SET_CURRENT_ACCOUNT":
-    console.log(action.payload.attributes)
-      return action.payload
+      return action.payload;
     case "CLEAR_CURRENT_ACCOUNT":
-    localStorage.removeItem("loggedIn")
-      return initialState
+      localStorage.removeItem("loggedIn");
+      return initialState;
     default:
-      return state
-    };
+      return state;
+  }
 }
-
