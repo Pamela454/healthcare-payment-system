@@ -14,52 +14,43 @@ import Login from "./components/registrations/Login";
 import Signup from "./components/registrations/Signup";
 import "./App.scss";
 //class componenets automatically have access to props
+//elements represent DOM tags
+//All React components must act like pure functions with respect to their props.
 function App(props) {
   //const [stipePromise,setStripePromise] = useState(() => loadStripe(''))
   //const stripePromise = useMemo(() => loadStripe('', { stripeAccount }),[stripeAccount],)
   //const stripePromise = loadStripe('pk_test_tZpOKpVsO8ccsjSLbrnuwwEH');
+  console.log(props);
   const currentAccount = localStorage.getItem("loggedIn");
   return (
     <div className="Appclass text-center">
       <NavBar currentAccount={currentAccount} />
       {/*<Elements stripe={stripePromise} > */}
       <div>
-        <h2>
-          {currentAccount
-            ? `${props.loginFormReducer.attributes.name} is signed in`
-            : "Not logged in"}{" "}
-        </h2>
+        <h2>{currentAccount ? "You are signed in" : "Not logged in"} </h2>
       </div>
       <Switch>
-        <Route
-          exact
-          path="/api/v1/login"
-          render={(props) => <Login {...props} />}
-        />
-        <Route
-          exact
-          path="/api/v1/signup"
-          render={(props) => <Signup {...props} />}
-        />
+        <Route exact path="/api/v1/login" render={() => <Login />} />
+        <Route exact path="/api/v1/signup" render={() => <Signup />} />
         <Redirect from="/logout" to="api/v1/login" />
         <Route
           exact
           path="/accounts/:id"
-          render={(props) => {
-            return <AccountContainer {...props} />;
+          render={() => {
+            return <AccountContainer />;
           }}
         />
         <Route
           exact
           path="/accounts/:id/departments"
-          render={(props) => {
-            return <DepartmentsContainer {...props} />;
+          render={() => {
+            return <DepartmentsContainer />;
           }}
         />
         <Route
           path="/accounts/:id/payments"
-          render={(props) => {
-            return <PaymentsContainer {...props} />;
+          render={() => {
+            return <PaymentsContainer />;
           }}
         />
       </Switch>
@@ -68,12 +59,4 @@ function App(props) {
   );
 }
 
-const mapStateToProps = (state) => {
-  //what portion of state to provide to props
-  return {
-    //executed with each change to the store.
-    ...state,
-  };
-};
-
-export default withRouter(connect(mapStateToProps, { loggedIn })(App));
+export default withRouter(connect(null, { loggedIn })(App));

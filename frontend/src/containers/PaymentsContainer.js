@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 import PaymentNew from "../components/PaymentNew";
 
 class PaymentsContainer extends React.Component {
@@ -15,7 +16,8 @@ class PaymentsContainer extends React.Component {
 							return (
 								<PaymentNew
 									{...props}
-									account_id={this.props.match.params.id}
+									account={this.props.account}
+									payments={this.props.payments}
 								/>
 							);
 						}}
@@ -26,4 +28,12 @@ class PaymentsContainer extends React.Component {
 	}
 }
 
-export default withRouter(PaymentsContainer);
+const mapStateToProps = (state) => {
+	//this is the state from redux
+	return {
+		payments: state.payments,
+		account: state.account,
+	};
+};
+
+export default withRouter(connect(mapStateToProps)(PaymentsContainer));

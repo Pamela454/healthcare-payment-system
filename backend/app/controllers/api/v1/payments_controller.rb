@@ -10,7 +10,7 @@ class Api::V1::PaymentsController < ApplicationController
    def create
     @payment = Payment.new(payment_params)
     if @payment.save
-      render json: PaymentSerializer.new(@payment) 
+      render json: PaymentSerializer.new(@payment)  
     else
       render json: {error: 'Error processing payment'}
     end

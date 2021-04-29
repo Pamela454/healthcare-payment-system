@@ -9,17 +9,17 @@ import { connect } from "react-redux";
 import { newPayment } from "../actions/currentPayments";
 //form data available in local state or store?
 //class component, local state holding
-const PaymentNew = ({ account_id, history, newPayment }) => {
+const PaymentNew = ({ account, history, newPayment }) => {
   console.log("paymentnew is: ");
   console.log(newPayment);
-  console.log(account_id);
+  console.log(account);
 
   const [newPaymentFormData, setForm] = useState({
     amount: "",
     cardnumber: "",
     expiration: "",
     cvc: "",
-    account_id: account_id,
+    account_id: account.id,
   });
 
   //const stripe = useStripe();

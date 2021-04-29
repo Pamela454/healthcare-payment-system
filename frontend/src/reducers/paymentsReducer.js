@@ -1,13 +1,17 @@
-//const initialState = {
-//payments: [],
-//};
-export default function paymentsReducer(state = null, action) {
-	console.log("paymentsReducer.action: ");
+const initialState = {
+payments: [],
+};
+
+export default function paymentsReducer(state = initialState, action) {
+	console.log(action);
 	switch (action.type) {
 		case "ADD_PAYMENT": //creates a new object
-			console.log(action);
-			return action.payload;
+			return {
+				...state, payments: action.payload 
+			}
+			// {...state, : action.payload., : action.payload.}
 		default:
-			return state; //never return null
+			break;
 	}
+	return state; //never return null
 }

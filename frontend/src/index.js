@@ -1,5 +1,6 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import history from "./components/history";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux"; //wrapped in provider so has access to store
 import { BrowserRouter as Router } from "react-router-dom";
@@ -37,7 +38,7 @@ let store = createStore(
 //able to dispatch actions throughout the component tree. alerts when change in state.
 ReactDOM.render(
   <Provider store={store}>
-    <Router>
+    <Router history={history}>
       <App />
     </Router>
   </Provider>,

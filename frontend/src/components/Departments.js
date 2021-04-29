@@ -5,10 +5,11 @@ import { Button } from "react-bootstrap";
 import { deleteDepartment } from ".././actions/currentDepartments.js";
 //pure if output only depends on props
 class Departments extends React.Component {
-  render(props) {
+  render() {
     //const handleDelete = () => {
     //this.props.deleteDepartment()
     //}
+
     //const departments = this.props.departments;
     const navigateTo = (id) => () =>
       this.props.history.push(`/accounts/${id}/payments/new`);
@@ -51,13 +52,5 @@ class Departments extends React.Component {
     );
   }
 }
-//what is this below??
-const mapStateToProps = (state) => {
-  return {
-    departments: state.departmentsReducer,
-  };
-};
 
-export default withRouter(
-  connect(mapStateToProps, { deleteDepartment })(Departments)
-);
+export default withRouter(connect(null, { deleteDepartment })(Departments));

@@ -10,6 +10,7 @@ import { setCurrentAccount } from "../../actions/currentAccount";
 // only use hooks with function components
 const Login = ({ login, name, password, setCurrentAccount, history }) => {
   const [form, setForm] = useState({
+    //array destructuring
     name: "",
     password: "",
   });
@@ -22,6 +23,7 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
   };
 
   const handleLoginFormSubmit = (event) => {
+    //does this need to be bound?
     event.preventDefault(); //state contains most up to date form data. prevent page refresh
     login(form, history);
   };

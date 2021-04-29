@@ -1,4 +1,5 @@
 //accepts action object
+//acts as event listener
 export default function accountReducer(state = null, action) {
 	//combines current state and action
 	switch (action.type) {

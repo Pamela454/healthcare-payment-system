@@ -19,7 +19,6 @@ class AccountContainer extends React.Component {
 	//render stated component
 	//return react element from render function
 	render() {
-		console.log(this.props.account);
 		return (
 			<div>
 				<Switch>

@@ -20,6 +20,7 @@ export const logout = () => {
 
 //needs to be revised
 export const loggedIn = (history) => {
+  //a thunk
   return (dispatch) => {
     return fetch("http://localhost:3001/api/v1/logged_in", {
       method: "GET",
@@ -69,9 +70,11 @@ export const login = (form, history) => {
       .catch(console.log);
   };
 };
+
 //should we be using async/await?
 export const signup = (form, history) => {
   return (dispatch) => {
+    console.log();
     return fetch("http://localhost:3001/api/v1/signup", {
       method: "POST",
       credentials: "same-origin",

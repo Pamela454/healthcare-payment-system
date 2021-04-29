@@ -6,16 +6,8 @@ export const addPayment = (payment) => {
 };
 
 export const newPayment = (paymentData, history) => {
-  console.log("newPayment.paymentData is: ");
-  console.log(paymentData);
-  console.log("newPayment.history is: ");
-  console.log(history);
-
   return (dispatch) => {
-    console.log("about to fetch!");
-    console.log(paymentData);
     const url = `http://localhost:3001/api/v1/accounts/${paymentData.account_id}/payments/new`;
-    console.log("url is: " + url);
     return fetch(url, {
       method: "POST",
       credentials: "same-origin",
@@ -26,15 +18,9 @@ export const newPayment = (paymentData, history) => {
     })
       .then((res) => res.json())
       .then((payment) => {
-        console.log("payment response");
-        console.log(payment);
         if (payment.error) {
-          console.log("error is: ");
-          console.log(payment.error);
           alert("error");
         } else {
-          console.log("payment.data: ");
-          console.log(payment.data);
           dispatch(addPayment(payment.data));
           //call additional action to update account
           history.push(`/accounts/${paymentData.account_id}`);
