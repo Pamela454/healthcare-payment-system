@@ -1,6 +1,9 @@
 class Payment < ApplicationRecord
     belongs_to :account
 	validates :amount, :account_id, :cardnumber, :expiration, :cvc, presence: true
+	validates :cardnumber, length: { is: 16 }
+	validates :cvc, length: { is: 3 }
+	validates :expiration, numericality: true 
 	before_save :check_and_update_balance
 
 	def check_and_update_balance
