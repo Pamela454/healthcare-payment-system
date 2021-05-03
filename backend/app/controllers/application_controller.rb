@@ -29,6 +29,9 @@ class ApplicationController < ActionController::API
       localStorage.clear
   end
 
+  def account_type
+    Account.find(session[:account_id]).status
+  end
   #def set_account #need this as well as login! ?
      #@account = Account.find_by(id: session[:account_id])
   #end
