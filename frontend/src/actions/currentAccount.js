@@ -17,24 +17,29 @@ export const logout = () => {
 //type and payload property
 //action creator, function that returns an action
 //thunk allows return of function instead of object. Function receives dispatch function and can dispatch multiple actions.
-
 //needs to be revised
-export const loggedIn = (history) => {
+export const getAccount = (data, history) => {
   //a thunk
   return (dispatch) => {
-    return fetch("http://localhost:3001/api/v1/logged_in", {
-      method: "GET",
-      credentials: "same-origin",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
+    console.log(data.relationships.account.data.id);
+    return fetch(
+      `http://localhost:3001/api/v1/accounts/${data.relationships.account.data.id}`,
+      {
+        method: "GET",
+        credentials: "same-origin",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(),
+      }
+    )
       .then((res) => res.json())
       .then((account) => {
         if (account.error) {
+          console.log(account);
           alert("error");
         } else {
-          console.log(account.data);
+          console.log(account.data.id);
           localStorage.setItem("loggedIn", true); //can only set string, JSON.stringify to convert
           dispatch(setCurrentAccount(account.data));
           history.push(`/accounts/${account.data.id}`);
@@ -97,13 +102,3 @@ export const signup = (form, history) => {
       .catch(console.log);
   };
 };
-
-//export const logout = () => {
-//return dispatch => {
-//dispatch(clearCurrentAccount());
-//return fetch("http://localhost:3001/api/v1/logout", {
-//credentials: 'same-origin',
-//method: "DELETE"
-//})
-//};
-//}

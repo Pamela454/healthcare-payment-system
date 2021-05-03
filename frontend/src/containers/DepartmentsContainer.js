@@ -27,7 +27,7 @@ class DepartmentsContainer extends React.Component {
 						exact
 						path="/accounts/:id/departments"
 						render={(props) => {
-							console.log(props);
+							console.log(this.props);
 							return (
 								<Departments
 									account={this.props.account}
@@ -45,8 +45,8 @@ class DepartmentsContainer extends React.Component {
 const mapStateToProps = (state) => {
 	console.log(state);
 	return {
-		account: state.account,
-		departments: state.departments,
+		account: state.loginFormReducer.account,
+		departments: state.departmentsReducer.departments,
 	};
 };
 

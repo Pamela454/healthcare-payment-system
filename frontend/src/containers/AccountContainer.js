@@ -2,7 +2,6 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
-import { loggedIn } from "../actions/currentAccount";
 import Accounts from "../components/Accounts";
 import Account from "../components/Account";
 import AccountNew from "../components/AccountNew";
@@ -27,6 +26,7 @@ class AccountContainer extends React.Component {
 						exact
 						path="/accounts/:id"
 						render={(props) => {
+							console.log(this.props.account)
 							return (
 								<Account
 									{...props}
@@ -52,12 +52,13 @@ class AccountContainer extends React.Component {
 		);
 	}
 }
+//selects part of data from the store that the component needs. receives entire store, returns object 
 //is this needed if not displaying list of accounts?
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => { //subscribe to redux updates 
 	//this is the state from redux
 	return {
 		account: state.loginFormReducer, //accounts located inside the state
 	};
 };
 //dispatch happens automatically with connect
-export default connect(mapStateToProps, { loggedIn })(AccountContainer);
+export default connect(mapStateToProps)(AccountContainer);

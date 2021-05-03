@@ -20,7 +20,7 @@ class ApplicationController < ActionController::API
     !!current_account #or !!session[:account_id]
   end
 
-  def current_account   #JWT will try to call?
+  def current_account   
       @current_account = Account.find(@account.id) 
   end
 

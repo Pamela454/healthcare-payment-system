@@ -11,8 +11,10 @@ import { setCurrentAccount } from "../../actions/currentAccount";
 const Login = ({ login, name, password, setCurrentAccount, history }) => {
   const [form, setForm] = useState({
     //array destructuring
-    name: "",
-    password: "",
+    account: {
+      name: "",
+      password: "",
+    },
   });
 
   const handleLoginFormChange = (event, target) => {
@@ -79,6 +81,8 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
 };
 
 const mapStateToProps = (state) => {
+  //do I need this?
+  //need props passed in at the top
   return {
     form: state.form,
   };

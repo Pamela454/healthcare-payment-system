@@ -5,9 +5,11 @@ import { signup } from "../../actions/currentAccount";
 
 const Signup = ({ name, password, status, signup, history }) => {
   const [signupFormData, setForm] = useState({
-    name: "",
-    password: "",
-    status: "",
+    account: {
+      name: "",
+      password: "",
+      status: "",
+    },
   });
 
   const handleSignupFormChange = (event, target) => {
@@ -80,7 +82,9 @@ const Signup = ({ name, password, status, signup, history }) => {
 };
 
 const mapStateToProps = (state) => {
+  //is this necessary?
   //what portion of state to provide to props
+  //need props passed in at the top
   return {
     signupFormData: state.signupForm,
   };

@@ -30,9 +30,10 @@ class PaymentsContainer extends React.Component {
 
 const mapStateToProps = (state) => {
 	//this is the state from redux
+	console.log(state);
 	return {
-		payments: state.payments,
-		account: state.account,
+		payments: state.paymentsReducer.payments,
+		account: state.loginFormReducer.account,
 	};
 };
 

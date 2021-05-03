@@ -9,18 +9,18 @@ class Departments extends React.Component {
     //const handleDelete = () => {
     //this.props.deleteDepartment()
     //}
-
     //const departments = this.props.departments;
+    console.log(this.props);
     const navigateTo = (id) => () =>
       this.props.history.push(`/accounts/${id}/payments/new`);
-
+    //only need one return?  needs unique keys 
     return (
       <div class="container">
         <div class="row align-items-center">
           <div class="col">
             <h2>
               <label> Department Information</label>
-              {this.props.departments
+              {this.props
                 ? this.props.departments.map((department) => {
                     return (
                       <React.Fragment>

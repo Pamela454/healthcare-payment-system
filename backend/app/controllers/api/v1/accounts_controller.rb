@@ -9,7 +9,6 @@ class Api::V1::AccountsController < ApplicationController
     @account = Account.new(account_params)
     if @account.save
       login!  #separate method that needs to be created 
-      binding.pry 
       render json: AccountSerializer.new(@account) #should this be accounts? 
     else
       render json: {error: 'Error creating new account'}
@@ -25,14 +24,12 @@ class Api::V1::AccountsController < ApplicationController
   end
 
   def show
-    @account = Account.find_by(id: params[:account_id])
+    @account = Account.find_by(id: params[:id])
     render json: AccountSerializer.new(@account)
   end
 
   def update
-    binding.pry
     @account = Account.find_by(id: params[:account_id])
-    binding.pry
     @account.update(account_params)
     render json: @account 
   end

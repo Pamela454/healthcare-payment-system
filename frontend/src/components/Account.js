@@ -16,13 +16,12 @@ const Account = (props) => {
     //let account = props.accounts[props.match.params.id - 1]
     //do you need a key?, only if iterating
     //do I need a default balance of 0 when creating a new account?
-
     const handleClick = (e) => {
         //const { accountId } = e.target;
         //const accountId = props.account.id
         e.persist();
         e.preventDefault();
-        this.props.getDepartments(props.account.account_id, props.history);
+        props.getDepartments(props.account.account.id, props.history);
     };
     //add value to button?
     return (
@@ -34,12 +33,12 @@ const Account = (props) => {
                         {/* can assign a key by converting to an integer? item index? */}
                         <label> Account Name </label>
                         {props.account
-                            ? ` - ` + props.account.attributes.name
+                            ? ` - ` + props.account.account.attributes.name
                             : null}
                         <br></br>
                         <label> Account Balance </label>
                         {props.account
-                            ? `$` + props.account.attributes.balance
+                            ? `  $` + props.account.account.attributes.balance
                             : null}
                     </h2>
                     <Button onClick={handleClick}>View Departments</Button>
@@ -48,5 +47,7 @@ const Account = (props) => {
         </div>
     );
 };
-
+//withRouter gives access to this.props.history, match, and location
+//second connect argument is matchdispatch to props. changes the state. receives props.dispatch through connect if no param.
+//can specify an action to dispatch.
 export default withRouter(connect(null, { getDepartments })(Account));

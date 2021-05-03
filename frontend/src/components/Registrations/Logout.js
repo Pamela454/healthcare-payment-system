@@ -2,6 +2,7 @@ import React from "react";
 import { logout } from "../../actions/currentAccount.js";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+//call dispatch action instead?
 
 class Logout extends React.Component {
 	render() {

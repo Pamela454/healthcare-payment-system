@@ -3,7 +3,6 @@ import { Switch, Route, Redirect, withRouter } from "react-router-dom";
 //import { useState } from "react";
 //import { loadStripe } from "@stripe/stripe-js";
 import { connect } from "react-redux";
-import { loggedIn } from "./actions/currentAccount.js";
 //import { Elements } from "@stripe/react-stripe-js";
 //import PaymentNew from "./components/PaymentNew";
 import AccountContainer from "./containers/AccountContainer";
@@ -59,4 +58,4 @@ function App(props) {
   );
 }
 
-export default withRouter(connect(null, { loggedIn })(App));
+export default withRouter(connect(null)(App));

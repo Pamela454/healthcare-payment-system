@@ -1,16 +1,23 @@
 const initialState = {
-  name: "",
-  password: "",
+  account: {
+    //added nesting within account
+    name: "",
+    password: "",
+  },
 };
 
 export default function loginFormReducer(state = initialState, action) {
   switch (action.type) {
     case "SET_CURRENT_ACCOUNT":
-      return action.payload;
+      return {
+        ...state,
+        account: action.payload,
+      }; //is this overwriting state?
     case "CLEAR_CURRENT_ACCOUNT":
       localStorage.removeItem("loggedIn");
       return initialState;
     default:
-      return state;
+      break;
   }
+  return state;
 }

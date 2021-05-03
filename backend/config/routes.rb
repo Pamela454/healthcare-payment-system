@@ -5,6 +5,7 @@ post 'api/v1/login',    to: 'api/v1/sessions#create'
 delete '/logout',   to: 'api/v1/sessions#destroy'
 post 'api/v1/signup' => 'api/v1/accounts#create'
 get 'api/v1/logged_in' => 'api/v1/sessions#is_logged_in?'
+get 'api/v1/accounts/:id' => 'api/v1/accounts#show'
 post 'api/v1/accounts/:id/payments/new' => 'api/v1/payments#create'
 
  namespace :api do

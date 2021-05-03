@@ -1,3 +1,5 @@
+import { getAccount } from "./currentAccount";
+
 export const addPayment = (payment) => {
   return {
     type: "ADD_PAYMENT",
@@ -22,8 +24,10 @@ export const newPayment = (paymentData, history) => {
           alert("error");
         } else {
           dispatch(addPayment(payment.data));
+          console.log(payment.data);
           //call additional action to update account
-          history.push(`/accounts/${paymentData.account_id}`);
+          dispatch(getAccount(payment.data, history));
+          //history.push(`/accounts/${paymentData.account_id}`);
         }
       })
       .catch(console.log);
