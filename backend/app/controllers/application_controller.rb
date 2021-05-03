@@ -5,7 +5,7 @@ class ApplicationController < ActionController::API
   protect_from_forgery with: :null_session   
   skip_before_action :verify_authenticity_token, if: :json_request? #treating backend as an API 
   before_action :set_csrf_cookie
-  helper_method :login!, :logged_in?, :current_account, :logout! #passed to other controllers in app  
+  helper_method :login!, :logged_in?, :current_account, :logout!, :account_type #passed to other controllers in app  
     
   def json_request? 
     request.format.json? 

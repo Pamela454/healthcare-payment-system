@@ -13,13 +13,16 @@ class Api::V1::DepartmentsController < ApplicationController
   end
 
   def create
-    puts "departments_controller:create"
-  	@department = @account.departments.new(department_params)
-  	if @department.save
-  		render json: DepartmentSerializer.new(@department), status: :created
-  	else
-  		render json: {error: 'Error creating new department'}
-  	end
+    if account_type == "admin"
+  	   @department = @account.departments.new(department_params)
+  	   if @department.save
+  		  render json: DepartmentSerializer.new(@department), status: :created
+  	   else
+  		  render json: {error: 'Error creating new department'}
+  	   end
+    else 
+      flash[:notice] = "You do not have access to this feature."
+    end
   end
 
   def show
@@ -28,16 +31,24 @@ class Api::V1::DepartmentsController < ApplicationController
   end
 
   def update
-  	@department = Department.find(id: params[:id])
-  	@department.update(department_params)
-  	render json: DepartmentSerializer.new(@department)
+    if account_type == "admin"
+  	   @department = Department.find(id: params[:id])
+  	   @department.update(department_params)
+  	   render json: DepartmentSerializer.new(@department)
+    else
+     flash[:notice] = "You do not have access to this feature."
+   end
   end
 
   def destroy
-  	@department = Department.find_by(params[:id])
-  	@account = Account.find(@department.account_id)
-  	@department.destroy
-  	render json: @account
+    if account_type == "admin"
+  	   @department = Department.find_by(params[:id])
+  	   @account = Account.find(@department.account_id)
+  	   @department.destroy
+  	   render json: @account
+    else
+     flash[:notice] = "You do not have access to this feature."
+    end 
   end
 
   private
