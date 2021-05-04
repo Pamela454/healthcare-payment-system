@@ -23,7 +23,7 @@ function App(props) {
   const currentAccount = localStorage.getItem("loggedIn");
   return (
     <div className="Appclass text-center">
-      <NavBar currentAccount={currentAccount} />
+      <NavBar location={props.location} currentAccount={currentAccount} />
       {/*<Elements stripe={stripePromise} > */}
       <div>
         <h2>{currentAccount ? "You are signed in" : "Not logged in"} </h2>

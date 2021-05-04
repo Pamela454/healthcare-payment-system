@@ -31,9 +31,9 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
   };
 
   return (
-    <div class="Login">
-      <h1 class="text-center">Log In</h1>
-      <body class="text-center">
+    <body class="text-center">
+      <div class="Login">
+        <h1 class="text-center">Log In</h1>
         <Form onSubmit={handleLoginFormSubmit} class="form-inline">
           <div class="form-group align-items-center">
             <label for="inputname" class="form-label">
@@ -74,9 +74,8 @@ const Login = ({ login, name, password, setCurrentAccount, history }) => {
           </button>
           <div></div>
         </Form>
-      </body>
-      <div></div>
-    </div>
+      </div>
+    </body>
   );
 };
 
