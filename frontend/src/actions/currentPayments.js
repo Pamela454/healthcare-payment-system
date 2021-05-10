@@ -20,6 +20,7 @@ export const newPayment = (paymentData, history) => {
     })
       .then((res) => res.json())
       .then((payment) => {
+        console.log(payment);
         if (payment.error) {
           alert("error");
         } else {

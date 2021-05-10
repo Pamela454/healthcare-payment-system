@@ -5,14 +5,16 @@ class Account < ApplicationRecord
 	has_many :departments
 	has_many :payments 
 	accepts_nested_attributes_for :departments, :payments 
-	validates :name, :password, :status, presence: true
+	after_initialize :set_defaults
 
-	#need method to update the account balance
+	def set_defaults
+		self.balance ||= 0   #if nil, set default 
+	end
 
- after_initialize do #default value is patient 
-   if self.new_record?
-     self.status ||= :patient 
-   end
- end
+ #after_initialize do #default value is patient 
+   #if self.new_record?
+    # self.status ||= :patient 
+  # end
+ #end
 	
 end

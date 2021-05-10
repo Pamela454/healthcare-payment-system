@@ -1,9 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import PaymentNew from "../components/PaymentNew";
 
-class PaymentsContainer extends React.Component {
+class PaymentsContainer extends Component {
 	render() {
 		return (
 			<div>

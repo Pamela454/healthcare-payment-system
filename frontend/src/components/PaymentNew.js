@@ -17,6 +17,7 @@ const PaymentNew = (props) => {
     expiration: "",
     cvc: "",
     account_id: props.account.id,
+    departments: [props.account.relationships.departments.data],
   });
 
   //const stripe = useStripe();

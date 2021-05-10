@@ -1,15 +1,14 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 import { signup } from "../../actions/currentAccount";
 
 const Signup = ({ name, password, status, signup, history }) => {
   const [signupFormData, setForm] = useState({
-    account: {
-      name: "",
-      password: "",
-      status: "",
-    },
+    name: "",
+    password: "",
+    status: "patient", // NEED TO SET A DEFAULT VALUE OTHERWISE NOTHING WILL BE SENT TO THE BACKEND
   });
 
   const handleSignupFormChange = (event, target) => {
@@ -21,7 +20,7 @@ const Signup = ({ name, password, status, signup, history }) => {
 
   const handleSignupFormSubmit = (event) => {
     event.preventDefault();
-    console.log(signupFormData);
+    console.log(history);
     signup(signupFormData, history);
   };
 
@@ -90,4 +89,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { signup })(Signup);
+export default withRouter(connect(mapStateToProps, { signup })(Signup));

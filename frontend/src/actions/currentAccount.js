@@ -14,6 +14,14 @@ export const logout = () => {
   };
 };
 
+export const fetchedAccounts = (accounts) => {
+  console.log(accounts);
+  return {
+    type: "SET_ACCOUNT_LIST",
+    payload: accounts,
+  };
+};
+
 //type and payload property
 //action creator, function that returns an action
 //thunk allows return of function instead of object. Function receives dispatch function and can dispatch multiple actions.
@@ -43,6 +51,31 @@ export const getAccount = (data, history) => {
           localStorage.setItem("loggedIn", true); //can only set string, JSON.stringify to convert
           dispatch(setCurrentAccount(account.data));
           history.push(`/accounts/${account.data.id}`);
+        }
+      })
+      .catch(console.log);
+  };
+};
+
+export const getAllAccounts = () => {
+  console.log("hello");
+  return (dispatch) => {
+    return fetch("http://localhost:3001/api/v1/accounts", {
+      method: "GET",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(),
+    })
+      .then((res) => res.json())
+      .then((accounts) => {
+        if (accounts.error) {
+          console.log(accounts);
+          alert("error");
+        } else {
+          console.log(accounts.data);
+          dispatch(fetchedAccounts(accounts.data));
         }
       })
       .catch(console.log);
@@ -79,7 +112,8 @@ export const login = (form, history) => {
 //should we be using async/await?
 export const signup = (form, history) => {
   return (dispatch) => {
-    console.log();
+    console.log("form is: ");
+    console.log(form);
     return fetch("http://localhost:3001/api/v1/signup", {
       method: "POST",
       credentials: "same-origin",
@@ -91,10 +125,12 @@ export const signup = (form, history) => {
       .then((res) => res.json()) //parse JSON
       .then((account) => {
         console.log(account);
+        console.log(history);
         if (account.error) {
           console.log("no");
         } else {
           localStorage.setItem("loggedIn", true);
+          console.log(account.data);
           dispatch(setCurrentAccount(account.data));
           history.push(`/accounts/${account.data.id}`);
         }

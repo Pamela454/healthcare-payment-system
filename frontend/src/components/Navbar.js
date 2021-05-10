@@ -19,12 +19,12 @@ const NavBar = ({ location, currentAccount, logout }) => {
               <Link to="/logout">Logout</Link>
             </button>
           ) : null}
-          {location.pathname == "/api/v1/login" ? (
+          {location.pathname === "/api/v1/login" ? (
             <button class="btn btn-outline-primary">
               <Link to="/api/v1/signup">Signup</Link>
             </button>
           ) : null}
-          {location.pathname == "/api/v1/signup" ? (
+          {location.pathname === "/api/v1/signup" ? (
             <button class="btn btn-outline-primary" onClick={logout}>
               <Link to="/api/v1/login">Login</Link>
             </button>

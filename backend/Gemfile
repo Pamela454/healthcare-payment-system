@@ -13,7 +13,6 @@ gem 'rails', '~> 6.0.2', '>= 6.0.2.2'
 gem 'sqlite3', '~> 1.4'
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
-gem 'dotenv-rails'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -28,6 +27,12 @@ gem 'stripe'
 gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'jsonapi-serializer' 
+
+gem 'jwt', '~> 2.2', '>= 2.2.3'
+
+gem 'dotenv-rails', '~> 2.7', '>= 2.7.6'
+
+gem 'securerandom', '~> 0.1.0'
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'

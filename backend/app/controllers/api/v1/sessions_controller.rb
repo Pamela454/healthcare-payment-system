@@ -3,10 +3,13 @@ class Api::V1::SessionsController < ApplicationController
 
   def create
     @account = Account.find_by(name: params[:name])
+    current_user
     #if successful generate JWT token, include token back in response to client
     #include user in response back as well 
     if @account && @account.authenticate(params[:password])
-      login!
+      session[:account_id] = @account.id
+      current_account
+      account_type
       render json: AccountSerializer.new(@account)
     else
       render json: {
@@ -17,7 +20,6 @@ class Api::V1::SessionsController < ApplicationController
   end
 
   def is_logged_in?
-    binding.pry
     if logged_in? && current_account
       render json: {
         logged_in: true,

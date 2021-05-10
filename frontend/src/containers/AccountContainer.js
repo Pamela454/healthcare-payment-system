@@ -1,10 +1,12 @@
 // render other components, can have other functions inside them. Typically class components.
-import React from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Switch } from "react-router-dom";
 import Accounts from "../components/Accounts";
 import Account from "../components/Account";
 import AccountNew from "../components/AccountNew";
+import { getAllAccounts } from "../actions/currentAccount.js";
+
 //import NavBar from '../components/NavBar'
 
 //containers manage state and class methods
@@ -13,11 +15,18 @@ import AccountNew from "../components/AccountNew";
 //more time consuming than calling a function
 //only compnent connected to store?
 
-class AccountContainer extends React.Component {
+class AccountContainer extends Component {
+	componentDidMount() {
+		this.props.getAllAccounts();
+	}
+
 	//can call lifecycle hooks
 	//render stated component
 	//return react element from render function
+
 	render() {
+		console.log(this.props.accounts);
+
 		return (
 			<div>
 				<Switch>
@@ -26,7 +35,8 @@ class AccountContainer extends React.Component {
 						exact
 						path="/accounts/:id"
 						render={(props) => {
-							console.log(this.props.account)
+							console.log(this.props.accounts);
+							console.log(this.props.account);
 							return (
 								<Account
 									{...props}
@@ -52,13 +62,15 @@ class AccountContainer extends React.Component {
 		);
 	}
 }
-//selects part of data from the store that the component needs. receives entire store, returns object 
+//selects part of data from the store that the component needs. receives entire store, returns object
 //is this needed if not displaying list of accounts?
-const mapStateToProps = (state) => { //subscribe to redux updates 
+const mapStateToProps = (state) => {
+	//subscribe to redux updates
 	//this is the state from redux
 	return {
 		account: state.loginFormReducer, //accounts located inside the state
+		accounts: state.accounts,
 	};
 };
 //dispatch happens automatically with connect
-export default connect(mapStateToProps)(AccountContainer);
+export default connect(mapStateToProps, { getAllAccounts })(AccountContainer);

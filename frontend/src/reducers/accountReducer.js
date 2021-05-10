@@ -5,6 +5,9 @@ export default function accountReducer(state = null, action) {
 	switch (action.type) {
 		case "ADD_ACCOUNT": //creates a new object
 			return action.payload;
+		case "SET_ACCOUNT_LIST":
+			console.log(action);
+			return action.payload;
 		default:
 			return state; //never return null
 	}

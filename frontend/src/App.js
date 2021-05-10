@@ -29,7 +29,11 @@ function App(props) {
         <h2>{currentAccount ? "You are signed in" : "Not logged in"} </h2>
       </div>
       <Switch>
-        <Route exact path="/api/v1/login" render={() => <Login />} />
+        <Route
+          exact
+          path="/api/v1/login"
+          render={() => <Login history={props.history} />}
+        />
         <Route exact path="/api/v1/signup" render={() => <Signup />} />
         <Redirect from="/logout" to="api/v1/login" />
         <Route

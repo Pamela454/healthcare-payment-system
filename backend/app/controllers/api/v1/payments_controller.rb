@@ -9,6 +9,7 @@ class Api::V1::PaymentsController < ApplicationController
    
    def create
     @payment = Payment.new(payment_params)
+    @departments = params[:departments]
     if @payment.save
       render json: PaymentSerializer.new(@payment)  
     else

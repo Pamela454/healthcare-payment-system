@@ -3,9 +3,12 @@ import { connect } from "react-redux";
 import React from "react";
 //import { useHistory } from "react-router-dom";
 //import {Redirect} from "react-router-dom"
+import Accounts from "./Accounts.js";
 import { withRouter } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import { getDepartments } from ".././actions/currentDepartments.js";
+import { newDepartment } from ".././actions/currentDepartments.js";
+
 //import DepartmentsContainer from '../containers/DepartmentsContainer'
 
 //does not go through lifecycle checks, functional component
@@ -23,6 +26,14 @@ const Account = (props) => {
         e.preventDefault();
         props.getDepartments(props.account.account.id, props.history);
     };
+
+    const handleClickAdmin = (e) => {
+        //const { accountId } = e.target;
+        //const accountId = props.account.id
+        e.persist();
+        e.preventDefault();
+        props.newDepartment(props.account.account.id, props.history);
+    };
     //add value to button?
     return (
         <div class="container">
@@ -37,11 +48,16 @@ const Account = (props) => {
                             : null}
                         <br></br>
                         <label> Account Balance </label>
-                        {props.account
+                        {props.account.account.attributes.balance != null
                             ? `  $` + props.account.account.attributes.balance
                             : null}
                     </h2>
-                    <Button onClick={handleClick}>View Departments</Button>
+                    {props.account.account.attributes.status === "patient" ? (
+                        <Button onClick={handleClick}>View Charges</Button>
+                    ) : null}
+                    {props.account.account.attributes.status === "admin" ? (
+                        <Accounts />
+                    ) : null}
                 </div>
             </div>
         </div>

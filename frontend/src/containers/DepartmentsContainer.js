@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Switch, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 //import {fetchDepartments} from '../actions/fetchDepartments'
 import DepartmentNew from "../components/DepartmentNew";
 import Departments from "../components/Departments";
 
-class DepartmentsContainer extends React.Component {
+class DepartmentsContainer extends Component {
 	render() {
 		return (
 			<div>

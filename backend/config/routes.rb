@@ -7,6 +7,7 @@ post 'api/v1/signup' => 'api/v1/accounts#create'
 get 'api/v1/logged_in' => 'api/v1/sessions#is_logged_in?'
 get 'api/v1/accounts/:id' => 'api/v1/accounts#show'
 post 'api/v1/accounts/:id/payments/new' => 'api/v1/payments#create'
+get 'api/v1/accounts' => 'api/v1/accounts#index'
 
  namespace :api do
 	namespace :v1 do 
