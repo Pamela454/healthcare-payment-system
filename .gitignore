@@ -17,13 +17,14 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+.log
 
 # Ignore uploaded files in development.
 /storage/*
 !/storage/.keep
 .byebug_history
 .env
-/variables.env
+variables.env
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
